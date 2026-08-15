@@ -23,6 +23,7 @@ fetch("https://wilds.mhdb.io/en/monsters")
             const monsterIcon = document.createElement("img");
             monsterIcon.src = `Icons/${monster.name}.png`;
             monsterIcon.alt = `${monster.name}`;
+            monsterIcon.loading = "lazy";
 
             const monsterName = document.createElement("p");
             monsterName.innerHTML = `<strong>Name: </strong>${monster.name}`;
