@@ -32,7 +32,7 @@ fetch("https://wilds.mhdb.io/en/monsters")
             monsterType.innerHTML = `<strong>Type: </strong>${capitalise(monster.kind)}`;
 
             const monsterSpecies = document.createElement("p");
-            monsterSpecies.innerHTML = `<strong>Species: </strong>${capitalise(monster.species)}`
+            monsterSpecies.innerHTML = `<strong>Species: </strong>${capitalise(monster.species)}`;
 
             monsterCard.append(monsterIcon, monsterName, monsterType, monsterSpecies);
             container.append(monsterCard);
