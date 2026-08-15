@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+    font-family: "Roboto";
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    min-height: 100dvh;
+
+    text-align: center;
+
+    overflow-x: hidden;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.monster-card {
+    width: 20%;
+    margin: 1.5%;
+    height: auto;
+
+    background-color: white;
+    padding: 15px;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+
+    box-shadow: 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .monster-card {
+        width: 90%;
+        margin: 5%;
+    }
+}
+
+.monster-card img {
+    width: 100%;
+    max-width: 227px;
+    height: auto;
+}
