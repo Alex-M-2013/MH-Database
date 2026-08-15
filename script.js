@@ -13,8 +13,6 @@ function capitalise(string) {
     return capitalisedString;
 }
 
-let cardsAppended = 0;
-
 fetch("https://wilds.mhdb.io/en/monsters")
     .then((response) => response.json())
     .then((monsters) => {
