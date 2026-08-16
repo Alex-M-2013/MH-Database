@@ -42,8 +42,14 @@ h1 {
     }
 }
 
-.monster-card img {
+.monster-icon {
     width: 100%;
     max-width: 227px;
     height: auto;
+}
+
+.element-icon {
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.15em; 
 }

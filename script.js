@@ -21,9 +21,10 @@ fetch("https://wilds.mhdb.io/en/monsters")
             monsterCard.className = "monster-card";
 
             const monsterIcon = document.createElement("img");
-            monsterIcon.src = `Icons/${monster.name}.png`;
+            monsterIcon.src = `Icons/Monsters/${monster.name}.png`;
             monsterIcon.alt = `${monster.name}`;
             monsterIcon.loading = "lazy";
+            monsterIcon.className = "monster-icon"
 
             const monsterName = document.createElement("p");
             monsterName.innerHTML = `<strong>Name: </strong>${monster.name}`;
@@ -34,7 +35,21 @@ fetch("https://wilds.mhdb.io/en/monsters")
             const monsterSpecies = document.createElement("p");
             monsterSpecies.innerHTML = `<strong>Species: </strong>${capitalise(monster.species)}`;
 
-            monsterCard.append(monsterIcon, monsterName, monsterType, monsterSpecies);
+            const monsterWeakness = document.createElement("p");
+            const elementWeakness = monster.weaknesses.map(weakness => weakness.element).filter(Boolean)[0] ?? "N/A";
+            monsterWeakness.innerHTML = `<strong>Weakness: </strong>${capitalise(elementWeakness)} `;
+            
+            if (elementWeakness !== "N/A") {
+                const monsterWeaknessIcon = document.createElement("img");
+                monsterWeaknessIcon.src = `Icons/Elements/${capitalise(elementWeakness)}.png`;
+                monsterWeaknessIcon.alt = `${capitalise(elementWeakness)}`;
+                monsterWeaknessIcon.loading = "lazy";
+                monsterWeaknessIcon.className = "element-icon";
+
+                monsterWeakness.append(monsterWeaknessIcon);
+            }
+
+            monsterCard.append(monsterIcon, monsterName, monsterType, monsterSpecies, monsterWeakness);
             container.append(monsterCard);
         });
     });
