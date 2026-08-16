@@ -53,3 +53,7 @@ fetch("https://wilds.mhdb.io/en/monsters")
             container.append(monsterCard);
         });
     });
+
+function search() {
+
+}
