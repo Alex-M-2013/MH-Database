@@ -1,9 +1,5 @@
 const container = document.getElementById("container");
 
-const themeLink = document.getElementById("theme-link");
-const themeIcon = document.getElementById("theme-icon");
-let currentTheme = "Light";
-
 const removeDashes = (string) => string.replaceAll("-", " ");
 
 function capitalise(string) {
@@ -28,7 +24,7 @@ fetch("https://wilds.mhdb.io/en/monsters")
             monsterIcon.src = `Icons/Monsters/${monster.name}.png`;
             monsterIcon.alt = `${monster.name}`;
             monsterIcon.loading = "lazy";
-            monsterIcon.className = "monster-icon"
+            monsterIcon.className = "monster-icon";
 
             const monsterName = document.createElement("p");
             monsterName.innerHTML = `<strong>Name: </strong>${monster.name}`;
@@ -40,9 +36,9 @@ fetch("https://wilds.mhdb.io/en/monsters")
             monsterSpecies.innerHTML = `<strong>Species: </strong>${capitalise(monster.species)}`;
 
             const monsterWeakness = document.createElement("p");
-            const elementWeakness = monster.weaknesses.map(weakness => weakness.element).filter(Boolean)[0] ?? "N/A";
+            const elementWeakness = monster.weaknesses.map((weakness) => weakness.element).filter(Boolean)[0] ?? "N/A";
             monsterWeakness.innerHTML = `<strong>Weakness: </strong>${capitalise(elementWeakness)} `;
-            
+
             if (elementWeakness !== "N/A") {
                 const monsterWeaknessIcon = document.createElement("img");
                 monsterWeaknessIcon.src = `Icons/Elements/${capitalise(elementWeakness)}.png`;
@@ -58,30 +54,4 @@ fetch("https://wilds.mhdb.io/en/monsters")
         });
     });
 
-function loadCurrentTheme() {
-
-}
-
-function switchTheme() {
-    if (currentTheme === "Light") {
-        themeLink.href = "themes/dark-theme.css";
-
-        themeIcon.src = "Icons/moon.svg";
-        themeIcon.alt = "Moon";
-
-        currentTheme = "Dark";
-    } else if (currentTheme === "Dark") {
-        themeLink.href = "themes/light-theme.css";
-
-        themeIcon.src = "Icons/sun.svg";
-        themeIcon.alt = "Sun";
-
-        currentTheme = "Light";
-    } 
-
-
-}
-
-function search() {
-
-}
+function search() {}
