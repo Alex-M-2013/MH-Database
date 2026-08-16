@@ -21,7 +21,7 @@ fetch("https://wilds.mhdb.io/en/monsters")
             monsterCard.className = "monster-card";
 
             const monsterIcon = document.createElement("img");
-            monsterIcon.src = `Icons/Monsters/${monster.name}.png`;
+            monsterIcon.src = `icons/Monsters/${monster.name}.png`;
             monsterIcon.alt = `${monster.name}`;
             monsterIcon.loading = "lazy";
             monsterIcon.className = "monster-icon";
@@ -41,7 +41,7 @@ fetch("https://wilds.mhdb.io/en/monsters")
 
             if (elementWeakness !== "N/A") {
                 const monsterWeaknessIcon = document.createElement("img");
-                monsterWeaknessIcon.src = `Icons/Elements/${capitalise(elementWeakness)}.png`;
+                monsterWeaknessIcon.src = `icons/Elements/${capitalise(elementWeakness)}.png`;
                 monsterWeaknessIcon.alt = `${capitalise(elementWeakness)}`;
                 monsterWeaknessIcon.loading = "lazy";
                 monsterWeaknessIcon.className = "element-icon";
@@ -54,4 +54,18 @@ fetch("https://wilds.mhdb.io/en/monsters")
         });
     });
 
-function search() {}
+function search() {
+    const userSearch = removeDashes(document.querySelector("#search-bar input").value).toLowerCase().trim();
+
+    const monsterCards = document.querySelectorAll(".monster-card");
+
+    monsterCards.forEach((card) => {
+        const monsterName = (card.querySelector("p").textContent).replace("Name: ", "").toLowerCase();
+        
+        if (monsterName.includes(userSearch)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}

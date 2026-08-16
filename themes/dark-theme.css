@@ -11,7 +11,7 @@ body {
     background-color: #14120e;
 }
 
-#theme-icon, #search-bar img {
+#theme-icon, #search-bar img, #github-link {
     filter: invert();
 }
 

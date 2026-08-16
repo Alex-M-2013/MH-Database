@@ -96,3 +96,36 @@ h1 {
     width: 1em;
     vertical-align: -0.15em; 
 }
+
+#github-link {
+    display: flex;
+    justify-content: center;
+    
+    height: 75px;
+    width: auto;
+    
+    margin: 10px;
+    
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    border-radius: 10px;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 600px) { #github-link { position: static } }
+
+#github-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+#github-link img {
+    height: 75px;
+    width: auto;
+}

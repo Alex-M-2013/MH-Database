@@ -9,19 +9,23 @@
     </head>
     <body>
         <button id="theme-switcher" onclick="switchTheme()">
-            <img id="theme-icon" src="Icons/sun.svg" alt="sun">
+            <img id="theme-icon" src="icons/sun.svg" alt="sun">
         </button>
         
         <h1>Monsters:</h1>
         
         <div id="search-bar">
-            <img src="Icons/search.svg" alt="Search">
-            <input type="text" placeholder="Search..." onchange="search()">
+            <img src="icons/search.svg" alt="Search">
+            <input type="text" placeholder="Search..." oninput="search()">
         </div>
 
         <div id="container">
 
         </div>
+
+        <a href="https://github.com/Alex-M-2013" id="github-link">
+            <img src="images/github.png">
+        </a>
 
         <script src="script.js"></script>
         <script src="theme-switcher.js"></script>
