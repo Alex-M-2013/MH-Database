@@ -1,0 +1,25 @@
+html {
+    scrollbar-color: #888888 #14120e;
+}
+
+body {
+    background-color: #14120e;
+    color: #ede4ce;
+}
+
+#theme-switcher {
+    background-color: #14120e;
+}
+
+#theme-icon, #search-bar img {
+    filter: invert();
+}
+
+#search-bar, .monster-card {
+    background-color: #1e1a14;
+}
+
+#search-bar input {
+    color: #ede4ce;
+    background-color: #1e1a14;
+}

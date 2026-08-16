@@ -1,5 +1,9 @@
 const container = document.getElementById("container");
 
+const themeLink = document.getElementById("theme-link");
+const themeIcon = document.getElementById("theme-icon");
+let currentTheme = "Light";
+
 const removeDashes = (string) => string.replaceAll("-", " ");
 
 function capitalise(string) {
@@ -53,6 +57,30 @@ fetch("https://wilds.mhdb.io/en/monsters")
             container.append(monsterCard);
         });
     });
+
+function loadCurrentTheme() {
+
+}
+
+function switchTheme() {
+    if (currentTheme === "Light") {
+        themeLink.href = "themes/dark-theme.css";
+
+        themeIcon.src = "Icons/moon.svg";
+        themeIcon.alt = "Moon";
+
+        currentTheme = "Dark";
+    } else if (currentTheme === "Dark") {
+        themeLink.href = "themes/light-theme.css";
+
+        themeIcon.src = "Icons/sun.svg";
+        themeIcon.alt = "Sun";
+
+        currentTheme = "Light";
+    } 
+
+
+}
 
 function search() {
 

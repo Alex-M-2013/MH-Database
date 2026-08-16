@@ -1,0 +1,7 @@
+body, #theme-switcher {
+    background-color: #f0f0f0;
+}
+
+#search-bar, .monster-card {
+    background-color: white;
+}
