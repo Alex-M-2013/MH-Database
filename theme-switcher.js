@@ -10,7 +10,7 @@ function loadCurrentTheme() {
 
     const icon = localStorage.getItem("savedThemeIcon") ?? "sun";
     themeIcon.src = `icons/${icon}.svg`;
-    themeIcon.alt = `${icon}`;
+    themeIcon.alt = `${capitalise(icon)}`;
 }
 
 function switchTheme() {
@@ -18,7 +18,7 @@ function switchTheme() {
         themeLink.href = "themes/dark-theme.css";
 
         themeIcon.src = "icons/moon.svg";
-        themeIcon.alt = "moon";
+        themeIcon.alt = "Moon";
         localStorage.setItem("savedThemeIcon", "moon");
 
         currentTheme = "dark";
@@ -27,7 +27,7 @@ function switchTheme() {
         themeLink.href = "themes/light-theme.css";
 
         themeIcon.src = "icons/sun.svg";
-        themeIcon.alt = "sun";
+        themeIcon.alt = "Sun";
         localStorage.setItem("savedThemeIcon", "sun");
 
         currentTheme = "light";

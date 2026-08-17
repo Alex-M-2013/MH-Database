@@ -1,19 +1,9 @@
 const container = document.getElementById("container");
 
-const removeDashes = (string) => string.replaceAll("-", " ");
+const url = new URL("https://wilds.mhdb.io/en/monsters");
+url.searchParams.set("q", JSON.stringify({ kind: "large" }));
 
-function capitalise(string) {
-    const lowerCaseString = removeDashes(string).toLowerCase();
-    const lowerCaseStringWords = lowerCaseString.split(" ");
-
-    const capitalisedStringWords = lowerCaseStringWords.map((word) => word.charAt(0).toUpperCase() + word.slice(1));
-
-    const capitalisedString = capitalisedStringWords.join(" ");
-
-    return capitalisedString;
-}
-
-fetch("https://wilds.mhdb.io/en/monsters")
+fetch(url)
     .then((response) => response.json())
     .then((monsters) => {
         monsters.forEach((monster) => {
@@ -53,19 +43,3 @@ fetch("https://wilds.mhdb.io/en/monsters")
             container.append(monsterCard);
         });
     });
-
-function search() {
-    const userSearch = removeDashes(document.querySelector("#search-bar input").value).toLowerCase().trim();
-
-    const monsterCards = document.querySelectorAll(".monster-card");
-
-    monsterCards.forEach((card) => {
-        const monsterName = (card.querySelector("p").textContent).replace("Name: ", "").toLowerCase();
-        
-        if (monsterName.includes(userSearch)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-    });
-}
