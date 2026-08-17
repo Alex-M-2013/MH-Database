@@ -27,7 +27,7 @@ fetch(url)
 
             const monsterWeakness = document.createElement("p");
             const elementWeakness = monster.weaknesses.map((weakness) => weakness.element).filter(Boolean)[0] ?? "N/A";
-            monsterWeakness.innerHTML = `<strong>Weakness: </strong>${capitalise(elementWeakness)} `;
+            monsterWeakness.innerHTML = `<strong>Weakness: </strong>${capitalise(elementWeakness)}`;
 
             if (elementWeakness !== "N/A") {
                 const monsterWeaknessIcon = document.createElement("img");
