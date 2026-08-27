@@ -1,7 +1,7 @@
-body, #theme-switcher {
+body, .game-tab:hover, #theme-switcher, #hamburger-menu {
     background-color: #f0f0f0;
 }
 
-#search-bar, .monster-card {
+.game-tab, #search-bar, .monster-card, #sidenav, #close-sidenav {
     background-color: white;
 }

@@ -7,15 +7,23 @@ body {
     color: #ede4ce;
 }
 
-#theme-switcher {
+.game-tab {
+    color: #ede4ce;
+}
+
+.game-tab:hover {
     background-color: #14120e;
 }
 
-#theme-icon, #search-bar img, #github-link {
+#theme-switcher, #hamburger-menu {
+    background-color: #14120e;
+}
+
+#theme-icon, #hamburger-icon, #close-sidenav img, #search-bar img, #github-link {
     filter: invert();
 }
 
-#search-bar, .monster-card {
+.game-tab, #search-bar, .monster-card, #sidenav, #close-sidenav {
     background-color: #1e1a14;
 }
 

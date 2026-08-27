@@ -5,8 +5,9 @@ function search() {
 
     monsterCards.forEach((card) => {
         const monsterName = removeDashes(card.querySelector("p").textContent).replace("Name: ", "").toLowerCase();
+        const monsterType = removeDashes(card.querySelector(".monster-type").textContent).replace("Type: ", "").toLowerCase();
 
-        if (monsterName.includes(userSearch)) {
+        if (monsterName.includes(userSearch) || monsterType.includes(userSearch)) {
             card.style.display = "";
         } else {
             card.style.display = "none";
