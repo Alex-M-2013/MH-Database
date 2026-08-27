@@ -1,8 +1,8 @@
 # MH Monster Database
 
-__Link:__ https://alex-m-2013.github.io/MH-Database/
+__Link:__ https://alex-m-2013.github.io/MH-Monster-Database/
 
-A database containing info about Monsters from various Monster Hunter games.
+A database containing info about Monsters from various Monster Hunter games. <br>
 Includes info from: Wilds, Rise/Sunbreak, World/Iceborne, GU.
 
 __Features__:
