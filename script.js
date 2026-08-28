@@ -1,3 +1,5 @@
+import { parse } from "jsonc-parser";
+
 const container = document.getElementById("card-container");
 const gameTabs = document.querySelectorAll(".game-tab");
 let currentTab = localStorage.getItem("savedTab") ?? "Wilds";
@@ -27,8 +29,8 @@ function renderCards(gameTab) {
         typeVar = "monster.kind";
         getWeakness = (monster) => monster.weaknesses.map((weakness) => weakness.element).filter(Boolean)[0];
     } else if (gameTab === "Rise/Sunbreak") {
-        url = "./data/rise_monster_db.json";
-
+        url = "./data/rise_monster_db.jsonc";
+        fetchVar = "fetch(url).then(response => response.text()).then(text => parse(text));"
         getWeakness = (monster) => {
             if (!monster.weaknesses || monster.weaknesses.length === 0) {
                 return null;
@@ -93,6 +95,7 @@ function renderCards(gameTab) {
 
             const monsterSpecies = document.createElement("p");
             monsterSpecies.innerHTML = `<strong>Species: </strong>${capitalise(monster.species) ?? "No Data"}`;
+            monsterSpecies.className = "monster-species";
 
             const monsterWeakness = document.createElement("p");
             const elementWeakness = getWeakness(monster) ?? "No Data";

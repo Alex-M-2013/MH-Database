@@ -50,8 +50,16 @@
             <img src="images/github.png" />
         </a>
 
+        <script type="importmap">
+            {
+                "imports": {
+                    "jsonc-parser": "https://esm.sh/jsonc-parser@3.3.1"
+                }
+            }
+        </script>
+
         <script src="utils/helper.js"></script>
-        <script src="script.js"></script>
+        <script src="script.js" type="module"></script>
         <script src="sidenav/sidenav.js"></script>
         <script src="theme-switcher.js"></script>
         <script src="search.js"></script>
