@@ -14,7 +14,7 @@ __Data from__:
 - Wilds data: [Monster Hunter Wilds API](https://docs.wilds.mhdb.io/).
 - *Rise/Sunbreak Data: https://github.com/Neryss/monster_hunter_db/blob/master/rise_monster_db.json
 - World/Iceborne Data: [Monster Hunter World API](https://docs.mhw-db.com)
-- MHGU Data pulled from: https://github.com/gatheringhallstudios/MHGenDatabase/blob/develop/app/src/main/assets/databases/mhgu.db.zip
+- **MHGU Data pulled from: https://github.com/gatheringhallstudios/MHGenDatabase/blob/develop/app/src/main/assets/databases/mhgu.db.zip
 
 _*Some monsters were missing, so I got Claude to add in the missing monsters. I did check the data claude added but it may not be 100% accurate._
 
@@ -28,3 +28,5 @@ _Missing Monsters:_
 - _Amatsu_ 
 - _Risen Shagaru Magala_ 
 - _Primordial Malzeno_ 
+
+_*Claude was used to convert the monster tables to json._
