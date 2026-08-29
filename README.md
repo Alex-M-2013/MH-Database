@@ -10,6 +10,9 @@ __Features__:
 - Mobile friendly
 - Dark and Light themes
 
+__Libraries used:__
+- [Toastify JS](https://github.com/apvarun/toastify-js)
+
 __Data from__:
 - Wilds data: [Monster Hunter Wilds API](https://docs.wilds.mhdb.io/).
 - *Rise/Sunbreak Data: https://github.com/Neryss/monster_hunter_db/blob/master/rise_monster_db.json

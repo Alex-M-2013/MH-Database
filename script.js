@@ -30,7 +30,7 @@ function renderCards(gameTab) {
         getWeakness = (monster) => monster.weaknesses.map((weakness) => weakness.element).filter(Boolean)[0];
     } else if (gameTab === "Rise/Sunbreak") {
         url = "./data/rise_monster_db.jsonc";
-        fetchVar = "fetch(url).then(response => response.text()).then(text => parse(text));"
+        fetchVar = "fetch(url).then(response => response.text()).then(text => parse(text))";
         getWeakness = (monster) => {
             if (!monster.weaknesses || monster.weaknesses.length === 0) {
                 return null;
@@ -75,44 +75,57 @@ function renderCards(gameTab) {
         typeVar = "monster.type";
     }
 
-    eval(fetchVar).then((monsters) => {
-        monsters.forEach((monster) => {
-            const monsterCard = document.createElement("div");
-            monsterCard.className = "monster-card";
+    eval(fetchVar)
+        .then((monsters) => {
+            monsters.forEach((monster) => {
+                const monsterCard = document.createElement("div");
+                monsterCard.className = "monster-card";
 
-            const monsterIcon = document.createElement("img");
-            monsterIcon.src = `icons/Monsters/${gameTab.split("/")[0]}/${eval(iconVar)}.png`;
-            monsterIcon.alt = `${monster.name}`;
-            monsterIcon.loading = "lazy";
-            monsterIcon.className = "monster-icon";
+                const monsterIcon = document.createElement("img");
+                monsterIcon.src = `icons/Monsters/${gameTab.split("/")[0]}/${eval(iconVar)}.png`;
+                monsterIcon.alt = `${monster.name}`;
+                monsterIcon.loading = "lazy";
+                monsterIcon.className = "monster-icon";
 
-            const monsterName = document.createElement("p");
-            monsterName.innerHTML = `<strong>Name: </strong>${monster.name}`;
+                const monsterName = document.createElement("p");
+                monsterName.innerHTML = `<strong>Name: </strong>${monster.name}`;
 
-            const monsterType = document.createElement("p");
-            monsterType.innerHTML = `<strong>Type: </strong>${capitalise(eval(typeVar)) ?? "Large"}`;
-            monsterType.className = "monster-type";
+                const monsterType = document.createElement("p");
+                monsterType.innerHTML = `<strong>Type: </strong>${capitalise(eval(typeVar)) ?? "Large"}`;
+                monsterType.className = "monster-type";
 
-            const monsterSpecies = document.createElement("p");
-            monsterSpecies.innerHTML = `<strong>Species: </strong>${capitalise(monster.species) ?? "No Data"}`;
-            monsterSpecies.className = "monster-species";
+                const monsterSpecies = document.createElement("p");
+                monsterSpecies.innerHTML = `<strong>Species: </strong>${capitalise(monster.species) ?? "No Data"}`;
+                monsterSpecies.className = "monster-species";
 
-            const monsterWeakness = document.createElement("p");
-            const elementWeakness = getWeakness(monster) ?? "No Data";
-            monsterWeakness.innerHTML = `<strong>Weakness: </strong>${capitalise(elementWeakness)} `;
+                const monsterWeakness = document.createElement("p");
+                const elementWeakness = getWeakness(monster) ?? "No Data";
+                monsterWeakness.innerHTML = `<strong>Weakness: </strong>${capitalise(elementWeakness)} `;
 
-            if (elementWeakness !== "No Data") {
-                const monsterWeaknessIcon = document.createElement("img");
-                monsterWeaknessIcon.src = `icons/Elements/${capitalise(elementWeakness)}.png`;
-                monsterWeaknessIcon.alt = `${capitalise(elementWeakness)}`;
-                monsterWeaknessIcon.loading = "lazy";
-                monsterWeaknessIcon.className = "element-icon";
+                if (elementWeakness !== "No Data") {
+                    const monsterWeaknessIcon = document.createElement("img");
+                    monsterWeaknessIcon.src = `icons/Elements/${capitalise(elementWeakness)}.png`;
+                    monsterWeaknessIcon.alt = `${capitalise(elementWeakness)}`;
+                    monsterWeaknessIcon.loading = "lazy";
+                    monsterWeaknessIcon.className = "element-icon";
 
-                monsterWeakness.append(monsterWeaknessIcon);
-            }
+                    monsterWeakness.append(monsterWeaknessIcon);
+                }
 
-            monsterCard.append(monsterIcon, monsterName, monsterType, monsterSpecies, monsterWeakness);
-            container.append(monsterCard);
+                monsterCard.append(monsterIcon, monsterName, monsterType, monsterSpecies, monsterWeakness);
+                container.append(monsterCard);
+            });
+        })
+        .catch((error) => {
+            Toastify({
+                text: "Could not fetch monster data. See console (F12) for more details.",
+                duration: 4500,
+                style: {
+                    background: "linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%)",
+                    borderRadius: "8px",
+                },
+            }).showToast();
+
+            console.error(error);
         });
-    });
 }
