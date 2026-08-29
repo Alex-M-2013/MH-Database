@@ -11,7 +11,7 @@ body {
     color: #ede4ce;
 }
 
-.game-tab:hover {
+.game-tab:hover, .game-tab.active-tab {
     background-color: #14120e;
 }
 

@@ -1,4 +1,4 @@
-body, .game-tab:hover, #theme-switcher, #hamburger-menu {
+body, .game-tab:hover, .game-tab.active-tab, #theme-switcher, #hamburger-menu {
     background-color: #f0f0f0;
 }
 

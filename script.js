@@ -4,15 +4,23 @@ const container = document.getElementById("card-container");
 const gameTabs = document.querySelectorAll(".game-tab");
 let currentTab = localStorage.getItem("savedTab") ?? "Wilds";
 
+updateActiveTab(currentTab);
 renderCards(currentTab);
 
 gameTabs.forEach((tab) => {
     tab.addEventListener("click", (event) => {
         currentTab = event.currentTarget.textContent.trim();
         localStorage.setItem("savedTab", currentTab);
+        updateActiveTab(currentTab);
         renderCards(currentTab);
     });
 });
+
+function updateActiveTab(currentTab) {
+    gameTabs.forEach((tab) => {
+        tab.classList.toggle("active-tab", tab.textContent.trim() === currentTab);
+    });
+}
 
 function renderCards(gameTab) {
     container.innerHTML = "";
