@@ -29,4 +29,4 @@ _Missing Monsters:_
 - _Risen Shagaru Magala_ 
 - _Primordial Malzeno_ 
 
-_*Claude was used to convert the monster tables to json._
+_**Claude was used to convert the monster tables to json._
