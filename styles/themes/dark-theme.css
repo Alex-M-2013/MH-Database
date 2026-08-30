@@ -1,0 +1,33 @@
+html {
+    scrollbar-color: #888888 #14120e;
+}
+
+body {
+    background-color: #14120e;
+    color: #ede4ce;
+}
+
+.game-tab {
+    color: #ede4ce;
+}
+
+.game-tab:hover, .game-tab.active-tab {
+    background-color: #14120e;
+}
+
+#theme-switcher, #hamburger-menu {
+    background-color: #14120e;
+}
+
+#theme-icon, #hamburger-icon, #close-sidenav img, #search-bar img, #github-link {
+    filter: invert();
+}
+
+.game-tab, #search-bar, .monster-card, #sidenav, #close-sidenav {
+    background-color: #1e1a14;
+}
+
+#search-bar input {
+    color: #ede4ce;
+    background-color: #1e1a14;
+}

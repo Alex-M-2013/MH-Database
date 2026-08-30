@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+    font-family: "Roboto";
+    margin: 0;
+    padding: 0;
+    min-height: 100dvh;
+
+    text-align: center;
+
+    overflow-x: hidden;
+
+    position: relative;
+    display: flow-root;
+}
+
+button {
+    cursor: pointer;
+}
+
+#theme-switcher, #hamburger-menu {
+    position: absolute;
+    top: 0;
+
+    margin: 1rem;
+    margin-top: 7rem;
+
+    height: 8vh;
+    width: auto;
+
+    border: none;
+    clip-path: circle(50% at 50% 50%);
+}
+
+#theme-switcher { right: 0; } 
+#hamburger-menu { left: 0; margin-top: 2rem; }
+
+#theme-icon, #hamburger-icon {
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 600px) { #theme-switcher { margin-top: 2rem; } }
+
+@media (min-width: 600px) { #hamburger-menu { display: none; } }
+
+#game-tabs {
+    display: flex;
+    margin: 0 0 2rem 0;
+
+    height: 10vh;
+    max-height: 85px;
+}
+
+.game-tab {
+    width: 25%;
+    height: auto;
+
+    border: none;
+
+    font-size: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 600px) { #game-tabs { display: none; } }
+
+h1 {
+    margin: 2.5rem;
+}
+
+#search-bar {
+    margin: 0 auto;
+
+    padding: 10px;
+    width: 15vw;
+    border-radius: 1.5rem;
+}
+
+@media (max-width: 600px) { #search-bar { width: 90%; } }
+
+#search-bar img {
+    height: 1em;
+    width: 1em;
+    vertical-align: -0.15em;
+}
+
+#search-bar input {
+    width: 80%;
+    border: none;
+}
+
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.monster-card {
+    width: 20%;
+    margin: 1.5%;
+    height: auto;
+
+    padding: 15px;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+
+    box-shadow: 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .monster-card {
+        width: 90%;
+        margin: 5%;
+    }
+}
+
+.monster-icon {
+    width: 100%;
+    max-width: 227px;
+    height: auto;
+}
+
+.element-icon {
+    height: 1em;
+    width: 1em;
+    vertical-align: -0.15em;
+}
+
+#github-link {
+    display: flex;
+    justify-content: center;
+
+    height: 75px;
+    width: auto;
+
+    margin: 10px;
+
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+@media (max-width: 600px) { #github-link { position: static; } }
+
+#github-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+#github-link img {
+    height: 75px;
+    width: auto;
+}
