@@ -30,6 +30,7 @@ function renderCards(gameTab) {
     let iconVar = "monster.name";
     let typeVar;
     let getWeakness = () => null;
+    let baseHealthVar = "monster.baseHealth";
 
     if (gameTab === "Wilds") {
         url = new URL("https://wilds.mhdb.io/en/monsters");
@@ -59,7 +60,9 @@ function renderCards(gameTab) {
         };
     } else if (gameTab === "MHGU") {
         url = "data/mhgu_monsters.json";
-
+        fetchVar += `.then((monsters) => monsters.filter((monster) => monster.type === "large" || monster.type === "deviant"))`;
+        iconVar = "monster.icon_name";
+        typeVar = "monster.type";
         getWeakness = (monster) => {
             const data = monster.weaknesses?.[0];
             if (!data) return null;
@@ -77,10 +80,7 @@ function renderCards(gameTab) {
 
             return bestKey;
         };
-
-        fetchVar += `.then((monsters) => monsters.filter((monster) => monster.type === "large" || monster.type === "deviant"))`;
-        iconVar = "monster.icon_name";
-        typeVar = "monster.type";
+        baseHealthVar = "monster.base_hp";
     }
 
     eval(fetchVar)
@@ -105,6 +105,7 @@ function renderCards(gameTab) {
                 const monsterSpecies = document.createElement("p");
                 monsterSpecies.innerHTML = `<strong>Species: </strong>${capitalise(monster.species) ?? "No Data"}`;
                 monsterSpecies.className = "monster-species";
+                monsterSpecies.style.display = gameTab !== "MHGU" ? "" : "none";
 
                 const monsterWeakness = document.createElement("p");
                 const elementWeakness = getWeakness(monster) ?? "No Data";
@@ -120,7 +121,11 @@ function renderCards(gameTab) {
                     monsterWeakness.append(monsterWeaknessIcon);
                 }
 
-                monsterCard.append(monsterIcon, monsterName, monsterType, monsterSpecies, monsterWeakness);
+                const monsterBaseHealth = document.createElement("p");
+                monsterBaseHealth.innerHTML = `<strong>Base HP: </strong>${eval(baseHealthVar) ?? "No Data"}`;
+                monsterBaseHealth.style.display = gameTab !== "Rise/Sunbreak" && gameTab !== "World/Iceborne" ? "" : "none";
+
+                monsterCard.append(monsterIcon, monsterName, monsterType, monsterSpecies, monsterWeakness, monsterBaseHealth);
                 container.append(monsterCard);
             });
         })
