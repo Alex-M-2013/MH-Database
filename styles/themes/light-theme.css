@@ -1,7 +1,0 @@
-body, .game-tab:hover, .game-tab.active-tab, #theme-switcher, #hamburger-menu {
-    background-color: #f0f0f0;
-}
-
-.game-tab, #search-bar, .monster-card, #sidenav, #close-sidenav {
-    background-color: white;
-}
