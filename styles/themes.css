@@ -1,0 +1,33 @@
+:root {
+    --scrollbar-color: auto;
+    --body-bg: #f0f0f0;
+    --element-bg: white;
+    --font-colour: auto;
+    --img-filter: none;
+
+    &[data-theme="dark"] {
+        --scrollbar-color: #888888 #14120e;
+        --body-bg: #14120e;
+        --element-bg: #1e1a14;
+        --font-colour: #ede4ce;
+        --img-filter: invert();
+    }
+}
+
+html {
+    scrollbar-color: var(--scrollbar-color);
+}
+
+body, .game-tab:hover, .game-tab.active-tab, #theme-switcher, #hamburger-menu {
+    background-color: var(--body-bg);
+    color: var(--font-colour);
+}
+
+.game-tab, #search-bar, #search-bar input, .monster-card, #sidenav, #close-sidenav {
+    background-color: var(--element-bg);
+    color: var(--font-colour);
+}
+
+#theme-icon, #hamburger-icon, #close-sidenav img, #search-bar img, #github-link {
+    filter: var(--img-filter);
+}
