@@ -13,23 +13,14 @@ function loadCurrentTheme() {
 }
 
 function switchTheme() {
-    if (currentTheme === "light") {
-        document.documentElement.setAttribute("data-theme", "dark");
+    const nextTheme = currentTheme === "light" ? "dark" : "light";
+    currentTheme = nextTheme;
+    document.documentElement.setAttribute("data-theme", nextTheme);
 
-        themeIcon.src = "assets/icons/moon.svg";
-        themeIcon.alt = "Moon";
-        localStorage.setItem("savedThemeIcon", "moon");
+    const nextIcon = nextTheme === "light" ? "sun" : "moon";
+    themeIcon.src = `assets/icons/${nextIcon}.svg`;
+    themeIcon.alt = `${capitalise(nextIcon)}`;
 
-        currentTheme = "dark";
-        localStorage.setItem("savedTheme", currentTheme);
-    } else if (currentTheme === "dark") {
-        document.documentElement.setAttribute('data-theme', 'light');
-
-        themeIcon.src = "assets/icons/sun.svg";
-        themeIcon.alt = "Sun";
-        localStorage.setItem("savedThemeIcon", "sun");
-
-        currentTheme = "light";
-        localStorage.setItem("savedTheme", currentTheme);
-    }
+    localStorage.setItem("savedTheme", nextTheme);
+    localStorage.setItem("savedThemeIcon", nextIcon);
 }
