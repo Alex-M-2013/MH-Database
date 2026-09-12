@@ -4,7 +4,7 @@ import Toastify from "toastify-js";
 import { parse } from "jsonc-parser";
 import { capitalise } from "../utils/helper";
 
-export const MonsterCards = (props) => {
+export const MonsterCards = ({ gameTab }) => {
     const [monsters, setMonsters] = useState([]);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export const MonsterCards = (props) => {
 
         queueMicrotask(() => setMonsters([]));
 
-        if (props.gameTab === "Wilds") {
+        if (gameTab === "Wilds") {
             const url = new URL("https://wilds.mhdb.io/en/monsters");
             url.searchParams.set("q", JSON.stringify({ kind: "large" }));
 
@@ -30,7 +30,7 @@ export const MonsterCards = (props) => {
                     errorToast.showToast();
                     console.error(error);
                 });
-        } else if (props.gameTab === "Rise/Sunbreak") {
+        } else if (gameTab === "Rise/Sunbreak") {
             const data = "/data/rise_monster_db.jsonc";
 
             fetch(data)
@@ -41,7 +41,7 @@ export const MonsterCards = (props) => {
                     errorToast.showToast();
                     console.error(error);
                 });
-        } else if (props.gameTab === "World/Iceborne") {
+        } else if (gameTab === "World/Iceborne") {
             const data = "/data/mhw-db-com-monsters-large.json";
 
             fetch(data)
@@ -51,7 +51,7 @@ export const MonsterCards = (props) => {
                     errorToast.showToast();
                     console.error(error);
                 });
-        } else if (props.gameTab === "MHGU") {
+        } else if (gameTab === "MHGU") {
             const data = "/data/mhgu_monsters.json";
 
             fetch(data)
@@ -63,7 +63,7 @@ export const MonsterCards = (props) => {
                     console.error(error);
                 });
         }
-    }, [props.gameTab]);
+    }, [gameTab]);
 
     return (
         <>
@@ -73,10 +73,10 @@ export const MonsterCards = (props) => {
                 let getWeakness = () => null;
                 let baseHealthVar = monster.baseHealth;
 
-                if (props.gameTab === "Wilds") {
+                if (gameTab === "Wilds") {
                     typeVar = monster.kind;
                     getWeakness = (monster) => monster.weaknesses.map((weakness) => weakness.element).filter(Boolean)[0];
-                } else if (props.gameTab === "Rise/Sunbreak") {
+                } else if (gameTab === "Rise/Sunbreak") {
                     getWeakness = (monster) => {
                         if (!monster.weaknesses || monster.weaknesses.length === 0) {
                             return null;
@@ -84,7 +84,7 @@ export const MonsterCards = (props) => {
                             return monster.weaknesses.reduce((best, current) => (current.stars > best.stars ? current : best)).element;
                         }
                     };
-                } else if (props.gameTab === "World/Iceborne") {
+                } else if (gameTab === "World/Iceborne") {
                     typeVar = monster.type;
 
                     getWeakness = (monster) => {
@@ -94,7 +94,7 @@ export const MonsterCards = (props) => {
                             return monster.weaknesses.reduce((best, current) => (current.stars > best.stars ? current : best)).element;
                         }
                     };
-                } else if (props.gameTab === "MHGU") {
+                } else if (gameTab === "MHGU") {
                     iconVar = monster.icon_name;
                     typeVar = monster.type;
                     getWeakness = (monster) => {
@@ -121,7 +121,7 @@ export const MonsterCards = (props) => {
 
                 return (
                     <div className="monster-card" key={monster.name}>
-                        <img className="monster-icon" src={`assets/icons/Monsters/${props.gameTab.split("/")[0]}/${iconVar}.png`} alt={monster.name} loading="lazy" />
+                        <img className="monster-icon" src={`assets/icons/Monsters/${gameTab.split("/")[0]}/${iconVar}.png`} alt={monster.name} loading="lazy" />
 
                         <p>
                             <strong>Name: </strong>
@@ -133,7 +133,7 @@ export const MonsterCards = (props) => {
                             {capitalise(typeVar ?? "Large")}
                         </p>
 
-                        <p style={{ display: props.gameTab !== "MHGU" ? "" : "none" }} className="monster-species">
+                        <p style={{ display: gameTab !== "MHGU" ? "" : "none" }} className="monster-species">
                             <strong>Species: </strong>
                             {capitalise(monster.species ?? "No Data")}
                         </p>
@@ -143,7 +143,7 @@ export const MonsterCards = (props) => {
                             {capitalise(elementWeakness)} {elementWeakness !== "No Data" && <img className="element-icon" src={`assets/icons/Elements/${capitalise(elementWeakness)}.png`} alt={capitalise(elementWeakness)} loading="lazy" />}
                         </p>
 
-                        <p style={{ display: props.gameTab !== "Rise/Sunbreak" && props.gameTab !== "World/Iceborne" ? "" : "none" }}>
+                        <p style={{ display: gameTab !== "Rise/Sunbreak" && gameTab !== "World/Iceborne" ? "" : "none" }}>
                             <strong>Base HP: </strong>
                             {baseHealthVar ?? "No Data"}
                         </p>

@@ -3,24 +3,22 @@ import "../styles/components/GameTabs.css";
 import "../styles/components/Hamburger.css";
 import "../styles/components/Sidenav.css";
 
-export const GameTabs = (props) => {
+export const GameTabs = ({ currentTab, setCurrentTab }) => {
     useEffect(() => {
         document.querySelectorAll(".game-tab").forEach((tab) => {
-            tab.classList.toggle("active-tab", tab.textContent.trim() === props.currentTab);
+            tab.classList.toggle("active-tab", tab.textContent.trim() === currentTab);
         });
-    }, [props.currentTab]);
+    }, [currentTab]);
 
     function changeTab(event) {
         const nextTab = event.currentTarget.textContent.trim();
-        props.setCurrentTab(nextTab);
+        setCurrentTab(nextTab);
         localStorage.setItem("savedTab", nextTab);
     }
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const openCloseNav = () => {
-        setIsOpen(!isOpen);
-    };
+    const openCloseNav = () => setIsOpen(!isOpen);
 
     return (
         <>
@@ -31,7 +29,6 @@ export const GameTabs = (props) => {
                 <button className="game-tab" onClick={changeTab}>
                     Rise/Sunbreak
                 </button>
-
                 <button className="game-tab" onClick={changeTab}>
                     World/Iceborne
                 </button>
