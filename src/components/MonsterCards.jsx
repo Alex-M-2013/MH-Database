@@ -17,6 +17,8 @@ export const MonsterCards = (props) => {
             },
         });
 
+        queueMicrotask(() => setMonsters([]));
+
         if (props.gameTab === "Wilds") {
             const url = new URL("https://wilds.mhdb.io/en/monsters");
             url.searchParams.set("q", JSON.stringify({ kind: "large" }));
