@@ -1,0 +1,36 @@
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.monster-card {
+    width: 20%;
+    margin: 1.5%;
+    height: auto;
+
+    padding: 15px;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+
+    box-shadow: 8px 16px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 600px) {
+        & {
+            width: 90%;
+            margin: 5%;
+        }
+    }
+}
+
+.monster-icon {
+    width: 100%;
+    max-width: 227px;
+    height: auto;
+}
+
+.element-icon {
+    height: 1em;
+    width: 1em;
+    vertical-align: -0.15em;
+}

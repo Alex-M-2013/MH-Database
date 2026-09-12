@@ -1,0 +1,25 @@
+#hamburger-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    margin: 1rem;
+    margin-top: 2rem;
+
+    height: 8vh;
+    width: auto;
+
+    border: none;
+    clip-path: circle(50% at 50% 50%);
+}
+
+#hamburger-icon {
+    height: 100%;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    #hamburger-menu {
+        display: none;
+    }
+}

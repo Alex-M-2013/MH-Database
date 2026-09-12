@@ -2,73 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>MH Monster Database</title>
-        <link rel="stylesheet" href="styles/style.css" />
-        <link rel="stylesheet" href="styles/sidenav.css" />
-        <link rel="stylesheet" href="styles/themes.css" />
-
-        <script src=" https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js "></script>
-        <link href=" https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css " rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>MH Assistant</title>
     </head>
     <body>
-        <div id="game-tabs">
-            <button class="game-tab">Wilds</button>
-            <button class="game-tab">Rise/Sunbreak</button>
-            <button class="game-tab">World/Iceborne</button>
-            <button class="game-tab">MHGU</button>
+        <div id="root">
+            <noscript>You need to enable JavaScript to run this App.</noscript>
         </div>
-
-        <button id="hamburger-menu" onclick="openNav()">
-            <img id="hamburger-icon" src="assets/icons/hamburger.svg" alt="Hamburger Icon" />
-        </button>
-
-        <div id="sidenav">
-            <button id="close-sidenav" onclick="closeNav()">
-                <img src="assets/icons/hamburger.svg" alt="X" />
-            </button>
-
-            <div id="game-tabs-sidenav">
-                <button class="game-tab">Wilds</button>
-                <button class="game-tab">Rise/Sunbreak</button>
-                <button class="game-tab">World/Iceborne</button>
-                <button class="game-tab">MHGU</button>
-            </div>
-        </div>
-
-        <button id="theme-switcher" onclick="switchTheme()">
-            <img id="theme-icon" src="assets/icons/sun.svg" alt="Sun" />
-        </button>
-
-        <h1>Monsters:</h1>
-
-        <div id="search-bar">
-            <img src="assets/icons/search.svg" alt="Search" />
-            <input type="text" placeholder="Search..." oninput="search()" />
-        </div>
-
-        <div id="card-container">
-            <noscript>
-                <p>You need enable JavaScript to run this App. The app works by fetching data with JavaScript to display the data on the page.</p>
-            </noscript>
-        </div>
-
-        <a href="https://github.com/Alex-M-2013" id="github-link">
-            <img src="assets/images/github.png" />
-        </a>
-
-        <script type="importmap">
-            {
-                "imports": {
-                    "jsonc-parser": "https://esm.sh/jsonc-parser@3.3.1"
-                }
-            }
-        </script>
-
-        <script src="scripts/utils/helper.js"></script>
-        <script src="scripts/script.js" type="module"></script>
-        <script src="scripts/sidenav.js"></script>
-        <script src="scripts/theme-switcher.js"></script>
-        <script src="scripts/search.js"></script>
+        <script type="module" src="/src/main.jsx"></script>
     </body>
 </html>

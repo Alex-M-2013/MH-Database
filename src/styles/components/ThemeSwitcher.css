@@ -1,0 +1,25 @@
+#theme-switcher {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    margin: 1rem;
+    margin-top: 7rem;
+
+    height: 8vh;
+    width: auto;
+
+    border: none;
+    clip-path: circle(50% at 50% 50%);
+
+    @media (max-width: 600px) {
+        & {
+            margin-top: 2rem;
+        }
+    }
+}
+
+#theme-icon {
+    height: 100%;
+    width: 100%;
+}
