@@ -12,29 +12,50 @@ Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.
 
 <img src="./docs/screenshots/dark theme.png" alt="Dark Theme">
 
-## __Features__:
+## Features:
 - View monster info from: Wilds, Rise/Sunbreak, World/Iceborne and GU
 - Mobile friendly
 - Dark and Light themes
 
-## __Credits:__
+## Running the project:
+  
+### Requirements:
+- [NodeJS](https://nodejs.org/en)
+
+### Steps:
+1. Clone the repo:
+```
+git clone https://github.com/Alex-M-2013/MH-Assistant.git
+```
+2. In the project root, run: 
+```
+npm i
+```
+3. Run the App:  
+```
+npm run dev
+```
+4. View the app at [localhost:5173](http://localhost:5173)
+
+
+## Credits:
 
 __Inspired By:__ [NMS Assistant](https://nmsassistant.com/)
 
-__Libraries used:__
+### Libraries used:
 - [JSONC Parser](https://www.npmjs.com/package/jsonc-parser)
 - [Toastify JS](https://github.com/apvarun/toastify-js)
 
-__Data from__:
-- Wilds data: [Monster Hunter Wilds API](https://docs.wilds.mhdb.io/)
-- *Rise/Sunbreak Data: https://github.com/Neryss/monster_hunter_db/blob/master/rise_monster_db.json
-- World/Iceborne Data: [Monster Hunter World API](https://docs.mhw-db.com)
-- **MHGU Data pulled from: https://github.com/gatheringhallstudios/MHGenDatabase/blob/develop/app/src/main/assets/databases/mhgu.db.zip
+### Data from:
+- __Wilds data:__ [Monster Hunter Wilds API](https://docs.wilds.mhdb.io/)
+- __*Rise/Sunbreak Data:__ https://github.com/Neryss/monster_hunter_db/blob/master/rise_monster_db.json
+- __World/Iceborne Data:__ [Monster Hunter World API](https://docs.mhw-db.com)
+- __**MHGU Data pulled from:__ https://github.com/gatheringhallstudios/MHGenDatabase/blob/develop/app/src/main/assets/databases/mhgu.db.zip
 
-__Icons From__:
-- Wilds, Rise and World: Pulled from game files
-- MHGU: https://github.com/gatheringhallstudios/MHGenDatabase/tree/develop/app/src/main/icon-res/drawable
-- Other icons: [Bootstrap Icons](https://icons.getbootstrap.com/)
+### Icons From:
+- __Wilds, Rise and World:__ Pulled from game files
+- __MHGU:__ https://github.com/gatheringhallstudios/MHGenDatabase/tree/develop/app/src/main/icon-res/drawable
+- __Other icons:__ [Bootstrap Icons](https://icons.getbootstrap.com/)
 
 
 > _*Some monsters were missing, so I got Claude to add in the missing monsters. I did check the data claude added but it may not be 100% accurate._ <br> <br>
