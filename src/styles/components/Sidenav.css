@@ -20,11 +20,11 @@
     border: none;
 
     margin: 1rem;
-}
 
-#close-sidenav img {
-    height: 100%;
-    width: 100%;
+    img {
+        height: 100%;
+        width: 100%;
+    }
 }
 
 #sidenav-tabs {
@@ -33,10 +33,10 @@
     justify-content: center;
 
     margin-top: 3rem;
-}
 
-#sidenav-tabs button {
-    width: 100%;
+    button {
+        width: 100%;
 
-    margin: 1rem 0 1rem 0;
+        margin: 1rem 0 1rem 0;
+    }
 }

@@ -4,21 +4,21 @@
     padding: 10px;
     width: 15vw;
     border-radius: 1.5rem;
-}
 
-@media (max-width: 600px) {
-    #search-bar {
-        width: 90%;
+    @media (max-width: 600px) {
+        & {
+            width: 90%;
+        }
     }
-}
+    
+    img {
+        height: 1em;
+        width: 1em;
+        vertical-align: -0.15em;
+    }
 
-#search-bar img {
-    height: 1em;
-    width: 1em;
-    vertical-align: -0.15em;
-}
-
-#search-bar input {
-    width: 80%;
-    border: none;
+    input {
+        width: 80%;
+        border: none;
+    }
 }
