@@ -1,16 +1,16 @@
-# MH Assistant
+<div align="center">
 
-<img src="https://deploy-badge.vercel.app/vercel/mh-assistant-app?style=for-the-badge" alt="Vercel Deploy"><br>
+  # MH Assistant
 
-__Link:__ https://mh-assistant-app.vercel.app/
+  <img src="https://deploy-badge.vercel.app/vercel/mh-assistant-app?style=for-the-badge" alt="Vercel Deploy"><br>
 
-An assistant app containing info about Monsters from various Monster Hunter games. <br>
+  __Link:__ https://mh-assistant-app.vercel.app/
 
-Made with React. <br>
+  An assistant app containing info about Monsters from various Monster Hunter games. <br>
+  Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.
 
-Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.
-
-<img src="./docs/screenshots/dark theme.png" alt="Dark Theme">
+  <img src="./docs/screenshots/dark theme.png" alt="Dark Theme">
+</div>
 
 ## Features:
 - View monster info from: Wilds, Rise/Sunbreak, World/Iceborne and GU
