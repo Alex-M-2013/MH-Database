@@ -1,6 +1,6 @@
 # MH Assistant
 
-__Link:__ https://mh-assistant-app.netlify.app/
+__Link:__ https://mh-assistant-app.vercel.app/
 
 An assistant app containing info about Monsters from various Monster Hunter games. <br>
 
