@@ -56,7 +56,7 @@ __Inspired By:__ [NMS Assistant](https://nmsassistant.com/)
 - __Wilds, Rise and World:__ Pulled from game files
 - __MHGU:__ https://github.com/gatheringhallstudios/MHGenDatabase/tree/develop/app/src/main/icon-res/drawable
 - __Other icons:__ [Bootstrap Icons](https://icons.getbootstrap.com/)
-
+<br><br>
 
 > _*Some monsters were missing, so I got Claude to add in the missing monsters. I did check the data claude added but it may not be 100% accurate._ <br> <br>
 > _Missing Monsters:_
