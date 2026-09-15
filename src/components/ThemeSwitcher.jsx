@@ -1,18 +1,18 @@
 import "../styles/components/ThemeSwitcher.css";
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { capitalise } from "../utils/helper";
 
 export const ThemeSwitcher = () => {
-    const [currentTheme, setCurrentTheme] = useState(localStorage.getItem("savedTheme") ?? "light");
-    const [currentIcon, setCurrentIcon] = useState(localStorage.getItem("savedThemeIcon") ?? "sun");
+    const currentTheme = useRef(localStorage.getItem("savedTheme") ?? "light");
+    const [currentIcon, setCurrentIcon] = useState(() => localStorage.getItem("savedThemeIcon") ?? "sun");
 
     useEffect(() => {
-        document.documentElement.setAttribute("data-theme", currentTheme);
+        document.documentElement.setAttribute("data-theme", currentTheme.current);
     }, []);
 
     function switchTheme() {
-        const nextTheme = currentTheme === "light" ? "dark" : "light";
-        setCurrentTheme(nextTheme);
+        const nextTheme = currentTheme.current === "light" ? "dark" : "light";
+        currentTheme.current = nextTheme;
         document.documentElement.setAttribute("data-theme", nextTheme);
 
         const nextIcon = nextTheme === "light" ? "sun" : "moon";

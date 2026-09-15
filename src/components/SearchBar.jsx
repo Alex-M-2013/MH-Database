@@ -25,6 +25,7 @@ export const SearchBar = () => {
             <img src="/assets/icons/search.svg" alt="Search" />
             <input
                 type="text"
+                aria-label="Search Monsters"
                 placeholder="Search..."
                 onInput={(event) => {
                     const userSearch = event.currentTarget.value;
