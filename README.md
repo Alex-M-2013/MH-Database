@@ -43,7 +43,8 @@ npm run dev
 
 __Inspired By:__ [NMS Assistant](https://nmsassistant.com/)
 
-### Libraries used:
+### Libraries/Tools used:
+- [Deploy Badge Generator](https://deploy-badge.vercel.app)
 - [JSONC Parser](https://www.npmjs.com/package/jsonc-parser)
 - [Toastify JS](https://github.com/apvarun/toastify-js)
 
