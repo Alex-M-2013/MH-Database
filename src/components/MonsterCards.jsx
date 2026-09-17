@@ -4,6 +4,25 @@ import Toastify from "toastify-js";
 import { parse } from "jsonc-parser";
 import { capitalise } from "../utils/helper";
 
+const monsterSources = {
+    Wilds: {
+        url: 'https://wilds.mhdb.io/en/monsters?q={"kind":"large"}',
+        parse: (r) => r.json(),
+    },
+    "Rise/Sunbreak": {
+        url: "/data/rise_monster_db.jsonc",
+        parse: (r) => r.text().then((text) => parse(text)),
+    },
+    "World/Iceborne": {
+        url: "/data/mhw-db-com-monsters-large.json",
+        parse: (r) => r.json(),
+    },
+    MHGU: {
+        url: "/data/mhgu_monsters.json",
+        parse: (r) => r.json().then((monsters) => monsters.filter((monster) => monster.type === "large" || monster.type === "deviant")),
+    },
+};
+
 export const MonsterCards = ({ gameTab }) => {
     const [monsters, setMonsters] = useState([]);
 
@@ -19,50 +38,15 @@ export const MonsterCards = ({ gameTab }) => {
 
         queueMicrotask(() => setMonsters([]));
 
-        if (gameTab === "Wilds") {
-            const url = new URL("https://wilds.mhdb.io/en/monsters");
-            url.searchParams.set("q", JSON.stringify({ kind: "large" }));
+        const dataSource = monsterSources[gameTab];
 
-            fetch(url)
-                .then((r) => r.json())
-                .then((data) => setMonsters(data))
-                .catch((error) => {
-                    errorToast.showToast();
-                    console.error(error);
-                });
-        } else if (gameTab === "Rise/Sunbreak") {
-            const data = "/data/rise_monster_db.jsonc";
-
-            fetch(data)
-                .then((r) => r.text())
-                .then((text) => parse(text))
-                .then((data) => setMonsters(data))
-                .catch((error) => {
-                    errorToast.showToast();
-                    console.error(error);
-                });
-        } else if (gameTab === "World/Iceborne") {
-            const data = "/data/mhw-db-com-monsters-large.json";
-
-            fetch(data)
-                .then((r) => r.json())
-                .then((data) => setMonsters(data))
-                .catch((error) => {
-                    errorToast.showToast();
-                    console.error(error);
-                });
-        } else if (gameTab === "MHGU") {
-            const data = "/data/mhgu_monsters.json";
-
-            fetch(data)
-                .then((r) => r.json())
-                .then((monsters) => monsters.filter((monster) => monster.type === "large" || monster.type === "deviant"))
-                .then((data) => setMonsters(data))
-                .catch((error) => {
-                    errorToast.showToast();
-                    console.error(error);
-                });
-        }
+        fetch(dataSource.url)
+            .then(dataSource.parse)
+            .then((data) => setMonsters(data))
+            .catch((error) => {
+                errorToast.showToast();
+                console.error(error);
+            });
     }, [gameTab]);
 
     return (
