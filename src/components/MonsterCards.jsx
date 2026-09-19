@@ -62,9 +62,8 @@ export const MonsterCards = ({ gameTab }) => {
                     getWeakness = (monster) => monster.weaknesses.map((weakness) => weakness.element).filter(Boolean)[0];
                 } else if (gameTab === "Rise/Sunbreak") {
                     getWeakness = (monster) => {
-                        if (!monster.weaknesses || monster.weaknesses.length === 0) {
-                            return null;
-                        } else {
+                        if (!monster.weaknesses || monster.weaknesses.length === 0) return null;
+                        else {
                             return monster.weaknesses.reduce((best, current) => (current.stars > best.stars ? current : best)).element;
                         }
                     };
@@ -72,9 +71,8 @@ export const MonsterCards = ({ gameTab }) => {
                     typeVar = monster.type;
 
                     getWeakness = (monster) => {
-                        if (!monster.weaknesses || monster.weaknesses.length === 0) {
-                            return null;
-                        } else {
+                        if (!monster.weaknesses || monster.weaknesses.length === 0) return null;
+                        else {
                             return monster.weaknesses.reduce((best, current) => (current.stars > best.stars ? current : best)).element;
                         }
                     };
