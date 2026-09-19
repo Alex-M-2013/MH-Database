@@ -1,6 +1,7 @@
 import "../styles/components/MonsterCards.css";
 import { useState, useEffect } from "react";
 import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 import { parse } from "jsonc-parser";
 import { capitalise } from "../utils/helper";
 
