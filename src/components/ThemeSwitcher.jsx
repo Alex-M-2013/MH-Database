@@ -3,9 +3,10 @@ import { useRef, useState, useEffect } from "react";
 import { capitalise } from "../utils/helper";
 
 export const ThemeSwitcher = () => {
-    const currentTheme = useRef(localStorage.getItem("savedTheme") ?? "light");
-    const [currentIcon, setCurrentIcon] = useState(() => localStorage.getItem("savedThemeIcon") ?? "sun");
-
+    const initialTheme = localStorage.getItem("savedTheme") ?? (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    const currentTheme = useRef(initialTheme);
+    const [currentIcon, setCurrentIcon] = useState(() => localStorage.getItem("savedThemeIcon") ?? (initialTheme === "light" ? "sun" : "moon"));
+    
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", currentTheme.current);
     }, []);
