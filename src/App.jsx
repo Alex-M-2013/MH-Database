@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import "./styles/themes.css";
 import { useState, useEffect } from "react";
-import { GameTabs } from "./components/GameTabs";
+import { Sidenav } from "./components/Sidenav";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
 import { SearchBar } from "./components/SearchBar";
 import { MonsterCards } from "./components/MonsterCards";
@@ -21,7 +21,7 @@ export const App = () => {
 
     return (
         <>
-            <GameTabs currentTab={currentTab} setCurrentTab={setCurrentTab} isMobile={isMobile} />
+            <Sidenav currentTab={currentTab} setCurrentTab={setCurrentTab} isMobile={isMobile} />
 
             <ThemeSwitcher />
 
