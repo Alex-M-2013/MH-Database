@@ -6,17 +6,11 @@
     margin: 1rem;
     margin-top: 2rem;
 
-    height: 8vh;
+    height: 9vh;
     width: auto;
 
     border: none;
     clip-path: circle(50% at 50% 50%);
-
-    @media (min-width: 600px) {
-        & {
-            display: none;
-        }
-    }
 }
 
 #hamburger-icon {

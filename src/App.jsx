@@ -1,6 +1,6 @@
 import "./styles/App.css";
 import "./styles/themes.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GameTabs } from "./components/GameTabs";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";
 import { SearchBar } from "./components/SearchBar";
@@ -9,10 +9,19 @@ import { GitHubLink } from "./components/GitHubLink";
 
 export const App = () => {
     const [currentTab, setCurrentTab] = useState(() => localStorage.getItem("savedTab") ?? "Wilds");
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => setScreenWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    const isMobile = screenWidth <= 600;
 
     return (
         <>
-            <GameTabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
+            <GameTabs currentTab={currentTab} setCurrentTab={setCurrentTab} isMobile={isMobile} />
 
             <ThemeSwitcher />
 
