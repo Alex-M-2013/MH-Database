@@ -27,8 +27,9 @@ export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
                 </button>
 
                 <div id="sidenav-tabs">
+                    <TabDivider isMobile={isMobile} isOpen={isOpen} />
                     <GameTabs currentTab={currentTab} changeTab={changeTab} openCloseNav={openCloseNav} /> 
-                    <TabDivider style={{ display: isMobile ? (isOpen ? "" : "none") : "" }} />
+                    <TabDivider isMobile={isMobile} isOpen={isOpen} />
                 </div>
             </div>
         </>
