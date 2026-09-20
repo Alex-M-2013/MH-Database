@@ -41,7 +41,9 @@ npm run dev
 
 ## Credits:
 
-__Inspired By:__ [NMS Assistant](https://nmsassistant.com/)
+### Inspired By: 
+- [NMS Assistant](https://nmsassistant.com/)
+- [MHGU Database](https://github.com/gatheringhallstudios/MHGenDatabase)
 
 ### Libraries/Tools used:
 - [Deploy Badge Generator](https://deploy-badge.vercel.app)
