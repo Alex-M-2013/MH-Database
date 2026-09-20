@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../styles/components/GameTabs.css";
 import "../styles/components/Hamburger.css";
 import "../styles/components/Sidenav.css";
 
 export const GameTabs = ({ currentTab, setCurrentTab }) => {
-    useEffect(() => {
-        document.querySelectorAll(".game-tab").forEach((tab) => {
-            tab.classList.toggle("active-tab", tab.textContent.trim() === currentTab);
-        });
-    }, [currentTab]);
+    const tabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU"];
 
     function changeTab(event) {
         const nextTab = event.currentTarget.textContent.trim();
@@ -17,24 +13,18 @@ export const GameTabs = ({ currentTab, setCurrentTab }) => {
     }
 
     const [isOpen, setIsOpen] = useState(false);
-
     const openCloseNav = () => setIsOpen(!isOpen);
 
     return (
         <>
             <div id="game-tabs">
-                <button className="game-tab" onClick={changeTab}>
-                    Wilds
-                </button>
-                <button className="game-tab" onClick={changeTab}>
-                    Rise/Sunbreak
-                </button>
-                <button className="game-tab" onClick={changeTab}>
-                    World/Iceborne
-                </button>
-                <button className="game-tab" onClick={changeTab}>
-                    MHGU
-                </button>
+                {tabs.map((tab) => {
+                    return (
+                        <button className={`game-tab ${tab === currentTab ? "active-tab" : ""}`} onClick={changeTab} key={tab}>
+                            {tab}
+                        </button>
+                    );
+                })}
             </div>
 
             <button id="hamburger-menu" onClick={openCloseNav}>
@@ -47,42 +37,20 @@ export const GameTabs = ({ currentTab, setCurrentTab }) => {
                 </button>
 
                 <div id="sidenav-tabs">
-                    <button
-                        className="game-tab"
-                        onClick={(event) => {
-                            changeTab(event);
-                            openCloseNav();
-                        }}
-                    >
-                        Wilds
-                    </button>
-                    <button
-                        className="game-tab"
-                        onClick={(event) => {
-                            changeTab(event);
-                            openCloseNav();
-                        }}
-                    >
-                        Rise/Sunbreak
-                    </button>
-                    <button
-                        className="game-tab"
-                        onClick={(event) => {
-                            changeTab(event);
-                            openCloseNav();
-                        }}
-                    >
-                        World/Iceborne
-                    </button>
-                    <button
-                        className="game-tab"
-                        onClick={(event) => {
-                            changeTab(event);
-                            openCloseNav();
-                        }}
-                    >
-                        MHGU
-                    </button>
+                    {tabs.map((tab) => {
+                        return (
+                            <button
+                                className={`game-tab ${tab === currentTab ? "active-tab" : ""}`}
+                                onClick={(event) => {
+                                    changeTab(event);
+                                    openCloseNav();
+                                }}
+                                key={tab}
+                            >
+                                {tab}
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
         </>
