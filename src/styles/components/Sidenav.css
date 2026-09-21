@@ -11,6 +11,10 @@
     z-index: 2;
 
     transition: width 0.4s ease;
+
+    @media (max-width: 600px) {
+        transition: width 0.3s ease;
+    }
 }
 
 #close-sidenav {
