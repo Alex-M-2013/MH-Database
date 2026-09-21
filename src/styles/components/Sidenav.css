@@ -5,12 +5,12 @@
 
     height: 100%;
     width: 0;
-    max-width: 375px;
+    max-width: 380px;
 
     overflow-x: hidden;
     z-index: 2;
 
-    transition: width 0.3s ease;
+    transition: width 0.4s ease;
 }
 
 #close-sidenav {
