@@ -1,10 +1,11 @@
 import "../styles/components/Hamburger.css";
 import "../styles/components/Sidenav.css";
 import { useState } from "react";
-import { GameTabs } from "./GameTabs";
 import { TabDivider } from "./TabDivider";
 
 export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
+    const gameTabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU"];
+
     function changeTab(event) {
         const nextTab = event.currentTarget.textContent.trim();
         setCurrentTab(nextTab);
@@ -28,7 +29,22 @@ export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
 
                 <div id="sidenav-tabs">
                     <TabDivider isMobile={isMobile} isOpen={isOpen} />
-                    <GameTabs currentTab={currentTab} changeTab={changeTab} openCloseNav={openCloseNav} /> 
+
+                    {gameTabs.map((tab) => {
+                        return (
+                            <button
+                                className={`sidenav-tab ${tab === currentTab ? "active-tab" : ""}`}
+                                onClick={(event) => {
+                                    changeTab(event);
+                                    openCloseNav();
+                                }}
+                                key={tab}
+                            >
+                                {tab}
+                            </button>
+                        );
+                    })}
+
                     <TabDivider isMobile={isMobile} isOpen={isOpen} />
                 </div>
             </div>
