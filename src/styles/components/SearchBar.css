@@ -6,11 +6,9 @@
     border-radius: 1.5rem;
 
     @media (max-width: 600px) {
-        & {
-            width: 90%;
-        }
+        width: 90%;
     }
-    
+
     img {
         height: 1em;
         width: 1em;

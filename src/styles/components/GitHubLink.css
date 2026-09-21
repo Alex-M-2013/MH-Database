@@ -26,9 +26,7 @@
     }
 
     @media (max-width: 600px) {
-        & {
-            position: static;
-        }
+        position: static;
     }
 
     img {
