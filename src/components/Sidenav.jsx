@@ -22,6 +22,8 @@ export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
                 <img id="hamburger-icon" src="/assets/icons/hamburger.svg" alt="Hamburger Icon" />
             </button>
 
+            <div id="sidenav-background" style={{ visibility: isOpen ? "visible" : "hidden" }}></div>
+
             <div id="sidenav" style={{ width: !isOpen ? "0" : openWidth }}>
                 <button id="close-sidenav" onClick={openCloseNav}>
                     <img src="/assets/icons/x-lg.svg" alt="X" />

@@ -8,13 +8,23 @@
     max-width: 380px;
 
     overflow-x: hidden;
-    z-index: 2;
+    z-index: 3;
 
     transition: width 0.4s ease;
 
     @media (max-width: 600px) {
         transition: width 0.3s ease;
     }
+}
+
+#sidenav-background {
+    position: fixed;
+    inset: 0;
+
+    visibility: hidden;
+    z-index: 2;
+
+    background-color: rgb(0, 0, 0, 0.8);
 }
 
 #close-sidenav {
