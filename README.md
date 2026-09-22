@@ -12,12 +12,12 @@
   <img src="./docs/screenshots/dark theme.png" alt="Dark Theme">
 </div>
 
-## Features:
+## Features
 - View monster info from: Wilds, Rise/Sunbreak, World/Iceborne and GU
 - Mobile friendly
 - Dark and Light themes
 
-## Running the project:
+## Running the project
   
 ### Requirements:
 - [NodeJS](https://nodejs.org/en)
@@ -39,7 +39,7 @@ npm run dev
 4. View the app at [localhost:5173](http://localhost:5173)
 
 
-## Credits:
+## Credits
 
 ### Inspired By: 
 - [NMS Assistant](https://nmsassistant.com/)
