@@ -53,58 +53,54 @@ export const MonsterCards = ({ gameTab }) => {
     return (
         <>
             {monsters.map((monster) => {
-                let iconVar = monster.name;
-                let typeVar;
-                let getWeakness = () => null;
-                let baseHealthVar = monster.baseHealth;
+                const games = {
+                    Wilds: {
+                        iconVar: monster.name,
+                        typeVar: monster.kind,
+                        getWeakness: (monster) => monster.weaknesses.map((weakness) => weakness.element).filter(Boolean)[0],
+                        baseHealthVar: monster.baseHealth,
+                    },
+                    "Rise/Sunbreak": {
+                        iconVar: monster.name,
+                        typeVar: "Large",
+                        getWeakness: (monster) => monster.weaknesses.reduce((best, current) => (current.stars > best.stars ? current : best)).element,
+                        baseHealthVar: null,
+                    },
+                    "World/Iceborne": {
+                        iconVar: monster.name,
+                        typeVar: monster.type,
+                        getWeakness: (monster) => monster.weaknesses.reduce((best, current) => (current.stars > best.stars ? current : best)).element,
+                        baseHealthVar: null,
+                    },
+                    MHGU: {
+                        iconVar: monster.icon_name,
+                        typeVar: monster.type,
+                        getWeakness: (monster) => {
+                            const data = monster.weaknesses?.[0];
 
-                if (gameTab === "Wilds") {
-                    typeVar = monster.kind;
-                    getWeakness = (monster) => monster.weaknesses.map((weakness) => weakness.element).filter(Boolean)[0];
-                } else if (gameTab === "Rise/Sunbreak") {
-                    getWeakness = (monster) => {
-                        if (!monster.weaknesses || monster.weaknesses.length === 0) return null;
-                        else {
-                            return monster.weaknesses.reduce((best, current) => (current.stars > best.stars ? current : best)).element;
-                        }
-                    };
-                } else if (gameTab === "World/Iceborne") {
-                    typeVar = monster.type;
+                            let bestKey = null;
+                            let bestValue = -Infinity;
 
-                    getWeakness = (monster) => {
-                        if (!monster.weaknesses || monster.weaknesses.length === 0) return null;
-                        else {
-                            return monster.weaknesses.reduce((best, current) => (current.stars > best.stars ? current : best)).element;
-                        }
-                    };
-                } else if (gameTab === "MHGU") {
-                    iconVar = monster.icon_name;
-                    typeVar = monster.type;
-                    getWeakness = (monster) => {
-                        const data = monster.weaknesses?.[0];
-                        if (!data) return null;
-
-                        let bestKey = null;
-                        let bestValue = -Infinity;
-
-                        for (const [key, value] of Object.entries(data)) {
-                            if (key === "state") continue;
-                            if (value > bestValue) {
-                                bestValue = value;
-                                bestKey = key;
+                            for (const [key, value] of Object.entries(data)) {
+                                if (key === "state") continue;
+                                if (value > bestValue) {
+                                    bestValue = value;
+                                    bestKey = key;
+                                }
                             }
-                        }
 
-                        return bestKey;
-                    };
-                    baseHealthVar = monster.base_hp;
-                }
+                            return bestKey;
+                        },
+                        baseHealthVar: monster.base_hp,
+                    },
+                };
 
-                const elementWeakness = getWeakness(monster) ?? "No Data";
+                const game = games[gameTab];
+                const elementWeakness = game.getWeakness(monster) ?? "No Data";
 
                 return (
                     <div className="monster-card" key={monster.name}>
-                        <img className="monster-icon" src={`assets/icons/Monsters/${gameTab.split("/")[0]}/${iconVar}.png`} alt={monster.name} loading="lazy" />
+                        <img className="monster-icon" src={`assets/icons/Monsters/${gameTab.split("/")[0]}/${game.iconVar}.png`} alt={monster.name} loading="lazy" />
 
                         <p>
                             <strong>Name: </strong>
@@ -113,7 +109,7 @@ export const MonsterCards = ({ gameTab }) => {
 
                         <p className="monster-type">
                             <strong>Type: </strong>
-                            {capitalise(typeVar ?? "Large")}
+                            {capitalise(game.typeVar ?? "Large")}
                         </p>
 
                         <p style={{ display: gameTab !== "MHGU" ? "" : "none" }} className="monster-species">
@@ -128,7 +124,7 @@ export const MonsterCards = ({ gameTab }) => {
 
                         <p style={{ display: gameTab !== "Rise/Sunbreak" && gameTab !== "World/Iceborne" ? "" : "none" }}>
                             <strong>Base HP: </strong>
-                            {baseHealthVar ?? "No Data"}
+                            {game.baseHealthVar ?? "No Data"}
                         </p>
                     </div>
                 );
