@@ -2,9 +2,9 @@
 
   # MH Assistant
 
-  <img src="https://deploy-badge.vercel.app/vercel/mh-assistant-app?style=for-the-badge" alt="Vercel Deploy" style="margin: 4px"><br>
-  <img src="https://img.shields.io/github/languages/top/Alex-M-2013/MH-Assistant?style=for-the-badge&logo=javascript" alt="Top Language" style="margin: 4px">
-  <img src="https://img.shields.io/github/repo-size/Alex-M-2013/MH-Assistant?style=for-the-badge&logo=github" alt="Repo Size" style="margin: 4px">
+  <img src="https://deploy-badge.vercel.app/vercel/mh-assistant-app?style=for-the-badge" alt="Vercel Deploy" hspace="4" vspace="4"><br>
+  <img src="https://img.shields.io/github/languages/top/Alex-M-2013/MH-Assistant?style=for-the-badge&logo=javascript" alt="Top Language" hspace="4" vspace="4">
+  <img src="https://img.shields.io/github/repo-size/Alex-M-2013/MH-Assistant?style=for-the-badge&logo=github" alt="Repo Size" hspace="4" vspace="4">
 
   __Link:__ https://mh-assistant-app.vercel.app/
 
