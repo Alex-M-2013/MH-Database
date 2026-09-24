@@ -3,6 +3,9 @@
     top: 0;
     left: 0;
 
+    background-color: var(--body-bg);
+    color: var(--font-colour);
+
     margin: 1rem;
     margin-top: 2rem;
 
@@ -16,4 +19,5 @@
 #hamburger-icon {
     height: 100%;
     width: 100%;
+    filter: var(--img-filter);
 }

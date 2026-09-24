@@ -4,6 +4,7 @@
 
     height: 75px;
     width: auto;
+    filter: var(--img-filter);
 
     margin: 10px;
 

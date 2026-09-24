@@ -1,4 +1,7 @@
 #search-bar {
+    background-color: var(--element-bg);
+    color: var(--font-colour);
+
     margin: 0 auto;
 
     padding: 10px;
@@ -13,10 +16,14 @@
         height: 1em;
         width: 1em;
         vertical-align: -0.15em;
+        filter: var(--img-filter);
     }
 
     input {
         width: 80%;
         border: none;
+
+        background-color: var(--element-bg);
+        color: var(--font-colour);
     }
 }

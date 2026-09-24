@@ -1,10 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
+:root {
+    --scrollbar-color: auto;
+    --body-bg: #f0f0f0;
+    --element-bg: white;
+    --font-colour: #000000;
+    --img-filter: none;
+
+    &[data-theme="dark"] {
+        --scrollbar-color: #888888 #14120e;
+        --body-bg: #14120e;
+        --element-bg: #1e1a14;
+        --font-colour: #ede4ce;
+        --img-filter: invert();
+    }
+}
+
+html {
+    scrollbar-color: var(--scrollbar-color);
+}
+
 body {
     font-family: "Roboto", "Trebuchet MS";
     margin: 0;
     padding: 0;
     min-height: 100dvh;
+
+    background-color: var(--body-bg);
+    color: var(--font-colour);
 
     text-align: center;
 

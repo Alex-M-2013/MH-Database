@@ -9,6 +9,9 @@
     margin: 1.5%;
     height: auto;
 
+    background-color: var(--element-bg);
+    color: var(--font-colour);
+
     padding: 15px;
     border-radius: 1.5rem;
     box-sizing: border-box;
