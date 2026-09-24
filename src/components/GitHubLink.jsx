@@ -1,4 +1,4 @@
-import "../styles/components/GitHubLink.css";
+import "../styles/GitHubLink.css";
 
 export const GitHubLink = () => {
     return (

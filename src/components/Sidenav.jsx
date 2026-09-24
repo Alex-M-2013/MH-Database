@@ -1,5 +1,5 @@
-import "../styles/components/Hamburger.css";
-import "../styles/components/Sidenav.css";
+import "../styles/Hamburger.css";
+import "../styles/Sidenav.css";
 import { useState } from "react";
 import { TabDivider } from "./TabDivider";
 

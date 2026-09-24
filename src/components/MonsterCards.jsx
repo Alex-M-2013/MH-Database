@@ -1,4 +1,4 @@
-import "../styles/components/MonsterCards.css";
+import "../styles/MonsterCards.css";
 import { useState, useEffect } from "react";
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";

@@ -1,4 +1,4 @@
-import "./styles/App.css";
+import "./App.css";
 import { useState, useEffect } from "react";
 import { Sidenav } from "./components/Sidenav";
 import { ThemeSwitcher } from "./components/ThemeSwitcher";

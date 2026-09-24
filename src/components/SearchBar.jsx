@@ -1,4 +1,4 @@
-import "../styles/components/SearchBar.css";
+import "../styles/SearchBar.css";
 import { removeDashes } from "../utils/helper";
 
 export const SearchBar = () => {
