@@ -1,8 +1,16 @@
+<style>
+  .badge {
+    margin: 4px;
+  }
+</style>
+
 <div align="center">
 
   # MH Assistant
 
-  <img src="https://deploy-badge.vercel.app/vercel/mh-assistant-app?style=for-the-badge" alt="Vercel Deploy"><br>
+  <img src="https://deploy-badge.vercel.app/vercel/mh-assistant-app?style=for-the-badge" alt="Vercel Deploy" class="badge"><br>
+  <img src="https://img.shields.io/github/languages/top/Alex-M-2013/MH-Assistant?style=for-the-badge&logo=javascript" alt="Top Language" class="badge">
+  <img src="https://img.shields.io/github/repo-size/Alex-M-2013/MH-Assistant?style=for-the-badge&logo=github" alt="Repo Size" class="badge">
 
   __Link:__ https://mh-assistant-app.vercel.app/
 
