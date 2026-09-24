@@ -29,7 +29,7 @@
 ```
 git clone https://github.com/Alex-M-2013/MH-Assistant.git
 ```
-> If you don't have Git, click the "Code" button at the top and click "Download ZIP then extract its contents"
+> If you don't have Git, click the "Code" button at the top and click "Download ZIP" then extract its contents
 2. In the project root, run: 
 ```
 npm i
