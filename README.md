@@ -10,8 +10,6 @@
 
   An assistant app containing info about Monsters from various Monster Hunter games. <br>
   Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.
-
-  <img src="./docs/screenshots/dark theme.png" alt="Dark Theme">
 </div>
 
 ## Features
