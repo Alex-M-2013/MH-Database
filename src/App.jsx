@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Sidenav } from "./components/Sidenav";
-import { ThemeSwitcher } from "./components/ThemeSwitcher";
+import { NavBar } from "./components/NavBar";
 import { SearchBar } from "./components/SearchBar";
 import { MonsterCards } from "./components/MonsterCards";
 import { GitHubLink } from "./components/GitHubLink";
@@ -20,11 +19,9 @@ export const App = () => {
 
     return (
         <>
-            <Sidenav currentTab={currentTab} setCurrentTab={setCurrentTab} isMobile={isMobile} />
+            <NavBar currentTab={currentTab} setCurrentTab={setCurrentTab} isMobile={isMobile} />
 
-            <ThemeSwitcher />
-
-            <h1>Monsters:</h1>
+            <h1 style={{ display: !isMobile ? "" : "none" }}>Monsters:</h1>
 
             <SearchBar />
 
