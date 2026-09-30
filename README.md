@@ -8,7 +8,7 @@
 
   __Link:__ https://mh-database.vercel.app/
 
-  An assistant app containing info about Monsters from various Monster Hunter games. <br>
+  A database containing info about Monsters from various Monster Hunter games. <br>
   Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.
 </div>
 
