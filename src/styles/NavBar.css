@@ -1,0 +1,20 @@
+#navbar {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 600px) {
+        justify-content: space-between;
+    }
+
+    height: 10dvh;
+    max-height: 95px;
+    width: 100dvw;
+
+    background-color: var(--element-bg);
+
+    h1 {
+        @media (max-width: 600px) {
+            font-size: 1.8rem;
+        }
+    }
+}

@@ -1,15 +1,10 @@
 #hamburger-menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    background-color: var(--body-bg);
+    background-color: var(--element-bg);
     color: var(--font-colour);
 
     margin: 1rem;
-    margin-top: 2rem;
 
-    height: 9vh;
+    height: 8.5vh;
     width: auto;
 
     border: none;

@@ -1,15 +1,14 @@
 #theme-switcher {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    background-color: var(--body-bg);
+    background-color: var(--element-bg);
     color: var(--font-colour);
 
     margin: 1rem;
-    margin-top: 2rem;
 
-    height: 8vh;
+    @media (min-width: 600px) {
+        margin-left: auto;
+    }
+
+    height: 7dvh;
     width: auto;
 
     border: none;
