@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { About } from "./components/About";
 import { NavBar } from "./components/NavBar";
@@ -10,7 +10,8 @@ import { MonsterCards } from "./components/MonsterCards";
 import { GitHubLink } from "./components/GitHubLink";
 
 export const App = () => {
-    const [currentTab, setCurrentTab] = useState(() => localStorage.getItem("savedTab") ?? "Wilds");
+    const [currentTab, setCurrentTab] = useState(() => localStorage.getItem("savedTab") ?? "wilds");
+    const gameTabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU"];
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -26,7 +27,10 @@ export const App = () => {
             <BrowserRouter>
                 <NavBar currentTab={currentTab} setCurrentTab={setCurrentTab} isMobile={isMobile} />
                 <Routes>
-                    <Route path="/" element={<Main isMobile={isMobile} currentTab={currentTab} />} />
+                    <Route path="/" element={<Navigate to={`/${currentTab.split("/")[0].toLowerCase()}`} replace />} />
+                    {gameTabs.map((tab) => (
+                        <Route key={tab} path={`/${tab.split("/")[0].toLowerCase()}`} element={<Main isMobile={isMobile} currentTab={tab} />} />
+                    ))}
                     <Route path="/about" element={<About isMobile={isMobile} />} />
                 </Routes>
             </BrowserRouter>
@@ -39,7 +43,9 @@ const Main = ({ isMobile, currentTab }) => {
         <>
             <h1 style={{ display: !isMobile ? "" : "none" }}>Monsters:</h1>
             <SearchBar />
-            <div id="card-container">{currentTab !== "About" && <MonsterCards gameTab={currentTab} />}</div>
+            <div id="card-container">
+                <MonsterCards gameTab={currentTab} />
+            </div>
             <GitHubLink />
         </>
     );
