@@ -1,5 +1,9 @@
 import "./App.css";
+
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { About } from "./components/About";
 import { NavBar } from "./components/NavBar";
 import { SearchBar } from "./components/SearchBar";
 import { MonsterCards } from "./components/MonsterCards";
@@ -19,16 +23,23 @@ export const App = () => {
 
     return (
         <>
-            <NavBar currentTab={currentTab} setCurrentTab={setCurrentTab} isMobile={isMobile} />
+            <BrowserRouter>
+                <NavBar currentTab={currentTab} setCurrentTab={setCurrentTab} isMobile={isMobile} />
+                <Routes>
+                    <Route path="/" element={<Main isMobile={isMobile} currentTab={currentTab} />} />
+                    <Route path="/about" element={<About isMobile={isMobile} />} />
+                </Routes>
+            </BrowserRouter>
+        </>
+    );
+};
 
+const Main = ({ isMobile, currentTab }) => {
+    return (
+        <>
             <h1 style={{ display: !isMobile ? "" : "none" }}>Monsters:</h1>
-
             <SearchBar />
-
-            <div id="card-container">
-                <MonsterCards gameTab={currentTab} />
-            </div>
-
+            <div id="card-container">{currentTab !== "About" && <MonsterCards gameTab={currentTab} />}</div>
             <GitHubLink />
         </>
     );
