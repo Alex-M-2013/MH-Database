@@ -40,14 +40,13 @@ export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
                     <TabDivider isMobile={isMobile} isOpen={isOpen} />
 
                     {gameTabs.map((tab) => (
-                        <Link to={`/${tab.split("/")[0].toLowerCase()}`}>
+                        <Link to={`/${tab.split("/")[0].toLowerCase()}`} key={tab}>
                             <button
                                 className="sidenav-tab"
                                 onClick={(event) => {
                                     changeTab(event);
                                     openCloseNav();
                                 }}
-                                key={tab}
                             >
                                 {tab}
                             </button>
