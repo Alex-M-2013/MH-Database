@@ -1,0 +1,39 @@
+#about {
+    font-size: 1.6rem;
+
+    @media (max-width: 600px) {
+        font-size: 1.3rem;
+        margin: 1rem;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font-size: 2.5rem;
+
+        @media (max-width: 600px) {
+            font-size: 1.9rem;
+        }
+    }
+
+    #github-link {
+        height: 110px;
+        width: auto;
+
+        @media (max-width: 600px) {
+            height: 90px;
+        }
+
+        position: relative;
+
+        border-radius: 15px;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

@@ -1,10 +1,17 @@
 import "../styles/Hamburger.css";
 import "../styles/Sidenav.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TabDivider } from "./TabDivider";
+import { Link } from "react-router-dom";
 
 export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
     const gameTabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU"];
+
+    useEffect(() => {
+        document.querySelectorAll(".sidenav-tab").forEach((tab) => {
+            tab.classList.toggle("active-tab", tab.textContent === currentTab);
+        });
+    }, [currentTab]);
 
     function changeTab(event) {
         const nextTab = event.currentTarget.textContent.trim();
@@ -34,20 +41,33 @@ export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
 
                     {gameTabs.map((tab) => {
                         return (
-                            <button
-                                className={`sidenav-tab ${tab === currentTab ? "active-tab" : ""}`}
-                                onClick={(event) => {
-                                    changeTab(event);
-                                    openCloseNav();
-                                }}
-                                key={tab}
-                            >
-                                {tab}
-                            </button>
+                            <Link to="/">
+                                <button
+                                    className="sidenav-tab"
+                                    onClick={(event) => {
+                                        changeTab(event);
+                                        openCloseNav();
+                                    }}
+                                    key={tab}
+                                >
+                                    {tab}
+                                </button>
+                            </Link>
                         );
                     })}
 
                     <TabDivider isMobile={isMobile} isOpen={isOpen} />
+                    <Link to="/about">
+                        <button
+                            className="sidenav-tab"
+                            onClick={(event) => {
+                                changeTab(event);
+                                openCloseNav();
+                            }}
+                        >
+                            About
+                        </button>
+                    </Link>
                 </div>
             </div>
         </>
