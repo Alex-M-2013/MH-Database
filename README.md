@@ -45,6 +45,9 @@ npm run dev
 - [NMS Assistant](https://nmsassistant.com/)
 - [MHGU Database](https://github.com/gatheringhallstudios/MHGenDatabase)
 
+### Loader from: 
+- https://github.com/vineethtrv/css-loader
+
 ### Data from:
 - __Wilds data:__ [Monster Hunter Wilds API](https://docs.wilds.mhdb.io/)
 - __*Rise/Sunbreak Data:__ https://github.com/Neryss/monster_hunter_db/blob/master/rise_monster_db.json
