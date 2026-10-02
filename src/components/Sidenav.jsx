@@ -39,22 +39,20 @@ export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
                 <div id="sidenav-tabs">
                     <TabDivider isMobile={isMobile} isOpen={isOpen} />
 
-                    {gameTabs.map((tab) => {
-                        return (
-                            <Link to="/">
-                                <button
-                                    className="sidenav-tab"
-                                    onClick={(event) => {
-                                        changeTab(event);
-                                        openCloseNav();
-                                    }}
-                                    key={tab}
-                                >
-                                    {tab}
-                                </button>
-                            </Link>
-                        );
-                    })}
+                    {gameTabs.map((tab) => (
+                        <Link to={`/${tab.split("/")[0].toLowerCase()}`}>
+                            <button
+                                className="sidenav-tab"
+                                onClick={(event) => {
+                                    changeTab(event);
+                                    openCloseNav();
+                                }}
+                                key={tab}
+                            >
+                                {tab}
+                            </button>
+                        </Link>
+                    ))}
 
                     <TabDivider isMobile={isMobile} isOpen={isOpen} />
                     <Link to="/about">
