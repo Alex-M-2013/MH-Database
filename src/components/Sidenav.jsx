@@ -20,7 +20,7 @@ export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
     }
 
     const [isOpen, setIsOpen] = useState(false);
-    const openCloseNav = () => setIsOpen(!isOpen);
+    const openCloseNav = () => setIsOpen((isOpen) => !isOpen);
     const openWidth = isMobile ? "80dvw" : "22dvw";
 
     return (
