@@ -2,6 +2,7 @@ import "./App.css";
 
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { gameTabs, getTabSlug } from "./utils/tabs";
 
 import { About } from "./components/About";
 import { NavBar } from "./components/NavBar";
@@ -10,8 +11,6 @@ import { MonsterCards } from "./components/MonsterCards";
 import { GitHubLink } from "./components/GitHubLink";
 
 export const App = () => {
-    const [currentTab, setCurrentTab] = useState(() => localStorage.getItem("savedTab") ?? "wilds");
-    const gameTabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU"];
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -25,11 +24,11 @@ export const App = () => {
     return (
         <>
             <BrowserRouter>
-                <NavBar currentTab={currentTab} setCurrentTab={setCurrentTab} isMobile={isMobile} />
+                <NavBar isMobile={isMobile} />
                 <Routes>
-                    <Route path="/" element={<Navigate to={`/${currentTab.split("/")[0].toLowerCase()}`} replace />} />
+                    <Route path="/" element={<Navigate to={`/${localStorage.getItem("savedSlug") ?? "wilds"}`} replace />} />
                     {gameTabs.map((tab) => (
-                        <Route key={tab} path={`/${tab.split("/")[0].toLowerCase()}`} element={<Main isMobile={isMobile} currentTab={tab} />} />
+                        <Route key={tab} path={`/${getTabSlug(tab)}`} element={<Main isMobile={isMobile} gameTab={tab} />} />
                     ))}
                     <Route path="/about" element={<About isMobile={isMobile} />} />
                 </Routes>
@@ -38,13 +37,13 @@ export const App = () => {
     );
 };
 
-const Main = ({ isMobile, currentTab }) => {
+const Main = ({ isMobile, gameTab }) => {
     return (
         <>
             <h1 style={{ display: !isMobile ? "" : "none" }}>Monsters:</h1>
             <SearchBar />
             <div id="card-container">
-                <MonsterCards gameTab={currentTab} />
+                <MonsterCards gameTab={gameTab} />
             </div>
             <GitHubLink />
         </>
