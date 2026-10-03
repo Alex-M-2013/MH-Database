@@ -39,7 +39,10 @@ export const fetchMonsters = async (game) => {
         const { url, parse } = monsterSources[game];
 
         const response = await fetch(url);
-        if (!response.ok) throw new Error(`ERROR: ${response.status}`);
+        if (!response.ok) {
+            errorToast.showToast();
+            throw new Error(`ERROR: ${response.status}`);
+        }
 
         const data = await parse(response);
         return data;
