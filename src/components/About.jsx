@@ -6,9 +6,6 @@ export const About = ({ isMobile }) => (
         <div id="about-card">
             <h1>MH Database</h1>
             {!isMobile ? (
-                // <p>
-                //     A database containing info about Monsters from various Monster Hunter games. <br /> Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.
-                // </p>
                 <>
                     <p>A database containing info about Monsters from various Monster Hunter games. Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.</p>
                     <p>
