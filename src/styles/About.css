@@ -1,39 +1,51 @@
 #about {
-    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
 
     @media (max-width: 600px) {
-        font-size: 1.3rem;
-        margin: 1rem;
+        padding: 1rem 0.75rem;
     }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
     h1 {
-        font-size: 2.5rem;
+        margin: 0;
+    }
 
-        @media (max-width: 600px) {
-            font-size: 1.9rem;
-        }
+    a {
+        color: var(--link-colour);
+        text-decoration: none;
     }
 
     #github-link {
-        height: 110px;
-        width: auto;
+        position: static;
+        margin: auto;
+        width: fit-content;
+    }
+}
 
-        @media (max-width: 600px) {
-            height: 90px;
-        }
+#about-card {
+    box-sizing: border-box;
 
-        position: relative;
+    width: 35%;
+    min-width: 500px;
 
-        border-radius: 15px;
+    padding: 2rem 2.5rem;
 
-        img {
-            height: 100%;
-            width: 100%;
-        }
+    background-color: var(--element-bg);
+    color: var(--font-colour);
+
+    border-radius: 1.5rem;
+    box-shadow: 8px 16px rgba(0, 0, 0, 0.1);
+
+    font-size: 1.25rem;
+    line-height: 1.6;
+
+    @media (max-width: 600px) {
+        width: 95%;
+        min-width: 0;
+
+        padding: 1.5rem 1.25rem 1.75rem;
+
+        font-size: 1rem;
     }
 }

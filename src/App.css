@@ -5,6 +5,7 @@
     --body-bg: #f0f0f0;
     --element-bg: white;
     --font-colour: #000000;
+    --link-colour: blue;
     --img-filter: none;
 
     &[data-theme="dark"] {
@@ -12,6 +13,7 @@
         --body-bg: #14120e;
         --element-bg: #1e1a14;
         --font-colour: #ede4ce;
+        --link-colour: lightblue;
         --img-filter: invert();
     }
 }
