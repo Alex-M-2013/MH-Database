@@ -1,6 +1,7 @@
 import "../styles/MonsterCards.css";
 import { useState, useEffect } from "react";
 import { fetchMonsters } from "../utils/fetchMonsters";
+import { ToastContainer } from "react-toastify";
 import { capitalise } from "../utils/helper";
 import { Loader } from "./Loader";
 
@@ -15,11 +16,12 @@ export const MonsterCards = ({ gameTab }) => {
             if (!ignore) setMonsters(data);
         };
         getMonsters();
-        
+
         return () => (ignore = true);
     }, [gameTab]);
     return (
         <>
+            <ToastContainer />
             {monsters.length > 0 ? (
                 monsters.map((monster) => {
                     const games = {
