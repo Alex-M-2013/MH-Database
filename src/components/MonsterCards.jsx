@@ -1,54 +1,23 @@
 import "../styles/MonsterCards.css";
 import { useState, useEffect } from "react";
-import Toastify from "toastify-js";
-import "toastify-js/src/toastify.css";
-import { parse } from "jsonc-parser";
+import { fetchMonsters } from "../utils/fetchMonsters";
 import { capitalise } from "../utils/helper";
 import { Loader } from "./Loader";
-
-const monsterSources = {
-    Wilds: {
-        url: 'https://wilds.mhdb.io/en/monsters?q={"kind":"large"}',
-        parse: (r) => r.json(),
-    },
-    "Rise/Sunbreak": {
-        url: "/data/rise_monster_db.jsonc",
-        parse: (r) => r.text().then((text) => parse(text)),
-    },
-    "World/Iceborne": {
-        url: "/data/mhw-db-com-monsters-large.json",
-        parse: (r) => r.json(),
-    },
-    MHGU: {
-        url: "/data/mhgu_monsters.json",
-        parse: (r) => r.json().then((monsters) => monsters.filter((monster) => monster.type === "large" || monster.type === "deviant")),
-    },
-};
-
-const errorToast = Toastify({
-    text: "Could not fetch monster data. See console (F12) for more details.",
-    duration: 4500,
-    style: {
-        background: "linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%)",
-        borderRadius: "8px",
-    },
-});
 
 export const MonsterCards = ({ gameTab }) => {
     const [monsters, setMonsters] = useState([]);
 
     useEffect(() => {
-        const dataSource = monsterSources[gameTab];
+        let ignore = false;
 
-        fetch(dataSource.url)
-            .then(dataSource.parse)
-            .then((data) => setMonsters(data))
-            .catch((error) => {
-                errorToast.showToast();
-                console.error(error);
-            });
+        const getMonsters = async () => {
+            const data = await fetchMonsters(gameTab);
+            if (!ignore) setMonsters(data);
+        };
+        getMonsters();
+        
+        return () => (ignore = true);
     }, [gameTab]);
-
     return (
         <>
             {monsters.length > 0 ? (
