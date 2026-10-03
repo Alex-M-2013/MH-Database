@@ -1,6 +1,7 @@
 import "../styles/Hamburger.css";
 import "../styles/Sidenav.css";
 import { useEffect, useState } from "react";
+import { getCurrentTab } from "../utils/getCurrentTab";
 import { TabDivider } from "./TabDivider";
 import { Link } from "react-router-dom";
 
@@ -9,7 +10,7 @@ export const Sidenav = ({ currentTab, setCurrentTab, isMobile }) => {
 
     useEffect(() => {
         document.querySelectorAll(".sidenav-tab").forEach((tab) => {
-            tab.classList.toggle("active-tab", tab.textContent === currentTab);
+            tab.classList.toggle("active-tab", tab.textContent.split("/")[0] === getCurrentTab());
         });
     }, [currentTab]);
 
