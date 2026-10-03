@@ -1,15 +1,20 @@
-import Toastify from "toastify-js";
-import "toastify-js/src/toastify.css";
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../react-toastify.css";
 import { parse as parseJSONC } from "jsonc-parser";
 
-const errorToast = Toastify({
-    text: "Could not fetch monster data. See console (F12) for more details.",
-    duration: 4500,
+const errorToastOptions = {
+    toastId: "monsterFetchingError",
+    position: "top-center",
+    autoClose: 3000,
+    transition: Slide,
     style: {
-        background: "linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%)",
-        borderRadius: "8px",
+        color: "white",
+        backgroundColor: "#e83a3a",
     },
-});
+};
+
+const showErrorToast = () => toast("Could not fetch monster data. See console (F12) for more details.", errorToastOptions);
 
 const monsterSources = {
     Wilds: {
@@ -40,14 +45,14 @@ export const fetchMonsters = async (game) => {
 
         const response = await fetch(url);
         if (!response.ok) {
-            errorToast.showToast();
+            showErrorToast();
             throw new Error(`ERROR: ${response.status}`);
         }
 
         const data = await parse(response);
         return data;
     } catch (error) {
-        errorToast.showToast();
+        showErrorToast();
         console.error(error);
         return [];
     }
