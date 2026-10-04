@@ -7,7 +7,7 @@ export const About = ({ isMobile }) => (
             <h1>MH Database</h1>
             {!isMobile ? (
                 <>
-                    <p>A database containing info about Monsters from various Monster Hunter games. Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.</p>
+                    <p>A database containing info about Monsters from various Monster Hunter games. Includes info from: Wilds, Rise/Sunbreak, World/Iceborne, GU and 4U.</p>
                     <p>
                         Inspired by <a href="https://nmsassistant.com/">NMS Assistant</a> and <a href="https://github.com/gatheringhallstudios/MHGenDatabase">MHGU Database</a>.
                     </p>
@@ -15,7 +15,7 @@ export const About = ({ isMobile }) => (
             ) : (
                 <>
                     <p>A database containing info about Monsters from various Monster Hunter games.</p>
-                    <p>Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.</p>
+                    <p>Includes info from: Wilds, Rise/Sunbreak, World/Iceborne, GU and 4U.</p>
                     <p>
                         Inspired by <a href="https://nmsassistant.com/">NMS Assistant</a> and <a href="https://github.com/gatheringhallstudios/MHGenDatabase">MHGU Database</a>.
                     </p>
