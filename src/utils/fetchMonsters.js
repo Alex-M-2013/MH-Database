@@ -47,6 +47,14 @@ const monsterSources = {
             return filteredMonsters;
         },
     },
+    MH4U: {
+        url: "/data/mh4u_monsters.json",
+        parse: async (r) => {
+            const monsters = await r.json();
+            const filteredMonsters = monsters.filter((monster) => monster.class === "Boss");
+            return filteredMonsters;
+        },
+    },
 };
 
 export const fetchMonsters = async (game) => {
