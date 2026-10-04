@@ -43,7 +43,7 @@ export const MonsterCards = ({ gameTab, search }) => {
                         "World/Iceborne": {
                             iconVar: monster.name,
                             typeVar: monster.type,
-                            getWeakness: (monster) => monster.weaknesses.reduce((best, current) => (current.stars > best.stars ? current : best)).element,
+                            getWeakness: (monster) => monster.weaknesses.filter((w) => ["fire", "water", "thunder", "ice", "dragon"].includes(w.element)).reduce((best, current) => (current.stars > best.stars || (current.stars === best.stars && best.condition && !current.condition) ? current : best), { stars: -1, element: null, condition: null }).element,
                             baseHealthVar: null,
                         },
                         MHGU: {
