@@ -1,10 +1,15 @@
-import "../../styles/NavBar/NavBar.css"
+import "../../styles/NavBar/NavBar.css";
 import { Sidenav } from "./Sidenav/Sidenav";
-import { useCurrentTab, getTabDisplayMobile } from "../../utils/tabs";
+import { useEffect } from "react";
+import { useCurrentTab, getTabDisplayMobile, getTabSlug } from "../../utils/tabs";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export const NavBar = ({ isMobile }) => {
     const currentTab = useCurrentTab();
+
+    useEffect(() => {
+        if (currentTab) localStorage.setItem("savedSlug", getTabSlug(currentTab));
+    }, [currentTab]);
 
     return (
         <div id="navbar">
