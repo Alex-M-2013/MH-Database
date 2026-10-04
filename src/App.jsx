@@ -27,7 +27,7 @@ export const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     {gameTabs.map((tab) => (
-                        <Route key={tab} path={`/${getTabSlug(tab)}`} element={<Main isMobile={isMobile} gameTab={tab} />} />
+                        <Route key={tab} path={`/${getTabSlug(tab)}`} element={<Main key={tab} isMobile={isMobile} gameTab={tab} />} />
                     ))}
                     <Route path="/about" element={<About isMobile={isMobile} />} />
                 </Routes>
