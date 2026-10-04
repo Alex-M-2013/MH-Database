@@ -2,6 +2,7 @@ import "../styles/Hamburger.css";
 import "../styles/Sidenav.css";
 import { useState } from "react";
 import { gameTabs, getTabSlug, useCurrentTab } from "../utils/tabs";
+
 import { TabDivider } from "./TabDivider";
 import { Link } from "react-router-dom";
 
@@ -9,12 +10,10 @@ export const Sidenav = ({ isMobile }) => {
     const [isOpen, setIsOpen] = useState(false);
     const openCloseNav = () => setIsOpen((isOpen) => !isOpen);
     const openWidth = isMobile ? "80dvw" : "22dvw";
-    
+
     return (
         <>
-            <button id="hamburger-menu" onClick={openCloseNav}>
-                <img id="hamburger-icon" src="/assets/icons/hamburger.svg" alt="Hamburger Icon" />
-            </button>
+            <Hamburger openCloseNav={openCloseNav}/>
 
             <div id="sidenav-background" style={{ visibility: isOpen ? "visible" : "hidden" }} onClick={openCloseNav}></div>
 
@@ -38,6 +37,12 @@ export const Sidenav = ({ isMobile }) => {
         </>
     );
 };
+
+const Hamburger = ({ openCloseNav }) => (
+    <button id="hamburger-menu" onClick={openCloseNav}>
+        <img id="hamburger-icon" src="/assets/icons/hamburger.svg" alt="Hamburger Icon" />
+    </button>
+);
 
 const Tab = ({ tabName, openCloseNav }) => {
     const currentTab = useCurrentTab();
