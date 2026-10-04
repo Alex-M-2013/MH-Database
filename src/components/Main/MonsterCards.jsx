@@ -1,9 +1,11 @@
-import "../styles/MonsterCards.css";
+import "../../styles/Main/MonsterCards.css"
 import { useState, useEffect } from "react";
-import { fetchMonsters } from "../utils/fetchMonsters";
+
+import { fetchMonsters } from "../../utils/fetchMonsters"
+import { capitalise } from "../../utils/helper";
+
 import { ToastContainer } from "react-toastify";
-import { capitalise } from "../utils/helper";
-import { Loader } from "./Loader";
+import { Loader } from "../Loader";
 
 export const MonsterCards = ({ gameTab }) => {
     const [monsters, setMonsters] = useState([]);

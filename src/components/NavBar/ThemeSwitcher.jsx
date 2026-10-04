@@ -1,6 +1,6 @@
-import "../styles/ThemeSwitcher.css";
+import "../../styles/NavBar/ThemeSwitcher.css";
 import { useRef, useState, useEffect } from "react";
-import { capitalise } from "../utils/helper";
+import { capitalise } from "../../utils/helper";
 
 export const ThemeSwitcher = () => {
     const initialTheme = localStorage.getItem("savedTheme") ?? (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");

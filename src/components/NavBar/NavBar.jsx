@@ -1,6 +1,6 @@
-import "../styles/NavBar.css";
-import { Sidenav } from "./Sidenav";
-import { useCurrentTab, getTabDisplayMobile } from "../utils/tabs";
+import "../../styles/NavBar/NavBar.css"
+import { Sidenav } from "./Sidenav/Sidenav";
+import { useCurrentTab, getTabDisplayMobile } from "../../utils/tabs";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export const NavBar = ({ isMobile }) => {

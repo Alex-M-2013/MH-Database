@@ -1,10 +1,11 @@
-import "../styles/Hamburger.css";
-import "../styles/Sidenav.css";
-import { useState } from "react";
-import { gameTabs, getTabSlug, useCurrentTab } from "../utils/tabs";
+import "../../../styles/NavBar/Sidenav/Sidenav.css"
 
+import { useState } from "react";
+import { gameTabs } from "../../../utils/tabs";
+
+import { Hamburger } from "./Hamburger";
 import { TabDivider } from "./TabDivider";
-import { Link } from "react-router-dom";
+import { Tab } from "./Tab";
 
 export const Sidenav = ({ isMobile }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -35,29 +36,5 @@ export const Sidenav = ({ isMobile }) => {
                 </div>
             </div>
         </>
-    );
-};
-
-const Hamburger = ({ openCloseNav }) => (
-    <button id="hamburger-menu" onClick={openCloseNav}>
-        <img id="hamburger-icon" src="/assets/icons/hamburger.svg" alt="Hamburger Icon" />
-    </button>
-);
-
-const Tab = ({ tabName, openCloseNav }) => {
-    const currentTab = useCurrentTab();
-
-    return (
-        <Link to={`/${getTabSlug(tabName)}`}>
-            <button
-                className={`sidenav-tab ${tabName === currentTab ? "active-tab" : ""}`}
-                onClick={() => {
-                    localStorage.setItem("savedSlug", getTabSlug(tabName));
-                    openCloseNav();
-                }}
-            >
-                {tabName}
-            </button>
-        </Link>
     );
 };
