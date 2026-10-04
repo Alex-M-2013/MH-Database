@@ -26,7 +26,7 @@ export const App = () => {
             <BrowserRouter>
                 <NavBar isMobile={isMobile} />
                 <Routes>
-                    <Route path="/" element={<Navigate to={`/${localStorage.getItem("savedSlug") ?? "wilds"}`} replace />} />
+                    <Route path="/" element={<Home />} />
                     {gameTabs.map((tab) => (
                         <Route key={tab} path={`/${getTabSlug(tab)}`} element={<Main isMobile={isMobile} gameTab={tab} />} />
                     ))}
@@ -35,6 +35,13 @@ export const App = () => {
             </BrowserRouter>
         </>
     );
+};
+
+const Home = () => {
+    const savedSlug = localStorage.getItem("savedSlug") ?? "wilds";
+    const validSlugs = [...gameTabs.map((tab) => getTabSlug(tab)), "about"];
+
+    return <Navigate to={`/${validSlugs.includes(savedSlug) ? savedSlug : "wilds"}`} replace />;
 };
 
 const Main = ({ isMobile, gameTab }) => {
