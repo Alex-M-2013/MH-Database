@@ -1,14 +1,15 @@
-import "../../styles/Main/MonsterCards.css"
+import "../../styles/Main/MonsterCards.css";
 import { useState, useEffect } from "react";
 
-import { fetchMonsters } from "../../utils/fetchMonsters"
-import { capitalise } from "../../utils/helper";
+import { fetchMonsters } from "../../utils/fetchMonsters";
+import { capitalise, removeDashes } from "../../utils/helper";
 
 import { ToastContainer } from "react-toastify";
 import { Loader } from "../Loader";
 
-export const MonsterCards = ({ gameTab }) => {
+export const MonsterCards = ({ gameTab, search }) => {
     const [monsters, setMonsters] = useState([]);
+    const userSearch = removeDashes(search).toLowerCase().trim();
 
     useEffect(() => {
         let ignore = false;
@@ -71,6 +72,9 @@ export const MonsterCards = ({ gameTab }) => {
                     const game = games[gameTab];
                     const elementWeakness = game.getWeakness(monster) ?? "No Data";
 
+                    const matchesSearch = [monster.name, game.typeVar, monster.species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
+                    if (!matchesSearch) return null;
+
                     return (
                         <div className="monster-card" key={monster.name}>
                             <img className="monster-icon" src={`assets/icons/Monsters/${gameTab.split("/")[0]}/${game.iconVar}.png`} alt={monster.name} loading="lazy" />
@@ -80,12 +84,12 @@ export const MonsterCards = ({ gameTab }) => {
                                 {monster.name}
                             </p>
 
-                            <p className="monster-type">
+                            <p>
                                 <strong>Type: </strong>
                                 {capitalise(game.typeVar ?? "Large")}
                             </p>
 
-                            <p style={{ display: gameTab !== "MHGU" ? "" : "none" }} className="monster-species">
+                            <p style={{ display: gameTab !== "MHGU" ? "" : "none" }}>
                                 <strong>Species: </strong>
                                 {capitalise(monster.species ?? "No Data")}
                             </p>
