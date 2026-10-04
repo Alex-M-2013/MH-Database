@@ -9,11 +9,11 @@
   __Link:__ https://mh-database.vercel.app/
 
   A database containing info about Monsters from various Monster Hunter games. <br>
-  Includes info from: Wilds, Rise/Sunbreak, World/Iceborne and GU.
+  Includes info from: Wilds, Rise/Sunbreak, World/Iceborne, GU and 4U.
 </div>
 
 ## Features
-- View monster info from: Wilds, Rise/Sunbreak, World/Iceborne and GU
+- View monster info from: Wilds, Rise/Sunbreak, World/Iceborne, GU and 4U
 - Mobile friendly
 - Dark and Light themes
 
@@ -53,10 +53,12 @@ npm run dev
 - __*Rise/Sunbreak Data:__ https://github.com/Neryss/monster_hunter_db/blob/master/rise_monster_db.json
 - __World/Iceborne Data:__ https://github.com/Neryss/monster_hunter_db/blob/master/mhw_db.json
 - __**MHGU Data pulled from:__ https://github.com/gatheringhallstudios/MHGenDatabase/blob/develop/app/src/main/assets/databases/mhgu.db.zip
+- __**MH4U Data pulled from:__ https://github.com/gatheringhallstudios/MonsterHunter4UDatabase/blob/master/app/src/main/assets/databases/mh4u.db.zip
 
 ### Icons From:
 - __Wilds, Rise and World:__ Pulled from game files
 - __MHGU:__ https://github.com/gatheringhallstudios/MHGenDatabase/tree/develop/app/src/main/icon-res/drawable
+- __MH4U:__ https://github.com/gatheringhallstudios/MonsterHunter4UDatabase/tree/master/app/src/main/assets/icons_monster
 - __Other icons:__ [Bootstrap Icons](https://icons.getbootstrap.com/)
 <br><br>
 

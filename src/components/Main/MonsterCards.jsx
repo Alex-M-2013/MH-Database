@@ -67,6 +67,26 @@ export const MonsterCards = ({ gameTab, search }) => {
                             },
                             baseHealthVar: monster.base_hp,
                         },
+                        MH4U: {
+                            iconVar: monster.icon_name,
+                            typeVar: "Large",
+                            getWeakness: (monster) => {
+                                const elements = monster.weaknesses?.[0]?.elements ?? {};
+
+                                let bestKey = null;
+                                let bestValue = 0;
+
+                                for (const [key, value] of Object.entries(elements)) {
+                                    if (value > bestValue) {
+                                        bestValue = value;
+                                        bestKey = key;
+                                    }
+                                }
+
+                                return bestKey;
+                            },
+                            baseHealthVar: null,
+                        },
                     };
 
                     const game = games[gameTab];
@@ -77,7 +97,7 @@ export const MonsterCards = ({ gameTab, search }) => {
 
                     return (
                         <div className="monster-card" key={monster.name}>
-                            <img className="monster-icon" src={`assets/icons/Monsters/${gameTab.split("/")[0]}/${game.iconVar}.png`} alt={monster.name} loading="lazy" />
+                            <img className="monster-icon" src={`assets/icons/Monsters/${gameTab.split("/")[0]}/${game.iconVar}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} loading="lazy" />
 
                             <p>
                                 <strong>Name: </strong>
@@ -89,7 +109,7 @@ export const MonsterCards = ({ gameTab, search }) => {
                                 {capitalise(game.typeVar ?? "Large")}
                             </p>
 
-                            <p style={{ display: gameTab !== "MHGU" ? "" : "none" }}>
+                            <p style={{ display: gameTab !== "MHGU" && gameTab !== "MH4U" ? "" : "none" }}>
                                 <strong>Species: </strong>
                                 {capitalise(monster.species ?? "No Data")}
                             </p>
@@ -99,7 +119,7 @@ export const MonsterCards = ({ gameTab, search }) => {
                                 {capitalise(elementWeakness)} {elementWeakness !== "No Data" && <img className="element-icon" src={`assets/icons/Elements/${capitalise(elementWeakness)}.png`} alt={capitalise(elementWeakness)} loading="lazy" />}
                             </p>
 
-                            <p style={{ display: gameTab !== "Rise/Sunbreak" && gameTab !== "World/Iceborne" ? "" : "none" }}>
+                            <p style={{ display: gameTab !== "Rise/Sunbreak" && gameTab !== "World/Iceborne" && gameTab !== "MH4U" ? "" : "none" }}>
                                 <strong>Base HP: </strong>
                                 {game.baseHealthVar ?? "No Data"}
                             </p>

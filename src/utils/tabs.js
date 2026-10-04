@@ -1,7 +1,7 @@
 import { capitalise } from "./helper";
 import { useLocation } from "react-router-dom";
 
-export const gameTabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU"];
+export const gameTabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU", "MH4U"];
 export const allTabs = [...gameTabs, "About"];
 
 export const getTabSlug = (tab) => tab.split("/")[0].toLowerCase();
