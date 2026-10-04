@@ -26,8 +26,18 @@ const monsterSources = {
         parse: async (response) => parseJSONC(await response.text()),
     },
     "World/Iceborne": {
-        url: "/data/mhw-db-com-monsters-large.json",
-        parse: (response) => response.json(),
+        url: "/data/mhw_db.json",
+        parse: async (response) => {
+            const monsters = await response.json();
+            const seen = new Set();
+            const filteredMonsters = monsters.filter((monster) => {
+                if (monster.type !== "large" || seen.has(monster.name)) return false;
+                seen.add(monster.name);
+                return true;
+            });
+
+            return filteredMonsters;
+        },
     },
     MHGU: {
         url: "/data/mhgu_monsters.json",
