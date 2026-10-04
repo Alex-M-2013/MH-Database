@@ -1,5 +1,5 @@
-import "../styles/SearchBar.css";
-import { removeDashes } from "../utils/helper";
+import "../../styles/Main/SearchBar.css"
+import { removeDashes } from "../../utils/helper";
 
 export const SearchBar = () => {
     function search(userInput) {

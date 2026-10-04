@@ -59,21 +59,3 @@ background-color: var(--element-bg);
         margin-top: 4.5rem;
     }
 }
-
-.sidenav-tab {
-    width: 100%;
-    height: 3rem;
-
-    background-color: var(--element-bg);
-    color: var(--font-colour);
-
-    margin: 0.25rem 0 0.25rem 0;
-    border: none;
-
-    font-size: 1.5rem;
-
-    &:hover, &.active-tab {
-        background-color: var(--body-bg);
-        color: var(--font-colour);
-    }
-}

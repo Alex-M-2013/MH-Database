@@ -1,14 +1,13 @@
 import "./App.css";
 
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { gameTabs, getTabSlug } from "./utils/tabs";
 
+import { NavBar } from "./components/NavBar/NavBar";
+import { Home } from "./components/Home";
+import { Main } from "./components/Main/Main";
 import { About } from "./components/About";
-import { NavBar } from "./components/NavBar";
-import { SearchBar } from "./components/SearchBar";
-import { MonsterCards } from "./components/MonsterCards";
-import { GitHubLink } from "./components/GitHubLink";
 
 export const App = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -33,26 +32,6 @@ export const App = () => {
                     <Route path="/about" element={<About isMobile={isMobile} />} />
                 </Routes>
             </BrowserRouter>
-        </>
-    );
-};
-
-const Home = () => {
-    const savedSlug = localStorage.getItem("savedSlug") ?? "wilds";
-    const validSlugs = [...gameTabs.map((tab) => getTabSlug(tab)), "about"];
-
-    return <Navigate to={`/${validSlugs.includes(savedSlug) ? savedSlug : "wilds"}`} replace />;
-};
-
-const Main = ({ isMobile, gameTab }) => {
-    return (
-        <>
-            <h1 style={{ display: !isMobile ? "" : "none" }}>Monsters:</h1>
-            <SearchBar />
-            <div id="card-container">
-                <MonsterCards gameTab={gameTab} />
-            </div>
-            <GitHubLink />
         </>
     );
 };
