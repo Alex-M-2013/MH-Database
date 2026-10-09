@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { useState, useEffect, Fragment } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router";
 import { gameTabs, getTabSlug } from "./utils/tabs";
 
 import { NavBar } from "./components/NavBar/NavBar";

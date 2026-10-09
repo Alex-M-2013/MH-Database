@@ -1,5 +1,5 @@
 import { allTabs, getTabSlug } from "../utils/tabs";
-import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router";
 
 export const Home = () => {
     const savedSlug = localStorage.getItem("savedSlug") ?? "wilds";

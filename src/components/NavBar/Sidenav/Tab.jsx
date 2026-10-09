@@ -1,7 +1,7 @@
 import "../../../styles/NavBar/Sidenav/Tab.css";
 
 import { useCurrentTab, getTabSlug } from "../../../utils/tabs";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export const Tab = ({ tabName, openCloseNav }) => {
     const currentTab = useCurrentTab();

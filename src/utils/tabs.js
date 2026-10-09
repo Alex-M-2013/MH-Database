@@ -1,5 +1,5 @@
 import { capitalise } from "./helper";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 
 export const gameTabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU", "MH4U"];
 export const allTabs = [...gameTabs, "About"];
