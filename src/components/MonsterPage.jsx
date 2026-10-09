@@ -85,7 +85,7 @@ export const MonsterPage = ({ gameTab }) => {
 
     const game = games[gameTab];
     const { getWeakness, typeVar, baseHealthVar } = game;
-    const elementWeakness = capitalise(getWeakness(monster)) ?? "No Data";
+    const elementWeakness = capitalise(getWeakness(monster)  ?? "No Data")
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
