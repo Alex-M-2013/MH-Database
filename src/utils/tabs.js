@@ -5,7 +5,7 @@ export const gameTabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU", "MH
 export const allTabs = [...gameTabs, "About"];
 
 export const getTabSlug = (tab) => tab.split("/")[0].toLowerCase();
-export const getTabDisplayMobile = (tab) => (tab.toUpperCase() !== "MHGU" ? capitalise(getTabSlug(tab)) : tab.toUpperCase());
+export const getTabDisplayMobile = (tab) => ((tab.toUpperCase() !== "MHGU" && tab.toUpperCase() !== "MH4U") ? capitalise(getTabSlug(tab)) : tab.toUpperCase());
 
 export const useCurrentTab = () => {
     const { pathname } = useLocation();
