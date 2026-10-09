@@ -6,6 +6,8 @@ import { fetchMonsters } from "../utils/fetchMonsters";
 import { getTabSlug } from "../utils/tabs";
 import { capitalise } from "../utils/helper";
 
+import { Loader } from "./Loader"
+
 export const MonsterPage = ({ gameTab }) => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -24,7 +26,7 @@ export const MonsterPage = ({ gameTab }) => {
         return () => (ignore = true);
     }, [gameTab, id]);
 
-    if (!monster) return <button onClick={() => navigate(`/${getTabSlug(gameTab)}`)}>Back (monster not found)</button>;
+    if (!monster) return <Loader />;
 
     const games = {
         Wilds: {
