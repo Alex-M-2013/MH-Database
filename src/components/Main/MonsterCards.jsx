@@ -6,7 +6,7 @@ import { getTabSlug } from "../../utils/tabs";
 import { capitalise, removeDashes } from "../../utils/helper";
 
 import { ToastContainer } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Loader } from "../Loader";
 
 export const MonsterCards = ({ gameTab, search }) => {

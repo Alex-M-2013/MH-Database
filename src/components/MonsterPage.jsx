@@ -1,6 +1,6 @@
 import "../styles/MonsterPage.css";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 
 import { fetchMonsters } from "../utils/fetchMonsters";
 import { getTabSlug } from "../utils/tabs";
