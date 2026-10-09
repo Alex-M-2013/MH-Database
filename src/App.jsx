@@ -1,12 +1,13 @@
 import "./App.css";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { gameTabs, getTabSlug } from "./utils/tabs";
 
 import { NavBar } from "./components/NavBar/NavBar";
 import { Home } from "./components/Home";
 import { Main } from "./components/Main/Main";
+import { MonsterPage } from "./components/MonsterPage";
 import { About } from "./components/About";
 
 export const App = () => {
@@ -27,7 +28,10 @@ export const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     {gameTabs.map((tab) => (
-                        <Route key={tab} path={`/${getTabSlug(tab)}`} element={<Main key={tab} isMobile={isMobile} gameTab={tab} />} />
+                        <Fragment key={tab}>
+                            <Route path={`/${getTabSlug(tab)}`} element={<Main key={tab} isMobile={isMobile} gameTab={tab} />} />
+                            <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage gameTab={tab} />} />
+                        </Fragment>
                     ))}
                     <Route path="/about" element={<About isMobile={isMobile} />} />
                 </Routes>

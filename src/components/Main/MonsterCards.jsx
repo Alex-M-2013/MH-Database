@@ -2,9 +2,11 @@ import "../../styles/Main/MonsterCards.css";
 import { useState, useEffect } from "react";
 
 import { fetchMonsters } from "../../utils/fetchMonsters";
+import { getTabSlug } from "../../utils/tabs";
 import { capitalise, removeDashes } from "../../utils/helper";
 
 import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 import { Loader } from "../Loader";
 
 export const MonsterCards = ({ gameTab, search }) => {
@@ -96,7 +98,7 @@ export const MonsterCards = ({ gameTab, search }) => {
                     if (!matchesSearch) return null;
 
                     return (
-                        <div className="monster-card" key={monster.name}>
+                        <Link className="monster-card" key={monster.name} to={`/${getTabSlug(gameTab)}/${monster.id}`}>
                             <img className="monster-icon" src={`assets/icons/Monsters/${gameTab.split("/")[0]}/${game.iconVar}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} loading="lazy" />
 
                             <p>
@@ -123,7 +125,7 @@ export const MonsterCards = ({ gameTab, search }) => {
                                 <strong>Base HP: </strong>
                                 {game.baseHealthVar ?? "No Data"}
                             </p>
-                        </div>
+                        </Link>
                     );
                 })
             ) : (
