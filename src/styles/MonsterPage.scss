@@ -25,9 +25,11 @@
     box-shadow: 8px 16px rgba(0, 0, 0, 0.1);
 
     button {
-        position: absolute;
-        bottom: 0;
-        left: 0;
+        @media (min-width: $mobile-width) {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
 
         background-color: transparent;
 
@@ -41,6 +43,8 @@
         @media (max-width: $mobile-width) {
             width: 3.5rem;
             height: 3.5rem;
+
+            display: flex;
         }
 
         transition:
@@ -65,12 +69,13 @@
         }
     }
 
-    h1, p {
+    h1,
+    p {
         margin: 1rem;
         text-align: left;
     }
 
-    .monster-info-icon {    
+    .monster-info-icon {
         @media (max-width: $mobile-width) {
             display: flex;
             flex-direction: column;

@@ -39,10 +39,6 @@ export const MonsterPage = ({ gameTab }) => {
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
             <div className="monster-info-card">
-                <button onClick={() => navigate(`/${getTabSlug(gameTab)}`)}>
-                    <img src="/assets/icons/arrow-return-left.svg" alt="Return" />
-                </button>
-
                 <div className="monster-info-icon">
                     <img src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} />
                 </div>
@@ -89,6 +85,10 @@ export const MonsterPage = ({ gameTab }) => {
                         {baseHealth}
                     </p>
                 )}
+
+                <button onClick={() => navigate(`/${getTabSlug(gameTab)}`)}>
+                    <img src="/assets/icons/arrow-return-left.svg" alt="Return" />
+                </button>
             </div>
         </div>
     );
