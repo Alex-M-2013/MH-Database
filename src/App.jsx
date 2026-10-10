@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { Fragment } from "react";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { gameTabs, getTabSlug } from "./utils/tabs";
 
 import { NavBar } from "./components/NavBar/NavBar";
@@ -17,6 +17,7 @@ export const App = () => (
             <NavBar />
             <ToastContainer />
             <Routes>
+                <Route path="*" element={<Navigate to="/" replace />} />
                 <Route path="/" element={<Home />} />
                 {gameTabs.map((tab) => (
                     <Fragment key={tab}>
