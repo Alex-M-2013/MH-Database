@@ -25,7 +25,7 @@
 ### Steps:
 1. Clone the repo:
 ```
-git clone https://github.com/Alex-M-2013/MH-Assistant.git
+git clone https://github.com/Alex-M-2013/MH-Database.git
 ```
 > If you don't have Git, click the "Code" button at the top and click "Download ZIP" then extract its contents
 2. In the project root, run: 
