@@ -1,29 +1,25 @@
 import "../../styles/NavBar/ThemeSwitcher.scss";
-import { useRef, useState, useEffect } from "react";
-import { capitalise } from "../../utils/helper";
+import { useState, useEffect } from "react";
+
+import { BsSun } from "react-icons/bs";
+import { BsMoon } from "react-icons/bs";
 
 export const ThemeSwitcher = () => {
     const initialTheme = localStorage.getItem("savedTheme") ?? (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-    const currentTheme = useRef(initialTheme);
-    const [currentIcon, setCurrentIcon] = useState(() => localStorage.getItem("savedThemeIcon") ?? (initialTheme === "light" ? "sun" : "moon"));
+    const [currentTheme, setCurrentTheme] = useState(initialTheme);
 
-    useEffect(() => document.documentElement.setAttribute("data-theme", currentTheme.current), []);
+    useEffect(() => document.documentElement.setAttribute("data-theme", currentTheme), []);
 
     function switchTheme() {
-        const nextTheme = currentTheme.current === "light" ? "dark" : "light";
-        currentTheme.current = nextTheme;
+        const nextTheme = currentTheme === "light" ? "dark" : "light";
+        setCurrentTheme(nextTheme);
         document.documentElement.setAttribute("data-theme", nextTheme);
-
-        const nextIcon = nextTheme === "light" ? "sun" : "moon";
-        setCurrentIcon(nextIcon);
-
         localStorage.setItem("savedTheme", nextTheme);
-        localStorage.setItem("savedThemeIcon", nextIcon);
     }
 
     return (
         <button id="theme-switcher" onClick={switchTheme}>
-            <img id="theme-icon" src={`/assets/icons/${currentIcon}.svg`} alt={capitalise(currentIcon)} />
+            {currentTheme === "light" ? <BsSun className="icon navbar" /> : <BsMoon className="icon navbar" />}
         </button>
     );
 };

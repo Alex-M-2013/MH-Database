@@ -8,10 +8,10 @@ import { getTabSlug } from "../utils/tabs";
 import { capitalise } from "../utils/helper";
 
 import { Loader } from "./Loader";
+import { BsArrowReturnLeft } from "react-icons/bs";
 
 export const MonsterPage = ({ gameTab }) => {
     const { id } = useParams();
-    const navigate = useNavigate();
     const [monster, setMonster] = useState(null);
 
     useEffect(() => {
@@ -86,10 +86,18 @@ export const MonsterPage = ({ gameTab }) => {
                     </p>
                 )}
 
-                <button onClick={() => navigate(`/${getTabSlug(gameTab)}`)}>
-                    <img src="/assets/icons/arrow-return-left.svg" alt="Return" />
-                </button>
+                <BackButton gameTab={gameTab} />
             </div>
         </div>
+    );
+};
+
+const BackButton = ({ gameTab }) => {
+    const navigate = useNavigate();
+
+    return (
+        <button onClick={() => navigate(`/${getTabSlug(gameTab)}`)}>
+            <BsArrowReturnLeft className="icon"/>
+        </button>
     );
 };

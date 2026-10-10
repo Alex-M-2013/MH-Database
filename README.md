@@ -59,7 +59,7 @@ npm run dev
 - __Wilds, Rise and World:__ Pulled from game files
 - __MHGU:__ https://github.com/gatheringhallstudios/MHGenDatabase/tree/develop/app/src/main/icon-res/drawable
 - __MH4U:__ https://github.com/gatheringhallstudios/MonsterHunter4UDatabase/tree/master/app/src/main/assets/icons_monster
-- __Other icons:__ [Bootstrap Icons](https://icons.getbootstrap.com/)
+- __Other icons:__ [React Icons](https://github.com/react-icons/react-icons)
 <br><br>
 
 > _*Some monsters were missing, so I used Claude to add them. I did check the data manually, but there may be minor inaccuracies._ <br> <br>

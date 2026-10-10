@@ -10,9 +10,3 @@
     border: none;
     clip-path: circle(50% at 50% 50%);
 }
-
-#hamburger-icon {
-    height: 100%;
-    width: 100%;
-    filter: var(--img-filter);
-}

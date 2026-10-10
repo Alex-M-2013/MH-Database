@@ -5,6 +5,7 @@ import { useIsMobile } from "../../../utils/useIsMobile.js";
 import { gameTabs } from "../../../utils/tabs";
 
 import { Hamburger } from "./Hamburger";
+import { BsXLg } from "react-icons/bs";
 import { TabDivider } from "./TabDivider";
 import { Tab } from "./Tab";
 
@@ -23,7 +24,7 @@ export const Sidenav = () => {
 
             <div id="sidenav" style={{ width: !isOpen ? "0" : openWidth }}>
                 <button id="close-sidenav" onClick={openCloseNav}>
-                    <img src="/assets/icons/x-lg.svg" alt="X" />
+                    <BsXLg className="icon navbar" />
                 </button>
 
                 <div id="sidenav-tabs">

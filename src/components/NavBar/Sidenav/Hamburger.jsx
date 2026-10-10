@@ -1,7 +1,8 @@
 import "../../../styles/NavBar/Sidenav/Hamburger.css"
+import { BsList } from "react-icons/bs";
 
 export const Hamburger = ({ openCloseNav }) => (
     <button id="hamburger-menu" onClick={openCloseNav}>
-        <img id="hamburger-icon" src="/assets/icons/hamburger.svg" alt="Hamburger Icon" />
+        <BsList className="icon navbar" />
     </button>
 );
