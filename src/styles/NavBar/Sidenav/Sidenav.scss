@@ -1,9 +1,11 @@
+@use "../../../variables" as *;
+
 #sidenav {
     position: fixed;
     top: 0;
     left: 0;
 
-background-color: var(--element-bg);
+    background-color: var(--element-bg);
     color: var(--font-colour);
 
     height: 100%;
@@ -15,7 +17,7 @@ background-color: var(--element-bg);
 
     transition: width 0.4s ease;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         transition: width 0.3s ease;
     }
 }
@@ -55,7 +57,7 @@ background-color: var(--element-bg);
 #sidenav-tabs {
     margin-top: 5.2rem;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         margin-top: 4.5rem;
     }
 }

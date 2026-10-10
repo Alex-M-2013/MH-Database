@@ -1,8 +1,10 @@
+@use "../../variables" as *;
+
 #navbar {
     display: flex;
     align-items: center;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         justify-content: space-between;
     }
 
@@ -13,7 +15,7 @@
     background-color: var(--element-bg);
 
     h1 {
-        @media (max-width: 600px) {
+        @media (max-width: $mobile-width) {
             font-size: 1.8rem;
         }
     }

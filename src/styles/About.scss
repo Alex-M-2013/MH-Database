@@ -1,9 +1,11 @@
+@use "../variables" as *;
+
 #about {
     display: flex;
     justify-content: center;
     padding: 2rem 1rem;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         padding: 1rem 0.75rem;
     }
 
@@ -40,7 +42,7 @@
     font-size: 1.25rem;
     line-height: 1.6;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         width: 95%;
         min-width: 0;
 

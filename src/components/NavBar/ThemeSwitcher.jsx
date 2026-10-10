@@ -1,4 +1,4 @@
-import "../../styles/NavBar/ThemeSwitcher.css";
+import "../../styles/NavBar/ThemeSwitcher.scss";
 import { useRef, useState, useEffect } from "react";
 import { capitalise } from "../../utils/helper";
 
