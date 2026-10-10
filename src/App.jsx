@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import { gameTabs, getTabSlug } from "./utils/tabs";
 
 import { NavBar } from "./components/NavBar/NavBar";
+import { ToastContainer } from "react-toastify";
 import { Home } from "./components/Home";
 import { Main } from "./components/Main/Main";
 import { MonsterPage } from "./components/MonsterPage";
@@ -14,6 +15,7 @@ export const App = () => (
     <>
         <BrowserRouter>
             <NavBar />
+            <ToastContainer />
             <Routes>
                 <Route path="/" element={<Home />} />
                 {gameTabs.map((tab) => (
