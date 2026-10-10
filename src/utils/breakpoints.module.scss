@@ -1,0 +1,5 @@
+@use "../variables" as *;
+
+:export {
+    mobileWidth: $mobile-width;
+}

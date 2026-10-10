@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import breakpoints from "./breakpoints.module.scss"
+
+const mobileWidth = Number.parseInt(breakpoints.mobileWidth)
 
 export const useIsMobile = () => {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -9,5 +12,5 @@ export const useIsMobile = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    return screenWidth <= 600;
+    return screenWidth <= mobileWidth;
 };
