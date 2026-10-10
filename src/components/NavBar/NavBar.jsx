@@ -2,10 +2,12 @@ import "../../styles/NavBar/NavBar.css";
 import { Sidenav } from "./Sidenav/Sidenav";
 import { useEffect } from "react";
 import { useCurrentTab, getTabDisplayMobile, getTabSlug } from "../../utils/tabs";
+import { useIsMobile } from "../../utils/useIsMobile.js";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
-export const NavBar = ({ isMobile }) => {
+export const NavBar = () => {
     const currentTab = useCurrentTab();
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         if (currentTab) localStorage.setItem("savedSlug", getTabSlug(currentTab));
@@ -13,7 +15,7 @@ export const NavBar = ({ isMobile }) => {
 
     return (
         <div id="navbar">
-            <Sidenav isMobile={isMobile} />
+            <Sidenav />
             {!isMobile ? (
                 <>
                     <h1>MH Database</h1>

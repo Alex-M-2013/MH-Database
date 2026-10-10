@@ -1,20 +1,23 @@
-import "../../../styles/NavBar/Sidenav/Sidenav.css"
+import "../../../styles/NavBar/Sidenav/Sidenav.css";
 
 import { useState } from "react";
+import { useIsMobile } from "../../../utils/useIsMobile.js";
 import { gameTabs } from "../../../utils/tabs";
 
 import { Hamburger } from "./Hamburger";
 import { TabDivider } from "./TabDivider";
 import { Tab } from "./Tab";
 
-export const Sidenav = ({ isMobile }) => {
+export const Sidenav = () => {
+    const isMobile = useIsMobile();
+
     const [isOpen, setIsOpen] = useState(false);
     const openCloseNav = () => setIsOpen((isOpen) => !isOpen);
     const openWidth = isMobile ? "80dvw" : "22dvw";
 
     return (
         <>
-            <Hamburger openCloseNav={openCloseNav}/>
+            <Hamburger openCloseNav={openCloseNav} />
 
             <div id="sidenav-background" style={{ visibility: isOpen ? "visible" : "hidden" }} onClick={openCloseNav}></div>
 
@@ -24,13 +27,13 @@ export const Sidenav = ({ isMobile }) => {
                 </button>
 
                 <div id="sidenav-tabs">
-                    <TabDivider isMobile={isMobile} isOpen={isOpen} />
+                    <TabDivider isOpen={isOpen} />
 
                     {gameTabs.map((tab) => (
                         <Tab key={tab} tabName={tab} openCloseNav={openCloseNav} />
                     ))}
 
-                    <TabDivider isMobile={isMobile} isOpen={isOpen} />
+                    <TabDivider isOpen={isOpen} />
 
                     <Tab tabName="About" openCloseNav={openCloseNav} />
                 </div>

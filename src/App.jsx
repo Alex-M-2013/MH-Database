@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useState, useEffect, Fragment } from "react";
+import { Fragment } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { gameTabs, getTabSlug } from "./utils/tabs";
 
@@ -10,32 +10,20 @@ import { Main } from "./components/Main/Main";
 import { MonsterPage } from "./components/MonsterPage";
 import { About } from "./components/About";
 
-export const App = () => {
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => setScreenWidth(window.innerWidth);
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    const isMobile = screenWidth <= 600;
-
-    return (
-        <>
-            <BrowserRouter>
-                <NavBar isMobile={isMobile} />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    {gameTabs.map((tab) => (
-                        <Fragment key={tab}>
-                            <Route path={`/${getTabSlug(tab)}`} element={<Main key={tab} isMobile={isMobile} gameTab={tab} />} />
-                            <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage gameTab={tab} />} />
-                        </Fragment>
-                    ))}
-                    <Route path="/about" element={<About isMobile={isMobile} />} />
-                </Routes>
-            </BrowserRouter>
-        </>
-    );
-};
+export const App = () => (
+    <>
+        <BrowserRouter>
+            <NavBar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                {gameTabs.map((tab) => (
+                    <Fragment key={tab}>
+                        <Route path={`/${getTabSlug(tab)}`} element={<Main key={tab} gameTab={tab} />} />
+                        <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage gameTab={tab} />} />
+                    </Fragment>
+                ))}
+                <Route path="/about" element={<About />} />
+            </Routes>
+        </BrowserRouter>
+    </>
+);
