@@ -1,3 +1,5 @@
+@use "../variables" as *;
+
 #github-link {
     display: flex;
     justify-content: center;
@@ -25,13 +27,13 @@
         transform: translateY(-5px);
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 
-        @media (prefers-reduced-motion: reduce) {
+        @media (prefers-reduced-motion: reduce) or (hover: none) {
             transform: none;
             box-shadow: none;
         }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         position: static;
     }
 

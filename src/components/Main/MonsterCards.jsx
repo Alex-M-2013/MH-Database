@@ -1,4 +1,4 @@
-import "../../styles/Main/MonsterCards.css";
+import "../../styles/Main/MonsterCards.scss";
 import { useState, useEffect } from "react";
 
 import { fetchMonsters } from "../../utils/fetchMonsters";

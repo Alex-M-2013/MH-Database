@@ -1,18 +1,20 @@
+@use "../variables" as *;
+
 .monster-info-card {
     position: relative;
 
     width: 90%;
-    height: 76dvh;
+    min-height: 76dvh;
     margin: 1.5%;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         min-height: 450px;
     }
 
     background-color: var(--element-bg);
     font-size: 1.4rem;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         font-size: 1.2rem;
     }
 
@@ -36,7 +38,7 @@
         width: 4.5rem;
         height: 4.5rem;
 
-        @media (max-width: 600px) {
+        @media (max-width: $mobile-width) {
             width: 3.5rem;
             height: 3.5rem;
         }
@@ -69,7 +71,7 @@
     }
 
     .monster-info-icon {    
-        @media (max-width: 600px) {
+        @media (max-width: $mobile-width) {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -82,7 +84,7 @@
             width: 28%;
             height: auto;
 
-            @media (max-width: 600px) {
+            @media (max-width: $mobile-width) {
                 width: 55%;
             }
         }

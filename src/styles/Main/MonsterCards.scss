@@ -1,3 +1,5 @@
+@use "../../variables" as *;
+
 #card-container {
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +22,7 @@
 
     box-shadow: 8px 16px rgba(0, 0, 0, 0.1);
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         width: 90%;
         margin: 5%;
     }

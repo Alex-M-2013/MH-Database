@@ -1,4 +1,4 @@
-import "../../styles/NavBar/NavBar.css";
+import "../../styles/NavBar/NavBar.scss";
 import { Sidenav } from "./Sidenav/Sidenav";
 import { useEffect } from "react";
 import { useCurrentTab, getTabDisplayMobile, getTabSlug } from "../../utils/tabs";

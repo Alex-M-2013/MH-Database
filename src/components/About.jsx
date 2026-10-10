@@ -1,4 +1,4 @@
-import "../styles/About.css";
+import "../styles/About.scss";
 import { useIsMobile } from "../utils/useIsMobile.js";
 import { GitHubLink } from "./GitHubLink";
 

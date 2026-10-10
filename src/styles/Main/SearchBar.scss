@@ -1,3 +1,5 @@
+@use "../../variables" as *;
+
 #search-bar {
     background-color: var(--element-bg);
     color: var(--font-colour);
@@ -6,10 +8,10 @@
     margin-top: 1rem;
 
     padding: 10px;
-    width: 15vw;
+    width: 15dvw;
     border-radius: 1.5rem;
 
-    @media (max-width: 600px) {
+    @media (max-width: $mobile-width) {
         width: 90%;
     }
 

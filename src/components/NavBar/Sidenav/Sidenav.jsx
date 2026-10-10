@@ -1,4 +1,4 @@
-import "../../../styles/NavBar/Sidenav/Sidenav.css";
+import "../../../styles/NavBar/Sidenav/Sidenav.scss";
 
 import { useState } from "react";
 import { useIsMobile } from "../../../utils/useIsMobile.js";
