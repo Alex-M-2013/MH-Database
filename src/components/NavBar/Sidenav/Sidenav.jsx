@@ -2,7 +2,7 @@ import "../../../styles/NavBar/Sidenav/Sidenav.scss";
 
 import { useState } from "react";
 import { useIsMobile } from "../../../utils/useIsMobile.js";
-import { gameTabs } from "../../../utils/tabs";
+import { gameTabs, otherTabs } from "../../../utils/tabs";
 
 import { Hamburger } from "./Hamburger";
 import { BsXLg } from "react-icons/bs";
@@ -36,7 +36,9 @@ export const Sidenav = () => {
 
                     <TabDivider isOpen={isOpen} />
 
-                    <Tab tabName="About" openCloseNav={openCloseNav} />
+                    {otherTabs.map((tab) => (
+                        <Tab key={tab} tabName={tab} openCloseNav={openCloseNav} />
+                    ))}
                 </div>
             </div>
         </>

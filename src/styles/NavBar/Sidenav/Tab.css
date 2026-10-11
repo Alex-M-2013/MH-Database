@@ -13,5 +13,7 @@
     &:hover, &.active-tab {
         background-color: var(--body-bg);
         color: var(--font-colour);
+
+        transform: none;
     }
 }

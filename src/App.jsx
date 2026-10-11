@@ -2,14 +2,19 @@ import "./App.css";
 
 import { Fragment } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
-import { gameTabs, getTabSlug } from "./utils/tabs";
+import { gameTabs, getTabSlug, otherTabs } from "./utils/tabs";
 
 import { NavBar } from "./components/NavBar/NavBar";
 import { ToastContainer } from "react-toastify";
+
 import { Home } from "./components/Home";
 import { Main } from "./components/Main/Main";
 import { MonsterPage } from "./components/MonsterPage";
+
 import { About } from "./components/About";
+import { Settings } from "./components/Settings";
+
+const componentMap = { About: About, Settings: Settings };
 
 export const App = () => (
     <>
@@ -25,7 +30,10 @@ export const App = () => (
                         <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage gameTab={tab} />} />
                     </Fragment>
                 ))}
-                <Route path="/about" element={<About />} />
+                {otherTabs.map((tab) => {
+                    const Component = componentMap[tab];
+                    return <Route key={tab} path={`/${getTabSlug(tab)}`} element={<Component />} />;
+                })}
             </Routes>
         </BrowserRouter>
     </>
