@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../../styles/Main/Main.module.scss";
 import { SearchBar } from "./SearchBar";
 import { MonsterCards } from "./MonsterCards";
 import { GitHubLink } from "../GitHubLink";
@@ -12,7 +13,7 @@ export const Main = ({ gameTab }) => {
         <>
             <h1 style={{ display: !isMobile ? "" : "none" }}>Monsters:</h1>
             <SearchBar search={search} setSearch={setSearch} />
-            <div id="card-container">
+            <div className={styles.cardContainer}>
                 <MonsterCards gameTab={gameTab} search={search} />
             </div>
             <GitHubLink />

@@ -1,12 +1,6 @@
 @use "../../variables" as *;
 
-#card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.monster-card {
+.card {
     width: 20%;
     margin: 1.5%;
     height: auto;
@@ -38,13 +32,13 @@
     }
 }
 
-.monster-icon {
+.icon {
     width: 100%;
     max-width: 227px;
     height: auto;
 }
 
-.element-icon {
+.element {
     height: 1em;
     width: 1em;
     vertical-align: -0.15em;

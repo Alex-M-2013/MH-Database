@@ -1,4 +1,4 @@
-import "../../styles/Main/MonsterCards.scss";
+import styles from "../../styles/Main/MonsterCards.module.scss";
 import { useState, useEffect } from "react";
 
 import { fetchMonsters } from "../../utils/fetchMonsters";
@@ -32,15 +32,15 @@ export const MonsterCards = ({ gameTab, search }) => {
 
                     const icon = game.getIcon(monster);
                     const type = game.getType(monster);
-                    const baseHealth = game.getBaseHealth(monster)
+                    const baseHealth = game.getBaseHealth(monster);
                     const elementWeakness = game.getWeakness(monster) ?? "No Data";
 
                     const matchesSearch = [monster.name, type, monster.species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
                     if (!matchesSearch) return null;
 
                     return (
-                        <Link className="monster-card" key={monster.name} to={`/${getTabSlug(gameTab)}/${monster.id}`}>
-                            <img className="monster-icon" src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} loading="lazy" />
+                        <Link className={styles.card} key={monster.name} to={`/${getTabSlug(gameTab)}/${monster.id}`}>
+                            <img className={styles.icon} src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} loading="lazy" />
 
                             <p>
                                 <strong>Name: </strong>
@@ -59,7 +59,7 @@ export const MonsterCards = ({ gameTab, search }) => {
 
                             <p>
                                 <strong>Weakness: </strong>
-                                {capitalise(elementWeakness)} {elementWeakness !== "No Data" && <img className="element-icon" src={`/assets/icons/Elements/${capitalise(elementWeakness)}.png`} alt={capitalise(elementWeakness)} loading="lazy" />}
+                                {capitalise(elementWeakness)} {elementWeakness !== "No Data" && <img className={styles.element} src={`/assets/icons/Elements/${capitalise(elementWeakness)}.png`} alt={capitalise(elementWeakness)} loading="lazy" />}
                             </p>
 
                             <p style={{ display: gameTab !== "Rise/Sunbreak" && gameTab !== "World/Iceborne" && gameTab !== "MH4U" ? "" : "none" }}>

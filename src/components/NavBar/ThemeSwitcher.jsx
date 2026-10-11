@@ -1,4 +1,4 @@
-import "../../styles/NavBar/ThemeSwitcher.scss";
+import styles from "../../styles/NavBar/ThemeSwitcher.module.scss";
 import { useState, useEffect } from "react";
 
 import { BsSun } from "react-icons/bs";
@@ -18,7 +18,7 @@ export const ThemeSwitcher = () => {
     }
 
     return (
-        <button id="theme-switcher" onClick={switchTheme}>
+        <button id="theme-switcher" className={styles.themeSwitcher} onClick={switchTheme}>
             {currentTheme === "light" ? <BsSun className="icon navbar" /> : <BsMoon className="icon navbar" />}
         </button>
     );

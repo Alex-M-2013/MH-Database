@@ -1,14 +1,8 @@
-@use "../../variables" as *;
-
-#theme-switcher {
+.hamburger {
     background-color: var(--element-bg);
     color: var(--font-colour);
 
     margin: 1rem;
-
-    @media (min-width: $mobile-width) {
-        margin-left: auto;
-    }
 
     height: 7dvh;
     width: auto;

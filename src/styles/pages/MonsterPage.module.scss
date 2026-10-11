@@ -1,6 +1,6 @@
-@use "../variables" as *;
+@use "../../variables" as *;
 
-.monster-info-card {
+.card {
     position: relative;
 
     width: 90%;
@@ -68,7 +68,7 @@
         text-align: left;
     }
 
-    .monster-info-icon {
+    .icon {
         @media (max-width: $mobile-width) {
             display: flex;
             flex-direction: column;
@@ -87,4 +87,10 @@
             }
         }
     }
+}
+
+.element {
+    height: 1em;
+    width: 1em;
+    vertical-align: -0.15em;
 }

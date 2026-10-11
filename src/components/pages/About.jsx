@@ -1,12 +1,12 @@
-import "../styles/About.scss";
-import { useIsMobile } from "../utils/useIsMobile.js";
-import { GitHubLink } from "./GitHubLink";
+import styles from "../../styles/pages/About.module.scss";
+import { useIsMobile } from "../../utils/useIsMobile.js";
+import { GitHubLink } from "../GitHubLink.jsx";
 
 export const About = () => {
     const isMobile = useIsMobile();
     return (
-        <div id="about">
-            <div id="about-card">
+        <div className={styles.about}>
+            <div className={styles.card}>
                 <h1>MH Database</h1>
                 {!isMobile ? (
                     <>
@@ -25,7 +25,7 @@ export const About = () => {
                     </>
                 )}
                 <h3>Links:</h3>
-                <GitHubLink />
+                <GitHubLink inline />
             </div>
         </div>
     );

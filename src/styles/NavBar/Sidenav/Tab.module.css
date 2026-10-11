@@ -1,4 +1,4 @@
-.sidenav-tab {
+.tab {
     width: 100%;
     height: 3rem;
 
@@ -10,7 +10,7 @@
 
     font-size: 1.5rem;
 
-    &:hover, &.active-tab {
+    &:hover, &.active {
         background-color: var(--body-bg);
         color: var(--font-colour);
 

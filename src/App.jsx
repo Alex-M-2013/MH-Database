@@ -7,12 +7,12 @@ import { gameTabs, getTabSlug, otherTabs } from "./utils/tabs";
 import { NavBar } from "./components/NavBar/NavBar";
 import { ToastContainer } from "react-toastify";
 
-import { Home } from "./components/Home";
+import { Home } from "./components/pages/Home";
 import { Main } from "./components/Main/Main";
-import { MonsterPage } from "./components/MonsterPage";
+import { MonsterPage } from "./components/pages/MonsterPage";
 
-import { About } from "./components/About";
-import { Settings } from "./components/Settings";
+import { About } from "./components/pages/About";
+import { Settings } from "./components/pages/Settings";
 
 const componentMap = { About: About, Settings: Settings };
 

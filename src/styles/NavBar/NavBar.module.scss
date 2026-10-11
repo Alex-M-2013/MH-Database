@@ -1,6 +1,6 @@
 @use "../../variables" as *;
 
-#navbar {
+.navbar {
     display: flex;
     align-items: center;
 
@@ -19,4 +19,12 @@
             font-size: 1.8rem;
         }
     }
+}
+
+.divider {
+    height: 50%;
+    width: 2.5px;
+    margin: 1rem;
+
+    background-color: var(--font-colour);
 }

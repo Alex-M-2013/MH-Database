@@ -1,6 +1,6 @@
-import "../styles/Settings.scss";
+import styles from "../../styles/pages/Settings.module.scss";
 import { useSyncExternalStore } from "react";
-import { capitalise } from "../utils/helper";
+import { capitalise } from "../../utils/helper";
 
 const subscribeToTheme = (callback) => {
     const observer = new MutationObserver(callback);
@@ -14,8 +14,8 @@ export const Settings = () => {
     const theme = useSyncExternalStore(subscribeToTheme, getTheme);
 
     return (
-        <div id="settings">
-            <div id="settings-card">
+        <div className={styles.settings}>
+            <div className={styles.card}>
                 <h1>Settings</h1>
 
                 <p>

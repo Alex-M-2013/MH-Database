@@ -1,9 +1,9 @@
-import "../../styles/Main/SearchBar.scss";
+import styles from "../../styles/Main/SearchBar.module.scss";
 import { BsSearch } from "react-icons/bs";
 
 export const SearchBar = ({ search, setSearch }) => {
     return (
-        <div id="search-bar">
+        <div className={styles.searchBar}>
             <BsSearch className="icon search" />
             <input
                 type="text"

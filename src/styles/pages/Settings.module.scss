@@ -1,6 +1,6 @@
-@use "../variables" as *;
+@use "../../variables" as *;
 
-#settings {
+.settings {
     display: flex;
     justify-content: center;
     padding: 2rem 1rem;
@@ -31,7 +31,7 @@
     }
 }
 
-#settings-card {
+.card {
     box-sizing: border-box;
 
     width: 35%;

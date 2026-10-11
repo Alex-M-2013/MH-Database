@@ -1,6 +1,6 @@
 @use "../../../variables" as *;
 
-#sidenav {
+.sidenav {
     position: fixed;
     top: 0;
     left: 0;
@@ -22,7 +22,7 @@
     }
 }
 
-#sidenav-background {
+.background {
     position: fixed;
     inset: 0;
 
@@ -32,7 +32,7 @@
     background-color: rgb(0, 0, 0, 0.8);
 }
 
-#close-sidenav {
+.close {
     height: 6%;
     max-height: 58px;
     width: auto;
@@ -48,7 +48,7 @@
     margin: 1rem;
 }
 
-#sidenav-tabs {
+.tabs {
     margin-top: 5.2rem;
 
     @media (max-width: $mobile-width) {

@@ -1,4 +1,4 @@
-import { allTabs, getTabSlug } from "../utils/tabs";
+import { allTabs, getTabSlug } from "../../utils/tabs";
 import { Navigate } from "react-router";
 
 export const Home = () => {

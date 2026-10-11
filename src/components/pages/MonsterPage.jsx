@@ -1,13 +1,13 @@
-import "../styles/MonsterPage.scss";
+import styles from "../../styles/pages/MonsterPage.module.scss"
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 
-import { fetchMonsters } from "../utils/fetchMonsters";
-import { games } from "../utils/games";
-import { getTabSlug } from "../utils/tabs";
-import { capitalise } from "../utils/helper";
+import { fetchMonsters } from "../../utils/fetchMonsters";
+import { games } from "../../utils/games";
+import { getTabSlug } from "../../utils/tabs";
+import { capitalise } from "../../utils/helper";
 
-import { Loader } from "./Loader";
+import { Loader } from "../Loader";
 import { BsArrowReturnLeft } from "react-icons/bs";
 
 export const MonsterPage = ({ gameTab }) => {
@@ -38,8 +38,8 @@ export const MonsterPage = ({ gameTab }) => {
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
-            <div className="monster-info-card">
-                <div className="monster-info-icon">
+            <div className={styles.card}>
+                <div className={styles.icon}>
                     <img src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} />
                 </div>
                 <h1>{monster.name}</h1>
@@ -75,7 +75,7 @@ export const MonsterPage = ({ gameTab }) => {
                 {elementWeakness !== "No Data" && (
                     <p>
                         <strong>Weakness: </strong>
-                        {capitalise(elementWeakness)} <img className="element-icon" src={`/assets/icons/Elements/${capitalise(elementWeakness)}.png`} alt={capitalise(elementWeakness)} />
+                        {capitalise(elementWeakness)} <img className={styles.element} src={`/assets/icons/Elements/${capitalise(elementWeakness)}.png`} alt={capitalise(elementWeakness)} />
                     </p>
                 )}
 
@@ -97,7 +97,7 @@ const BackButton = ({ gameTab }) => {
 
     return (
         <button onClick={() => navigate(`/${getTabSlug(gameTab)}`)}>
-            <BsArrowReturnLeft className="icon"/>
+            <BsArrowReturnLeft className="icon" />
         </button>
     );
 };

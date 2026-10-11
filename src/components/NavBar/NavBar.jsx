@@ -1,4 +1,4 @@
-import "../../styles/NavBar/NavBar.scss";
+import styles from "../../styles/NavBar/NavBar.module.scss";
 import { Sidenav } from "./Sidenav/Sidenav";
 import { useEffect } from "react";
 import { useCurrentTab, getTabDisplayMobile, getTabSlug } from "../../utils/tabs";
@@ -14,7 +14,7 @@ export const NavBar = () => {
     }, [currentTab]);
 
     return (
-        <div id="navbar">
+        <div className={styles.navbar}>
             <Sidenav />
             {!isMobile ? (
                 <>
@@ -30,4 +30,4 @@ export const NavBar = () => {
     );
 };
 
-const Divider = () => <div className="tab-divider" style={{ height: "50%", width: "2.5px", margin: "1rem", filter: "none", backgroundColor: "var(--font-colour)" }} />;
+const Divider = () => <div className={styles.divider} />;

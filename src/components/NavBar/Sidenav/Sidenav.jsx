@@ -1,4 +1,4 @@
-import "../../../styles/NavBar/Sidenav/Sidenav.scss";
+import styles from "../../../styles/NavBar/Sidenav/Sidenav.module.scss";
 
 import { useState } from "react";
 import { useIsMobile } from "../../../utils/useIsMobile.js";
@@ -20,14 +20,14 @@ export const Sidenav = () => {
         <>
             <Hamburger openCloseNav={openCloseNav} />
 
-            <div id="sidenav-background" style={{ visibility: isOpen ? "visible" : "hidden" }} onClick={openCloseNav}></div>
+            <div className={styles.background} style={{ visibility: isOpen ? "visible" : "hidden" }} onClick={openCloseNav}></div>
 
-            <div id="sidenav" style={{ width: !isOpen ? "0" : openWidth }}>
-                <button id="close-sidenav" onClick={openCloseNav}>
+            <div className={styles.sidenav} style={{ width: !isOpen ? "0" : openWidth }}>
+                <button className={styles.close} onClick={openCloseNav}>
                     <BsXLg className="icon navbar" />
                 </button>
 
-                <div id="sidenav-tabs">
+                <div className={styles.tabs}>
                     <TabDivider isOpen={isOpen} />
 
                     {gameTabs.map((tab) => (

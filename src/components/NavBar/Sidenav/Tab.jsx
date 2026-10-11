@@ -1,4 +1,4 @@
-import "../../../styles/NavBar/Sidenav/Tab.css";
+import styles from "../../../styles/NavBar/Sidenav/Tab.module.css";
 
 import { useCurrentTab, getTabSlug } from "../../../utils/tabs";
 import { Link } from "react-router";
@@ -8,7 +8,7 @@ export const Tab = ({ tabName, openCloseNav }) => {
 
     return (
         <Link to={`/${getTabSlug(tabName)}`}>
-            <button className={`sidenav-tab ${tabName === currentTab ? "active-tab" : ""}`} onClick={openCloseNav}>
+            <button className={`${styles.tab} ${tabName === currentTab ? styles.active : ""}`} onClick={openCloseNav}>
                 {tabName}
             </button>
         </Link>
