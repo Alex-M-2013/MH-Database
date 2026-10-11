@@ -24,14 +24,7 @@ export const Settings = () => {
                 </p>
                 <p>
                     <strong>Reset localStorage:</strong>
-                    <button
-                        onClick={() => {
-                            localStorage.removeItem("savedSlug");
-                            localStorage.removeItem("savedTheme");
-                        }}
-                    >
-                        Reset
-                    </button>
+                    <button onClick={() => localStorage.clear()}>Reset</button>
                 </p>
             </div>
         </div>
