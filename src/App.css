@@ -41,6 +41,12 @@ body {
 
 button {
     cursor: pointer;
+
+    transition: transform 0.1s ease;
+
+        &:active {
+            transform: scale(0.93);
+        }
 }
 
 .icon {
