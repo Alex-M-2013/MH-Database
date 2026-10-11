@@ -1,4 +1,4 @@
-import styles from "../../styles/pages/MonsterPage.module.scss"
+import styles from "../../styles/pages/MonsterPage.module.scss";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 

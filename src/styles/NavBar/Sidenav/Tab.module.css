@@ -10,7 +10,8 @@
 
     font-size: 1.5rem;
 
-    &:hover, &.active {
+    &:hover,
+    &.active {
         background-color: var(--body-bg);
         color: var(--font-colour);
 
