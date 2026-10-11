@@ -1,4 +1,4 @@
-export const removeDashes = (string) => string.replaceAll("-", " ");
+export const removeDashes = (string) => (string ?? "").replaceAll("-", " ");
 
 export function capitalise(string) {
     const lowerCaseString = removeDashes(string).toLowerCase();
