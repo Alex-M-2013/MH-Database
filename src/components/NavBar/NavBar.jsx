@@ -30,4 +30,4 @@ export const NavBar = () => {
     );
 };
 
-const Divider = () => <div className="tab-divider" style={{ height: "50%", width: "2.5px", margin: "1rem" }} />;
+const Divider = () => <div className="tab-divider" style={{ height: "50%", width: "2.5px", margin: "1rem", filter: "none", backgroundColor: "var(--font-colour)" }} />;
