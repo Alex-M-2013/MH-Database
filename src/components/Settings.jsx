@@ -1,6 +1,6 @@
 import "../styles/Settings.scss";
 import { useSyncExternalStore } from "react";
-import { capitalise } from "../utils/helper"
+import { capitalise } from "../utils/helper";
 
 const subscribeToTheme = (callback) => {
     const observer = new MutationObserver(callback);
@@ -24,7 +24,14 @@ export const Settings = () => {
                 </p>
                 <p>
                     <strong>Reset localStorage:</strong>
-                    <button onClick={() => localStorage.clear()}>Reset</button>
+                    <button
+                        onClick={() => {
+                            localStorage.removeItem("savedSlug");
+                            localStorage.removeItem("savedTheme");
+                        }}
+                    >
+                        Reset
+                    </button>
                 </p>
             </div>
         </div>
