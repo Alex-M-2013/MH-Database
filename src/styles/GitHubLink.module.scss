@@ -40,10 +40,10 @@
         height: 75px;
         width: auto;
     }
-}
 
-.inline {
-    position: static;
-    margin: auto;
-    width: fit-content;
+    &.inline {
+        position: static;
+        margin: auto;
+        width: fit-content;
+    }
 }
