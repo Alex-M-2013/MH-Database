@@ -46,6 +46,10 @@ button {
 
     &:active {
         transform: scale(0.93);
+
+        @media (prefers-reduced-motion: reduce) {
+            transform: none;
+        }
     }
 }
 
