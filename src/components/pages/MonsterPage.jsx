@@ -36,11 +36,13 @@ export const MonsterPage = ({ gameTab }) => {
     const baseHealth = game.getBaseHealth(monster);
     const elementWeakness = game.getWeakness(monster) ?? "No Data";
 
+    const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true
+
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
             <div className={styles.card}>
                 <div className={styles.icon}>
-                    <img src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} />
+                    <img style={{ display: imagesOn ? "" : "none" }} src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} />
                 </div>
                 <h1>{monster.name}</h1>
 
