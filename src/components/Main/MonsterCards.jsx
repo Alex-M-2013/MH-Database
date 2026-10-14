@@ -24,10 +24,27 @@ export const MonsterCards = ({ gameTab, search }) => {
 
         return () => (ignore = true);
     }, [gameTab]);
+
+    const sortOrder = localStorage.getItem("savedSortOrder") ?? "default";
+    const sortedMonsters = [...monsters];
+
+    switch (sortOrder) {
+        case "name-asc":
+            sortedMonsters.sort((first, second) => first.name.localeCompare(second.name));
+            break;
+
+        case "name-desc":
+            sortedMonsters.sort((first, second) => second.name.localeCompare(first.name));
+            break;
+
+        default:
+            break;
+    }
+
     return (
         <>
-            {monsters.length > 0 ? (
-                monsters.map((monster) => {
+            {sortedMonsters.length > 0 ? (
+                sortedMonsters.map((monster) => {
                     const game = games[gameTab];
 
                     const icon = game.getIcon(monster);

@@ -1,5 +1,5 @@
 import styles from "../../styles/pages/Settings.module.scss";
-import { useSyncExternalStore } from "react";
+import { useSyncExternalStore, useState } from "react";
 import { capitalise } from "../../utils/helper";
 
 const subscribeToTheme = (callback) => {
@@ -12,6 +12,7 @@ const getTheme = () => document.documentElement.getAttribute("data-theme");
 
 export const Settings = () => {
     const theme = useSyncExternalStore(subscribeToTheme, getTheme);
+    const [sortOrder, setSortOrder] = useState(localStorage.getItem("savedSortOrder") ?? "default");
 
     return (
         <div className={styles.settings}>
@@ -25,6 +26,20 @@ export const Settings = () => {
                 <p>
                     <strong>Reset localStorage:</strong>
                     <button onClick={() => localStorage.clear()}>Reset</button>
+                </p>
+                <p>
+                    <strong>Monster Sort Order: </strong>
+                    <select
+                        value={sortOrder}
+                        onChange={(event) => {
+                            setSortOrder(event.currentTarget.value);
+                            localStorage.setItem("savedSortOrder", event.currentTarget.value);
+                        }}
+                    >
+                        <option value="default">Default</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                    </select>
                 </p>
             </div>
         </div>
