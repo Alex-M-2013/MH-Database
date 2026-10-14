@@ -55,9 +55,11 @@ export const MonsterCards = ({ gameTab, search }) => {
                     const matchesSearch = [monster.name, type, monster.species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
                     if (!matchesSearch) return null;
 
+                    const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true
+
                     return (
                         <Link className={styles.card} key={monster.name} to={`/${getTabSlug(gameTab)}/${monster.id}`}>
-                            <img className={styles.icon} src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} loading="lazy" />
+                            <img className={styles.icon} style={{ display: imagesOn ? "" : "none" }} src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} loading="lazy" />
 
                             <p>
                                 <strong>Name: </strong>

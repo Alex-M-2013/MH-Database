@@ -13,6 +13,7 @@ const getTheme = () => document.documentElement.getAttribute("data-theme");
 export const Settings = () => {
     const theme = useSyncExternalStore(subscribeToTheme, getTheme);
     const [sortOrder, setSortOrder] = useState(localStorage.getItem("savedSortOrder") ?? "default");
+    const [imagesOn, setImagesOn] = useState(JSON.parse(localStorage.getItem("imagesOn")) ?? true);
 
     return (
         <div className={styles.settings}>
@@ -40,6 +41,18 @@ export const Settings = () => {
                         <option value="name-asc">Name (A-Z)</option>
                         <option value="name-desc">Name (Z-A)</option>
                     </select>
+                </p>
+                <p>
+                    <strong>Monster Images: </strong>
+                    <button
+                        onClick={() => {
+                            const nextValue = !imagesOn;
+                            setImagesOn(nextValue);
+                            localStorage.setItem("imagesOn", nextValue);
+                        }}
+                    >
+                        {imagesOn ? "On" : "Off"}
+                    </button>
                 </p>
             </div>
         </div>
