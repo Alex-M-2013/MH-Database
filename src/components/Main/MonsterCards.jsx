@@ -45,12 +45,12 @@ export const MonsterCards = ({ gameTab, search }) => {
         <>
             {sortedMonsters.length > 0 ? (
                 sortedMonsters.map((monster) => {
-                    const game = games[gameTab];
+                    const { getIcon, getType, getBaseHealth, getWeakness } = games[gameTab];
 
-                    const icon = game.getIcon(monster);
-                    const type = game.getType(monster);
-                    const baseHealth = game.getBaseHealth(monster);
-                    const elementWeakness = game.getWeakness(monster) ?? "No Data";
+                    const icon = getIcon(monster);
+                    const type = getType(monster);
+                    const baseHealth = getBaseHealth(monster);
+                    const elementWeakness = getWeakness(monster) ?? "No Data";
 
                     const matchesSearch = [monster.name, type, monster.species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
                     if (!matchesSearch) return null;

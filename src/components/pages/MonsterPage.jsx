@@ -29,12 +29,12 @@ export const MonsterPage = ({ gameTab }) => {
 
     if (!monster) return <Loader />;
 
-    const game = games[gameTab];
+    const { getIcon, getType, getBaseHealth, getWeakness } = games[gameTab];
 
-    const icon = game.getIcon(monster);
-    const type = game.getType(monster);
-    const baseHealth = game.getBaseHealth(monster);
-    const elementWeakness = game.getWeakness(monster) ?? "No Data";
+    const icon = getIcon(monster);
+    const type = getType(monster);
+    const baseHealth = getBaseHealth(monster);
+    const elementWeakness = getWeakness(monster) ?? "No Data";
 
     const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true;
 
