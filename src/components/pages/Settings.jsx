@@ -2,16 +2,16 @@ import styles from "../../styles/pages/Settings.module.scss";
 import { useSyncExternalStore, useState } from "react";
 import { capitalise } from "../../utils/helper";
 
-const subscribeToTheme = (callback) => {
-    const observer = new MutationObserver(callback);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => observer.disconnect();
-};
-
-const getTheme = () => document.documentElement.getAttribute("data-theme");
-
 export const Settings = () => {
-    const theme = useSyncExternalStore(subscribeToTheme, getTheme);
+    const theme = useSyncExternalStore(
+        (callback) => {
+            const observer = new MutationObserver(callback);
+            observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+            return () => observer.disconnect();
+        },
+        () => document.documentElement.getAttribute("data-theme"),
+    );
+    
     const [sortOrder, setSortOrder] = useState(localStorage.getItem("savedSortOrder") ?? "default");
     const [imagesOn, setImagesOn] = useState(JSON.parse(localStorage.getItem("imagesOn")) ?? true);
 
