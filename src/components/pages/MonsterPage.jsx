@@ -36,7 +36,7 @@ export const MonsterPage = ({ gameTab }) => {
     const baseHealth = game.getBaseHealth(monster);
     const elementWeakness = game.getWeakness(monster) ?? "No Data";
 
-    const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true
+    const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true;
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>

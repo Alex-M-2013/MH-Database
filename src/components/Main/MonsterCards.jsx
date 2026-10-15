@@ -55,7 +55,7 @@ export const MonsterCards = ({ gameTab, search }) => {
                     const matchesSearch = [monster.name, type, monster.species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
                     if (!matchesSearch) return null;
 
-                    const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true
+                    const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true;
 
                     return (
                         <Link className={styles.card} key={monster.name} to={`/${getTabSlug(gameTab)}/${monster.id}`}>
