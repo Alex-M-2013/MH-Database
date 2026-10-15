@@ -30,6 +30,13 @@
 
         font-size: inherit;
     }
+
+    select {
+        @media (max-width: $mobile-width) {
+            margin-top: 15px;
+            width: 90%;
+        }
+    }
 }
 
 .card {
