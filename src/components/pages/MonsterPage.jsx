@@ -19,7 +19,7 @@ export const MonsterPage = ({ gameTab }) => {
 
         const fetchMonster = async () => {
             const allMonsters = await fetchMonsters(gameTab);
-            const monster = await allMonsters.find((monster) => String(monster.id) === id);
+            const monster = allMonsters.find((monster) => String(monster.id) === id);
             if (!ignore) setMonster(monster);
         };
         fetchMonster();
