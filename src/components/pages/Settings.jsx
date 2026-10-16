@@ -11,7 +11,7 @@ export const Settings = () => {
         },
         () => document.documentElement.getAttribute("data-theme"),
     );
-    
+
     const [sortOrder, setSortOrder] = useState(localStorage.getItem("savedSortOrder") ?? "default");
     const [imagesOn, setImagesOn] = useState(JSON.parse(localStorage.getItem("imagesOn")) ?? true);
 
