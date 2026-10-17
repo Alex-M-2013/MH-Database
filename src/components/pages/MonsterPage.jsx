@@ -42,7 +42,7 @@ export const MonsterPage = ({ gameTab }) => {
         <div style={{ display: "flex", justifyContent: "center" }}>
             <div className={styles.card}>
                 <div className={styles.icon}>
-                    <img style={{ display: imagesOn ? "" : "none" }} src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}${gameTab !== "MH4U" ? ".png" : ""}`} alt={monster.name} />
+                    <img style={{ display: imagesOn ? "" : "none" }} src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon.split(".")[0]}.webp`} alt={monster.name} />
                 </div>
                 <h1>{monster.name}</h1>
 
