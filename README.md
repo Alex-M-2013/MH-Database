@@ -62,15 +62,7 @@ npm run dev
 - __Other icons:__ [React Icons](https://github.com/react-icons/react-icons)
 <br><br>
 
-> _*Some monsters were missing, so I used Claude to add them. I did check the data manually, but there may be minor inaccuracies._ <br> <br>
-> _Missing Monsters:_
-> - _Chaotic Gore Magala_
-> - _Velkhana_ 
-> - _Risen Kushala Daora_ 
-> - _Risen Teostra_ 
-> - _Risen Crimson Glow Valstrax_ 
-> - _Amatsu_ 
-> - _Risen Shagaru Magala_ 
->- _Primordial Malzeno_ 
+> *_Some monsters were missing, so Claude was used to add them. New data was checked against [mhrise.kiranco.com](https://mhrise.kiranico.com/) data. <br> <br>
+> Missing monsters: Chaotic Gore Magala, Velkhana, Risen Kushala Daora, Risen Teostra, Risen Crimson Glow Valstrax, Amatsu, Risen Shagaru Magala, Primordial Malzeno_ <br>
 
 >_**Claude was used to convert the database tables into JSON format._
