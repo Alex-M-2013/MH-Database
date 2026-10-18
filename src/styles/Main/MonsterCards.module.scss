@@ -21,10 +21,11 @@
         margin: 5%;
     }
 
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
-        transform: scale(1.02);
+        transform: translateY(-8px);
+        box-shadow: 12px 20px rgba(0, 0, 0, 0.15);
 
         @media (prefers-reduced-motion: reduce) or (hover: none) {
             transform: none;
