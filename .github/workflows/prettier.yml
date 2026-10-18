@@ -1,0 +1,25 @@
+name: Prettier
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: npm ci
+
+      - run: npx prettier ./src -w
+
+      - uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: run prettier
