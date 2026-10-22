@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 
 export const gameTabs = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU", "MH4U"];
 export const otherTabs = ["About", "Settings"];
-export const allTabs = [...gameTabs, ...otherTabs];
+export const allTabs = ["Favourites", ...gameTabs, ...otherTabs];
 
 export const getTabSlug = (tab) => tab.split("/")[0].toLowerCase();
 export const getTabDisplayMobile = (tab) => (tab.toUpperCase() !== "MHGU" && tab.toUpperCase() !== "MH4U" ? capitalise(getTabSlug(tab)) : tab.toUpperCase());

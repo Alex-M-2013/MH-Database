@@ -30,6 +30,10 @@ export const Sidenav = () => {
                 <div className={styles.tabs}>
                     <TabDivider isOpen={isOpen} />
 
+                    <Tab tabName="Favourites" openCloseNav={openCloseNav} />
+
+                    <TabDivider isOpen={isOpen} />
+
                     {gameTabs.map((tab) => (
                         <Tab key={tab} tabName={tab} openCloseNav={openCloseNav} />
                     ))}

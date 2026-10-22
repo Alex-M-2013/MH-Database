@@ -7,6 +7,8 @@ import { gameTabs, getTabSlug, otherTabs } from "./utils/tabs";
 import { NavBar } from "./components/NavBar/NavBar";
 import { ToastContainer } from "react-toastify";
 
+import { Favourites } from "./components/pages/Favourites";
+
 import { Home } from "./components/pages/Home";
 import { Main } from "./components/Main/Main";
 import { MonsterPage } from "./components/pages/MonsterPage";
@@ -24,6 +26,7 @@ export const App = () => (
             <Routes>
                 <Route path="*" element={<Navigate to="/" replace />} />
                 <Route path="/" element={<Home />} />
+                <Route path="/favourites" element={<Favourites />} />
                 {gameTabs.map((tab) => (
                     <Fragment key={tab}>
                         <Route path={`/${getTabSlug(tab)}`} element={<Main key={tab} gameTab={tab} />} />

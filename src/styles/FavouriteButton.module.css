@@ -1,0 +1,18 @@
+.button {
+    background-color: var(--element-bg);
+    color: var(--font-colour);
+
+    margin: 0.45rem;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    z-index: 1;
+
+    height: 16%;
+    width: 16%;
+
+    border: none;
+    clip-path: circle(38% at 50% 50%);
+}

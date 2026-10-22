@@ -1,6 +1,9 @@
 @use "../../variables" as *;
 
 .card {
+    position: relative;
+    z-index: 0;
+
     width: 20%;
     margin: 1.5%;
     height: auto;
@@ -8,7 +11,7 @@
     background-color: var(--element-bg);
     color: var(--font-colour);
 
-    text-decoration: none;
+    text-decoration: none ;
 
     padding: 15px;
     border-radius: 1.5rem;
