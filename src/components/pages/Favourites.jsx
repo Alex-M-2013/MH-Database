@@ -45,7 +45,7 @@ export const Favourites = () => {
     return (
         <>
             <h1>Favourites</h1>
-            <div className="card-container">{sortedMonsters.length > 0 ? sortedMonsters.map(({ monster, game }) => <MonsterCard monster={monster} game={game} />) : <p style={{ fontSize: "1.3rem" }}>Favourites are empty! Try adding a favourite by clicking the star in the top right of a monster card.</p>}</div>
+            <div className="card-container">{sortedMonsters.length > 0 ? sortedMonsters.map(({ monster, game }) => <MonsterCard key={`${monster.id}. ${monster}-${game}`} monster={monster} game={game} />) : <p style={{ fontSize: "1.3rem" }}>Favourites are empty! Try adding a favourite by clicking the star in the top right of a monster card.</p>}</div>
         </>
     );
 };
