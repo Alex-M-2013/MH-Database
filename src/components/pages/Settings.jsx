@@ -20,13 +20,10 @@ export const Settings = () => {
             <div className={styles.card}>
                 <h1>Settings</h1>
 
+                <h2>General</h2>
                 <p>
                     <strong>Theme: </strong>
                     <button onClick={() => document.getElementById("theme-switcher").click()}>{capitalise(theme)}</button>
-                </p>
-                <p>
-                    <strong>Reset localStorage:</strong>
-                    <button onClick={() => localStorage.clear()}>Reset</button>
                 </p>
                 <p>
                     <strong>Monster Sort Order: </strong>
@@ -52,6 +49,41 @@ export const Settings = () => {
                         }}
                     >
                         {imagesOn ? "On" : "Off"}
+                    </button>
+                </p>
+
+                <h2>localStorage</h2>
+                <p>
+                    <strong>Reset localStorage:</strong>
+                    <button onClick={() => localStorage.clear()}>Reset</button>
+                </p>
+                <p>
+                    <strong>Import localStorage: </strong>
+                    <button
+                        onClick={() => {
+                            const input = prompt("Paste data here: ");
+                            try {
+                                Object.assign(localStorage, JSON.parse(input));
+                                alert("Successfully imported data. The page will now reload.");
+                                window.location.reload();
+                            } catch {
+                                alert("Invalid data");
+                            }
+                        }}
+                    >
+                        Import
+                    </button>
+                </p>
+                <p>
+                    <strong>Export localStorage: </strong>
+                    <button
+                        onClick={() => {
+                            alert(`${JSON.stringify(localStorage)}\n\n Copied to clipboard`);
+                            navigator.clipboard.writeText(JSON.stringify(localStorage));
+                            console.log(`Exported localStorage: ${JSON.stringify(localStorage)}`);
+                        }}
+                    >
+                        Export
                     </button>
                 </p>
             </div>
