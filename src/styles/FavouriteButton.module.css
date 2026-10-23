@@ -12,6 +12,8 @@
 
     height: 16%;
     width: 16%;
+    max-height: 55px;
+    max-width: 55px;
 
     border: none;
 }
