@@ -2,18 +2,16 @@
     background-color: var(--element-bg);
     color: var(--font-colour);
 
-    margin: 0.45rem;
-
     position: absolute;
-    top: 0;
-    right: 0;
-
+    top: 0.5rem;
+    right: 0.5rem;
     z-index: 1;
 
-    height: 16%;
-    width: 16%;
-    max-height: 55px;
-    max-width: 55px;
+    width: 3.4rem;
+    height: 3.4rem;
+    padding: 0.3rem;
+    box-sizing: border-box;
 
     border: none;
+    border-radius: 50%;
 }
