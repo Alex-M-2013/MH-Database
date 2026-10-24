@@ -9,7 +9,7 @@ export const FavouriteButton = ({ monster, game }) => {
     const toggleFavourite = (event) => {
         event.preventDefault();
 
-        const updated = isFavourite ? favourites.filter(([id, savedGame]) => !(id === monster.id && savedGame === game)) : [...favourites, [monster.id, game]];
+        const updated = isFavourite ? favourites.filter(([id, savedGame]) => id !== monster.id && savedGame !== game) : [...favourites, [monster.id, game]];
 
         localStorage.setItem("favourites", JSON.stringify(updated));
         setFavourites(updated);
