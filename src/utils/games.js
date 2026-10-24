@@ -1,13 +1,16 @@
-const toRows = (values) => Object.entries(values).filter(([, value]) => value > 0).map(([name, value]) => ({ name, value }));
+const toRows = (values) =>
+    Object.entries(values)
+        .filter(([, value]) => value > 0)
+        .map(([name, value]) => ({ name, value }));
 
-const getStrongest = (rows) => rows.filter(row => ["fire", "water", "ice", "thunder", "dragon"].includes(row.name)).sort((first, second) => second.value - first.value)[0]?.name
+const getStrongest = (rows) => rows.filter((row) => ["fire", "water", "ice", "thunder", "dragon"].includes(row.name)).sort((first, second) => second.value - first.value)[0]?.name;
 
 export const games = {
     Wilds: {
         getIcon: (monster) => monster.name,
         getType: (monster) => monster.kind,
         getWeakness: (monster) => getStrongest(games.Wilds.getWeaknesses(monster)),
-        getWeaknesses: (monster) => monster.weaknesses.map((w) => ({ name: w.element ?? w.status?? w.effect, value: w.level, note: w.condition })),
+        getWeaknesses: (monster) => monster.weaknesses.map((w) => ({ name: w.element ?? w.status ?? w.effect, value: w.level, note: w.condition })),
         getBaseHealth: (monster) => monster.baseHealth,
     },
     "Rise/Sunbreak": {
@@ -38,7 +41,7 @@ export const games = {
     MH4U: {
         getIcon: (monster) => monster.icon_name,
         getType: () => "Large",
-        getWeakness: monster => getStrongest(games.MH4U.getWeaknesses(monster)),
+        getWeakness: (monster) => getStrongest(games.MH4U.getWeaknesses(monster)),
         getWeaknesses: (monster) => {
             const { elements, status } = monster.weaknesses?.[0] ?? {};
             return toRows({ ...elements, ...status });
