@@ -92,7 +92,7 @@ export const MonsterPage = ({ gameTab }) => {
                                 .map((row) => (
                                     <tr key={row.name}>
                                         <td>
-                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(row.name)}.png`} alt={capitalise(row.name)} /> {capitalise(row.name)}
+                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(row.name)}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} /> {capitalise(row.name)}
                                         </td>
                                         <td>
                                             {Array(row.value).fill().map(() => "★")}
