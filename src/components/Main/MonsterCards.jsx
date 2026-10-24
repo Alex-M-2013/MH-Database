@@ -38,5 +38,5 @@ export const MonsterCards = ({ gameTab, search }) => {
             break;
     }
 
-    return <>{sortedMonsters.length > 0 ? sortedMonsters.map((monster) => <MonsterCard key={monster} monster={monster} game={gameTab} userSearch={userSearch} />) : <Loader />}</>;
+    return <>{sortedMonsters.length > 0 ? sortedMonsters.map((monster) => <MonsterCard key={monster.name} monster={monster} game={gameTab} userSearch={userSearch} />) : <Loader />}</>;
 };
