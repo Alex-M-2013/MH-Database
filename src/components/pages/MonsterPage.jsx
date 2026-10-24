@@ -29,12 +29,12 @@ export const MonsterPage = ({ gameTab }) => {
 
     if (!monster) return <Loader />;
 
-    const { getIcon, getType, getBaseHealth, getWeakness } = games[gameTab];
+    const { getIcon, getType, getBaseHealth, getWeaknesses } = games[gameTab];
 
     const icon = getIcon(monster);
     const type = getType(monster);
     const baseHealth = getBaseHealth(monster);
-    const elementWeakness = getWeakness(monster) ?? "No Data";
+    const weaknesses = getWeaknesses(monster);
 
     const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true;
 
@@ -74,18 +74,34 @@ export const MonsterPage = ({ gameTab }) => {
                     </p>
                 )}
 
-                {elementWeakness !== "No Data" && (
-                    <p>
-                        <strong>Weakness: </strong>
-                        {capitalise(elementWeakness)} <img className={styles.element} src={`/assets/icons/Elements/${capitalise(elementWeakness)}.png`} alt={capitalise(elementWeakness)} />
-                    </p>
-                )}
-
                 {baseHealth && (
                     <p>
                         <strong>Base Health: </strong>
                         {baseHealth}
                     </p>
+                )}
+
+                {weaknesses.length > 0 && (
+                    <table className={styles.weaknesses}>
+                        <caption>
+                            <strong>Weaknesses</strong>
+                        </caption>
+                        <tbody>
+                            {weaknesses
+                                .sort((first, second) => second.value - first.value)
+                                .map((row) => (
+                                    <tr key={row.name}>
+                                        <td>
+                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(row.name)}.png`} alt={capitalise(row.name)} /> {capitalise(row.name)}
+                                        </td>
+                                        <td>
+                                            {Array(row.value).fill().map(() => "★")}
+                                        </td>
+                                        {row.note && <td>{row.note}</td>}
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
                 )}
 
                 <BackButton gameTab={gameTab} />

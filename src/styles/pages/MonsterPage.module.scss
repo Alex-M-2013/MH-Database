@@ -94,3 +94,35 @@
     width: 1em;
     vertical-align: -0.15em;
 }
+
+.weaknesses {
+    margin: 1rem;
+    margin-bottom: 5.5rem;
+
+    @media (max-width: $mobile-width) {
+        margin-bottom: 2rem;
+    }
+
+    width: 45%;
+
+    @media (max-width: $mobile-width) {
+        width: 90%;
+    }
+
+    border-collapse: collapse;
+    text-align: left;
+
+    caption {
+        margin-bottom: 1.2rem;
+        text-align: left;
+    }
+
+    td {
+        padding: 0.2rem 1rem 0.2rem 0;
+    }
+
+    td,
+    tr {
+        border: 2px solid grey;
+    }
+}
