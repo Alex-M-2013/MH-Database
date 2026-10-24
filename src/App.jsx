@@ -19,25 +19,23 @@ import { Settings } from "./components/pages/Settings";
 const componentMap = { About: About, Settings: Settings };
 
 export const App = () => (
-    <>
-        <BrowserRouter>
-            <NavBar />
-            <ToastContainer />
-            <Routes>
-                <Route path="*" element={<Navigate to="/" replace />} />
-                <Route path="/" element={<Home />} />
-                <Route path="/favourites" element={<Favourites />} />
-                {gameTabs.map((tab) => (
-                    <Fragment key={tab}>
-                        <Route path={`/${getTabSlug(tab)}`} element={<Main key={tab} gameTab={tab} />} />
-                        <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage gameTab={tab} />} />
-                    </Fragment>
-                ))}
-                {otherTabs.map((tab) => {
-                    const Component = componentMap[tab];
-                    return <Route key={tab} path={`/${getTabSlug(tab)}`} element={<Component />} />;
-                })}
-            </Routes>
-        </BrowserRouter>
-    </>
+    <BrowserRouter>
+        <NavBar />
+        <ToastContainer />
+        <Routes>
+            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/favourites" element={<Favourites />} />
+            {gameTabs.map((tab) => (
+                <Fragment key={tab}>
+                    <Route path={`/${getTabSlug(tab)}`} element={<Main key={tab} gameTab={tab} />} />
+                    <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage gameTab={tab} />} />
+                </Fragment>
+            ))}
+            {otherTabs.map((tab) => {
+                const Component = componentMap[tab];
+                return <Route key={tab} path={`/${getTabSlug(tab)}`} element={<Component />} />;
+            })}
+        </Routes>
+    </BrowserRouter>
 );
