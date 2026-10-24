@@ -16,7 +16,6 @@ export const Favourites = () => {
                 const monsters = await fetchMonsters(game);
                 const monster = monsters.find((monster) => monster.id === id);
                 if (monster) loadedMonsters.push({ monster, game });
-                else continue;
             }
 
             if (!ignore) setMonsters(loadedMonsters);
