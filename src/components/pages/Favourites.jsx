@@ -10,16 +10,16 @@ export const Favourites = () => {
 
         const loadFavourites = async () => {
             const favourites = JSON.parse(localStorage.getItem("favourites")) ?? [];
-            const loadedCards = [];
+            const loadedMonsters = [];
 
             for (const [id, game] of favourites) {
                 const monsters = await fetchMonsters(game);
                 const monster = monsters.find((monster) => monster.id === id);
-                if (monster) loadedCards.push({ monster, game });
+                if (monster) loadedMonsters.push({ monster, game });
                 else continue;
             }
 
-            if (!ignore) setMonsters(loadedCards);
+            if (!ignore) setMonsters(loadedMonsters);
         };
         loadFavourites();
 
@@ -31,11 +31,11 @@ export const Favourites = () => {
 
     switch (sortOrder) {
         case "name-asc":
-            sortedMonsters.sort((first, second) => first.name.localeCompare(second.name));
+            sortedMonsters.sort((first, second) => first.monster.name.localeCompare(second.monster.name));
             break;
 
         case "name-desc":
-            sortedMonsters.sort((first, second) => second.name.localeCompare(first.name));
+            sortedMonsters.sort((first, second) => second.monster.name.localeCompare(first.monster.name));
             break;
 
         default:
