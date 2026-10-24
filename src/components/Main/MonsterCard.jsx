@@ -43,7 +43,7 @@ export const MonsterCard = ({ monster, game, userSearch = "" }) => {
             </p>
 
             <p>
-                <strong>Element Weakness: </strong>
+                <strong>Weakness: </strong>
                 {capitalise(elementWeakness)} {elementWeakness !== "No Data" && <img className={styles.element} src={`/assets/icons/Elements/${capitalise(elementWeakness)}.png`} alt={capitalise(elementWeakness)} loading="lazy" />}
             </p>
 
