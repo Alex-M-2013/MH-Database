@@ -7,7 +7,7 @@ export const games = {
         getIcon: (monster) => monster.name,
         getType: (monster) => monster.kind,
         getWeakness: (monster) => getStrongest(games.Wilds.getWeaknesses(monster)),
-        getWeaknesses: (monster) => monster.weaknesses.filter((w) => w.element ?? w.status).map((w) => ({ name: w.element ?? w.status, value: w.level, note: w.condition })),
+        getWeaknesses: (monster) => monster.weaknesses.map((w) => ({ name: w.element ?? w.status?? w.effect, value: w.level, note: w.condition })),
         getBaseHealth: (monster) => monster.baseHealth,
     },
     "Rise/Sunbreak": {
@@ -38,7 +38,7 @@ export const games = {
     MH4U: {
         getIcon: (monster) => monster.icon_name,
         getType: () => "Large",
-        getWeakness: monster => getStrongest(games.MHGU.getWeaknesses(monster)),
+        getWeakness: monster => getStrongest(games.MH4U.getWeaknesses(monster)),
         getWeaknesses: (monster) => {
             const { elements, status } = monster.weaknesses?.[0] ?? {};
             return toRows({ ...elements, ...status });
