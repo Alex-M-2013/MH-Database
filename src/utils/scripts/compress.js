@@ -18,4 +18,4 @@ for (const file of files) {
     await unlink(src);
 }
 
-console.log(`Converted ${files.length} images`)
+console.log(`Converted ${files.length} images`);
