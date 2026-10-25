@@ -6,9 +6,8 @@ import sharp from "sharp";
 const MAX_SIZE = 480;
 
 const files = (await readdir("public/assets/icons/Monsters", { recursive: true })).filter((file) => file.endsWith(".png"));
-let compressed = 0;
 
-files.forEach(async (file) => {
+for (const file of files) {
     const src = path.join("public/assets/icons/Monsters", file);
     const { dir, name } = path.parse(src);
     const dest = path.join(dir, name + ".webp");
@@ -16,9 +15,7 @@ files.forEach(async (file) => {
     const input = await readFile(src);
 
     await sharp(input).resize(MAX_SIZE, MAX_SIZE, { fit: "inside", withoutEnlargement: true }).webp({ quality: 100 }).toFile(dest);
-
     await unlink(src);
+}
 
-    compressed++;
-    compressed === files.length && console.log(`Converted ${compressed} images`);
-});
+console.log(`Converted ${files.length} images`)
