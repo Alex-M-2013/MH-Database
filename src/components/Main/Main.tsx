@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { type FC, useState } from "react";
 
 import { SearchBar } from "./SearchBar";
 import { MonsterCards } from "./MonsterCards";
 import { GitHubLink } from "../GitHubLink";
-import { useIsMobile } from "../../utils/useIsMobile.js";
+import { useIsMobile } from "../../utils/useIsMobile";
 
-export const Main = ({ gameTab }) => {
+export const Main: FC<{ gameTab: string }> = ({ gameTab }: { gameTab: string }) => {
     const isMobile = useIsMobile();
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState<string>("");
 
     return (
         <>

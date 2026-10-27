@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Fragment } from "react";
+import { type FC, Fragment } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { gameTabs, getTabSlug, otherTabs } from "./utils/tabs";
 
@@ -16,9 +16,9 @@ import { MonsterPage } from "./components/pages/MonsterPage";
 import { About } from "./components/pages/About";
 import { Settings } from "./components/pages/Settings";
 
-const componentMap = { About: About, Settings: Settings };
+const componentMap = { About, Settings };
 
-export const App = () => (
+export const App: FC = () => (
     <BrowserRouter>
         <NavBar />
         <ToastContainer />
@@ -26,13 +26,13 @@ export const App = () => (
             <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/" element={<Home />} />
             <Route path="/favourites" element={<Favourites />} />
-            {gameTabs.map((tab) => (
+            {gameTabs.map((tab: string) => (
                 <Fragment key={tab}>
                     <Route path={`/${getTabSlug(tab)}`} element={<Main key={tab} gameTab={tab} />} />
                     <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage gameTab={tab} />} />
                 </Fragment>
             ))}
-            {otherTabs.map((tab) => {
+            {otherTabs.map((tab: string) => {
                 const Component = componentMap[tab];
                 return <Route key={tab} path={`/${getTabSlug(tab)}`} element={<Component />} />;
             })}

@@ -1,7 +1,7 @@
+import { type FC, useState } from "react";
 import styles from "../../../styles/NavBar/Sidenav/Sidenav.module.scss";
 
-import { useState } from "react";
-import { useIsMobile } from "../../../utils/useIsMobile.js";
+import { useIsMobile } from "../../../utils/useIsMobile";
 import { gameTabs, otherTabs } from "../../../utils/tabs";
 
 import { Hamburger } from "./Hamburger";
@@ -9,12 +9,12 @@ import { BsXLg } from "react-icons/bs";
 import { TabDivider } from "./TabDivider";
 import { Tab } from "./Tab";
 
-export const Sidenav = () => {
-    const isMobile = useIsMobile();
+export const Sidenav: FC = () => {
+    const isMobile: boolean = useIsMobile();
 
-    const [isOpen, setIsOpen] = useState(false);
-    const openCloseNav = () => setIsOpen((isOpen) => !isOpen);
-    const openWidth = isMobile ? "80dvw" : "22dvw";
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const openCloseNav = () => setIsOpen((isOpen: boolean) => !isOpen);
+    const openWidth: string = isMobile ? "80dvw" : "22dvw";
 
     return (
         <>
@@ -34,13 +34,13 @@ export const Sidenav = () => {
 
                     <TabDivider isOpen={isOpen} />
 
-                    {gameTabs.map((tab) => (
+                    {gameTabs.map((tab: string) => (
                         <Tab key={tab} tabName={tab} openCloseNav={openCloseNav} />
                     ))}
 
                     <TabDivider isOpen={isOpen} />
 
-                    {otherTabs.map((tab) => (
+                    {otherTabs.map((tab: string) => (
                         <Tab key={tab} tabName={tab} openCloseNav={openCloseNav} />
                     ))}
                 </div>

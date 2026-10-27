@@ -1,10 +1,16 @@
+import { type FC } from "react";
 import styles from "../../../styles/NavBar/Sidenav/Tab.module.css";
 
 import { useCurrentTab, getTabSlug } from "../../../utils/tabs";
 import { Link } from "react-router";
 
-export const Tab = ({ tabName, openCloseNav }) => {
-    const currentTab = useCurrentTab();
+interface TabProps {
+    tabName: string;
+    openCloseNav: () => void;
+}
+
+export const Tab: FC<TabProps> = ({ tabName, openCloseNav }: TabProps) => {
+    const currentTab: string = useCurrentTab();
 
     return (
         <Link to={`/${getTabSlug(tabName)}`}>

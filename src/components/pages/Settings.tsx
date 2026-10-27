@@ -1,9 +1,9 @@
+import { type FC, useSyncExternalStore, useState } from "react";
 import styles from "../../styles/pages/Settings.module.scss";
-import { useSyncExternalStore, useState } from "react";
 import { capitalise } from "../../utils/helper";
 
-export const Settings = () => {
-    const theme = useSyncExternalStore(
+export const Settings: FC = () => {
+    const theme: string | null = useSyncExternalStore(
         (callback) => {
             const observer = new MutationObserver(callback);
             observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
@@ -12,8 +12,8 @@ export const Settings = () => {
         () => document.documentElement.getAttribute("data-theme"),
     );
 
-    const [sortOrder, setSortOrder] = useState(() => localStorage.getItem("savedSortOrder") ?? "default");
-    const [imagesOn, setImagesOn] = useState(() => JSON.parse(localStorage.getItem("imagesOn")) ?? true);
+    const [sortOrder, setSortOrder] = useState<string>(() => localStorage.getItem("savedSortOrder") ?? "default");
+    const [imagesOn, setImagesOn] = useState<boolean>(() => JSON.parse(localStorage.getItem("imagesOn") ?? "true"));
 
     return (
         <div className={styles.settings}>
@@ -23,7 +23,7 @@ export const Settings = () => {
                 <h2>General</h2>
                 <p>
                     <strong>Theme: </strong>
-                    <button onClick={() => document.getElementById("theme-switcher").click()}>{capitalise(theme)}</button>
+                    <button onClick={() => document.getElementById("theme-switcher")!.click()}>{capitalise(theme ?? "")}</button>
                 </p>
                 <p>
                     <strong>Monster Sort Order: </strong>
@@ -43,9 +43,9 @@ export const Settings = () => {
                     <strong>Monster Images: </strong>
                     <button
                         onClick={() => {
-                            const nextValue = !imagesOn;
+                            const nextValue: boolean = !imagesOn;
                             setImagesOn(nextValue);
-                            localStorage.setItem("imagesOn", nextValue);
+                            localStorage.setItem("imagesOn", JSON.stringify(nextValue));
                         }}
                     >
                         {imagesOn ? "On" : "Off"}
@@ -61,9 +61,9 @@ export const Settings = () => {
                     <strong>Import localStorage: </strong>
                     <button
                         onClick={() => {
-                            const input = prompt("Paste data here: ");
+                            const input: string | null = prompt("Paste data here: ");
                             try {
-                                Object.assign(localStorage, JSON.parse(input));
+                                Object.assign(localStorage, JSON.parse(input ?? ""));
                                 alert("Successfully imported data. The page will now reload.");
                                 window.location.reload();
                             } catch {

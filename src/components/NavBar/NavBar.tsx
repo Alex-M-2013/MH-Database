@@ -1,13 +1,15 @@
+import { type FC, useEffect } from "react";
 import styles from "../../styles/NavBar/NavBar.module.scss";
-import { Sidenav } from "./Sidenav/Sidenav";
-import { useEffect } from "react";
+
 import { useCurrentTab, getTabDisplayMobile, getTabSlug } from "../../utils/tabs";
-import { useIsMobile } from "../../utils/useIsMobile.js";
+import { useIsMobile } from "../../utils/useIsMobile";
+
+import { Sidenav } from "./Sidenav/Sidenav";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
-export const NavBar = () => {
-    const currentTab = useCurrentTab();
-    const isMobile = useIsMobile();
+export const NavBar: FC = () => {
+    const currentTab: string = useCurrentTab();
+    const isMobile: boolean = useIsMobile();
 
     useEffect(() => {
         if (currentTab) localStorage.setItem("savedSlug", getTabSlug(currentTab));

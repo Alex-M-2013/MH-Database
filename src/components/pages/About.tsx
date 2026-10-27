@@ -1,9 +1,10 @@
+import { type FC } from "react"
 import styles from "../../styles/pages/About.module.scss";
-import { useIsMobile } from "../../utils/useIsMobile.js";
-import { GitHubLink } from "../GitHubLink.jsx";
+import { useIsMobile } from "../../utils/useIsMobile";
+import { GitHubLink } from "../GitHubLink";
 
-export const About = () => {
-    const isMobile = useIsMobile();
+export const About: FC = () => {
+    const isMobile: boolean = useIsMobile();
     return (
         <div className={styles.about}>
             <div className={styles.card}>
