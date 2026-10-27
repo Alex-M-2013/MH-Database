@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchMonsters } from "../../utils/fetchMonsters";
+
 import { MonsterCard } from "../Main/MonsterCard";
+import { GitHubLink } from "../GitHubLink"
 
 export const Favourites = () => {
     const [monsters, setMonsters] = useState([]);
@@ -45,6 +47,8 @@ export const Favourites = () => {
         <>
             <h1>Favourites</h1>
             <div className="card-container">{sortedMonsters.length > 0 ? sortedMonsters.map(({ monster, game }) => <MonsterCard key={`${monster.id}. ${monster}-${game}`} monster={monster} game={game} />) : <p style={{ fontSize: "1.3rem" }}>Favourites are empty! Try adding a favourite by clicking the star in the top right of a monster card.</p>}</div>
+            <GitHubLink />
         </>
     );
+
 };
