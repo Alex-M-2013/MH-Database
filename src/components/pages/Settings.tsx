@@ -4,7 +4,7 @@ import styles from "@styles/pages/Settings.module.scss";
 import { type Theme } from "@components/NavBar/ThemeSwitcher";
 import { capitalise } from "@utils/helper";
 
-export type SortOrder = "default" | "name-asc" | "name-desc"
+export type SortOrder = "default" | "name-asc" | "name-desc";
 
 export const Settings: FC = () => {
     const theme = useSyncExternalStore(
@@ -16,7 +16,7 @@ export const Settings: FC = () => {
         () => document.documentElement.getAttribute("data-theme") as Theme | null,
     );
 
-    const [sortOrder, setSortOrder] = useState<SortOrder>(() => localStorage.getItem("savedSortOrder") as SortOrder ?? "default");
+    const [sortOrder, setSortOrder] = useState<SortOrder>(() => (localStorage.getItem("savedSortOrder") as SortOrder) ?? "default");
     const [imagesOn, setImagesOn] = useState<boolean>(() => JSON.parse(localStorage.getItem("imagesOn") ?? "true"));
 
     return (
