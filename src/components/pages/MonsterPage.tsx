@@ -54,6 +54,8 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
 
     const { description, features, tips, species, signature_move } = monster as OptionalFields;
 
+    const getWeaknessIcon = (name: string | undefined) => (name?.endsWith("blight") ? name.slice(0, -6) : name);
+
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
             <div className={styles.card}>
@@ -112,7 +114,7 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                                 .map((row) => (
                                     <tr key={row.name}>
                                         <td>
-                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(row.name)}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} /> {capitalise(row.name)}
+                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(row.name))}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} /> {capitalise(row.name)}
                                         </td>
                                         <td>
                                             {Array(row.value)
