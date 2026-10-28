@@ -1,10 +1,10 @@
-import { type FC } from "react"
+import { type FC } from "react";
 import styles from "@styles/Main/SearchBar.module.scss";
 import { BsSearch } from "react-icons/bs";
 
 interface SearchBarProps {
-    search: string,
-    setSearch: (search: string) => void
+    search: string;
+    setSearch: (search: string) => void;
 }
 
 export const SearchBar: FC<SearchBarProps> = ({ search, setSearch }: SearchBarProps) => {

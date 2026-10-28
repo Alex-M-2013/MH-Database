@@ -1,4 +1,4 @@
-import { type FC } from "react"
+import { type FC } from "react";
 import { allTabs, getTabSlug } from "@utils/tabs";
 import { Navigate } from "react-router";
 

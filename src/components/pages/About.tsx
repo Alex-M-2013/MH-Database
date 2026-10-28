@@ -1,4 +1,4 @@
-import { type FC } from "react"
+import { type FC } from "react";
 import styles from "@styles/pages/About.module.scss";
 import { useIsMobile } from "@utils/useIsMobile";
 import { GitHubLink } from "@components/GitHubLink";

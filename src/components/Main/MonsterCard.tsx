@@ -23,7 +23,7 @@ export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = 
     const baseHealth = getBaseHealth(monster);
     const elementWeakness = getWeakness(monster) ?? "No Data";
 
-    const { species } = monster as {species?: string}
+    const { species } = monster as { species?: string };
 
     if (userSearch !== "") {
         const matchesSearch = [monster.name, type, species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
