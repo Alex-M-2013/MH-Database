@@ -1,21 +1,25 @@
-// run with node
-import { readdir, readFile, unlink } from "node:fs/promises";
+// script to convert original images to .webp
+// run with node from project root
+import { readdir, readFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
 const MAX_SIZE = 480;
 
-const files = (await readdir("public/assets/icons/Monsters", { recursive: true })).filter((file) => file.endsWith(".png"));
+const src = "orginals/Monsters";
+const dest = "public/assets/icons/Monsters";
+
+const files = (await readdir(src, { recursive: true })).filter((file) => file.endsWith(".png"));
 
 for (const file of files) {
-    const src = path.join("public/assets/icons/Monsters", file);
-    const { dir, name } = path.parse(src);
-    const dest = path.join(dir, name + ".webp");
+    const png = path.join(src, file);
+    const { dir, name } = path.parse(file);
+    const webp = path.join(dest, dir, `${name}.webp`);
 
-    const input = await readFile(src);
+    await mkdir(path.dirname(webp), { recursive: true });
 
-    await sharp(input).resize(MAX_SIZE, MAX_SIZE, { fit: "inside", withoutEnlargement: true }).webp({ quality: 100 }).toFile(dest);
-    await unlink(src);
+    const input = await readFile(png);
+    await sharp(input).resize(MAX_SIZE, MAX_SIZE, { fit: "inside", withoutEnlargement: true }).webp({ quality: 100 }).toFile(webp);
 }
 
 console.log(`Converted ${files.length} images`);
