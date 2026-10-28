@@ -1,6 +1,6 @@
 import { type FC, useState } from "react";
 
-import { type Game } from "@utils/games"
+import { type Game } from "@utils/games";
 import { useIsMobile } from "@utils/useIsMobile";
 
 import { SearchBar } from "./SearchBar";

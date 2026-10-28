@@ -1,7 +1,7 @@
 import { type FC, useSyncExternalStore, useState } from "react";
 import styles from "@styles/pages/Settings.module.scss";
 
-import { type Theme } from "@components/NavBar/ThemeSwitcher"
+import { type Theme } from "@components/NavBar/ThemeSwitcher";
 import { capitalise } from "@utils/helper";
 
 export const Settings: FC = () => {
@@ -11,7 +11,7 @@ export const Settings: FC = () => {
             observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
             return () => observer.disconnect();
         },
-        (): Theme | null => (document.documentElement.getAttribute("data-theme") as Theme | null),
+        (): Theme | null => document.documentElement.getAttribute("data-theme") as Theme | null,
     );
 
     const [sortOrder, setSortOrder] = useState<string>(() => localStorage.getItem("savedSortOrder") ?? "default");

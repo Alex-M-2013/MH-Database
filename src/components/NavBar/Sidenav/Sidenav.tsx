@@ -1,7 +1,7 @@
 import { type FC, useState } from "react";
 import styles from "@styles/NavBar/Sidenav/Sidenav.module.scss";
 
-import { type Game } from "@utils/games"
+import { type Game } from "@utils/games";
 import { useIsMobile } from "@utils/useIsMobile";
 import { gameTabs, otherTabs } from "@utils/tabs";
 

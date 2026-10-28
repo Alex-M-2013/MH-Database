@@ -1,7 +1,7 @@
 import { type FC, useState, useEffect } from "react";
 
-import { type Game } from "@utils/games"
-import { type Monster } from "@utils/monsters"
+import { type Game } from "@utils/games";
+import { type Monster } from "@utils/monsters";
 import { fetchMonsters } from "@utils/fetchMonsters";
 import { removeDashes } from "@utils/helper";
 
@@ -26,7 +26,9 @@ export const MonsterCards: FC<MonsterCardsProps> = ({ gameTab, search }: Monster
         };
         getMonsters();
 
-        return () => {(ignore = true)};
+        return () => {
+            ignore = true;
+        };
     }, [gameTab]);
 
     const sortOrder = localStorage.getItem("savedSortOrder") ?? "default";

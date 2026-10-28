@@ -1,4 +1,4 @@
-import { type FC } from "react"
+import { type FC } from "react";
 import styles from "@styles/NavBar/Sidenav/Hamburger.module.css";
 import { BsList } from "react-icons/bs";
 

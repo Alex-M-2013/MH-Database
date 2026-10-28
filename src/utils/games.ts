@@ -11,7 +11,7 @@ export interface GameHelpers {
     getWeakness: (monster: Monster) => string | undefined;
     getWeaknesses: (monster: Monster) => WeaknessTableRow[];
     getBaseHealth: (monster: Monster) => number | null;
-};
+}
 
 export const games = {
     Wilds: {
