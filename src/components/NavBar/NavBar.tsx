@@ -1,8 +1,8 @@
 import { type FC, useEffect } from "react";
-import styles from "../../styles/NavBar/NavBar.module.scss";
+import styles from "@styles/NavBar/NavBar.module.scss";
 
-import { useCurrentTab, getTabDisplayMobile, getTabSlug } from "../../utils/tabs";
-import { useIsMobile } from "../../utils/useIsMobile";
+import { useCurrentTab, getTabDisplayMobile, getTabSlug } from "@utils/tabs";
+import { useIsMobile } from "@utils/useIsMobile";
 
 import { Sidenav } from "./Sidenav/Sidenav";
 import { ThemeSwitcher } from "./ThemeSwitcher";

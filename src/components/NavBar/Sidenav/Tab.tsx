@@ -1,7 +1,7 @@
 import { type FC } from "react";
-import styles from "../../../styles/NavBar/Sidenav/Tab.module.css";
+import styles from "@styles/NavBar/Sidenav/Tab.module.css";
 
-import { useCurrentTab, getTabSlug } from "../../../utils/tabs";
+import { useCurrentTab, getTabSlug } from "@utils/tabs";
 import { Link } from "react-router";
 
 interface TabProps {

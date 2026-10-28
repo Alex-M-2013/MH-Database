@@ -1,5 +1,5 @@
 import { type FC } from "react"
-import styles from "../../styles/Main/SearchBar.module.scss";
+import styles from "@styles/Main/SearchBar.module.scss";
 import { BsSearch } from "react-icons/bs";
 
 interface SearchBarProps {

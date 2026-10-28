@@ -1,6 +1,6 @@
 import { type FC } from "react"
-import styles from "../../../styles/NavBar/Sidenav/TabDivider.module.css";
-import { useIsMobile } from "../../../utils/useIsMobile.js";
+import styles from "@styles/NavBar/Sidenav/TabDivider.module.css";
+import { useIsMobile } from "@utils/useIsMobile.js";
 
 export const TabDivider: FC<{isOpen: boolean}> = ({ isOpen }: { isOpen: boolean }) => {
     const isMobile: boolean = useIsMobile();

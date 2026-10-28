@@ -1,10 +1,10 @@
-import { type Game } from "../../utils/games";
+import { type Game } from "@utils/games";
 import { type FC, useState, useEffect } from "react";
-import { fetchMonsters } from "../../utils/fetchMonsters";
-import { type Monster } from "../../utils/monsters";
+import { fetchMonsters } from "@utils/fetchMonsters";
+import { type Monster } from "@utils/monsters";
 
-import { MonsterCard } from "../Main/MonsterCard";
-import { GitHubLink } from "../GitHubLink";
+import { MonsterCard } from "@components/Main/MonsterCard";
+import { GitHubLink } from "@components/GitHubLink";
 
 export type Favourite = [number, Game];
 type FavouriteMonster = { monster: Monster; game: Game };
@@ -29,7 +29,7 @@ export const Favourites: FC = () => {
         };
         loadFavourites();
 
-        return (): void => {
+        return () => {
             ignore = true;
         };
     }, []);

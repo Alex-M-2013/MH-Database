@@ -1,8 +1,9 @@
 import { type FC, useState } from "react";
-import styles from "../../../styles/NavBar/Sidenav/Sidenav.module.scss";
+import styles from "@styles/NavBar/Sidenav/Sidenav.module.scss";
 
-import { useIsMobile } from "../../../utils/useIsMobile";
-import { gameTabs, otherTabs } from "../../../utils/tabs";
+import { type Game } from "@utils/games"
+import { useIsMobile } from "@utils/useIsMobile";
+import { gameTabs, otherTabs } from "@utils/tabs";
 
 import { Hamburger } from "./Hamburger";
 import { BsXLg } from "react-icons/bs";
@@ -34,7 +35,7 @@ export const Sidenav: FC = () => {
 
                     <TabDivider isOpen={isOpen} />
 
-                    {gameTabs.map((tab: string) => (
+                    {gameTabs.map((tab: Game) => (
                         <Tab key={tab} tabName={tab} openCloseNav={openCloseNav} />
                     ))}
 

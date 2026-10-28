@@ -1,7 +1,7 @@
 import { type FC } from "react"
-import styles from "../../styles/pages/About.module.scss";
-import { useIsMobile } from "../../utils/useIsMobile";
-import { GitHubLink } from "../GitHubLink";
+import styles from "@styles/pages/About.module.scss";
+import { useIsMobile } from "@utils/useIsMobile";
+import { GitHubLink } from "@components/GitHubLink";
 
 export const About: FC = () => {
     const isMobile: boolean = useIsMobile();

@@ -1,9 +1,9 @@
-import { type Monster } from "../utils/monsters";
-import { type Game } from "../utils/games";
+import { type Monster } from "@utils/monsters";
+import { type Game } from "@utils/games";
 import { type FC, useState, type MouseEvent } from "react";
 import { type Favourite } from "./pages/Favourites";
 
-import styles from "../styles/FavouriteButton.module.css";
+import styles from "@styles/FavouriteButton.module.css";
 import { BsStar, BsStarFill } from "react-icons/bs";
 
 interface FavouriteButtonProps {
@@ -14,7 +14,7 @@ interface FavouriteButtonProps {
 export const FavouriteButton: FC<FavouriteButtonProps> = ({ monster, game }: FavouriteButtonProps) => {
     const [favourites, setFavourites] = useState<Favourite[]>(() => JSON.parse(localStorage.getItem("favourites") ?? "[]"));
 
-    const toggleFavourite = (event: MouseEvent<HTMLButtonElement>): void => {
+    const toggleFavourite = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
 
         const current = JSON.parse(localStorage.getItem("favourites") ?? "[]");

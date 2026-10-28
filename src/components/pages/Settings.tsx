@@ -1,8 +1,8 @@
 import { type FC, useSyncExternalStore, useState } from "react";
-import styles from "../../styles/pages/Settings.module.scss";
+import styles from "@styles/pages/Settings.module.scss";
 
-import { type Theme } from "../NavBar/ThemeSwitcher"
-import { capitalise } from "../../utils/helper";
+import { type Theme } from "@components/NavBar/ThemeSwitcher"
+import { capitalise } from "@utils/helper";
 
 export const Settings: FC = () => {
     const theme: Theme | null = useSyncExternalStore(

@@ -1,17 +1,17 @@
 import { type FC } from "react";
-import { type Game, type GameHelpers } from "../../utils/games";
-import { type Monster } from "../../utils/monsters";
+import { type Game, type GameHelpers } from "@utils/games";
+import { type Monster } from "@utils/monsters";
 
-import styles from "../../styles/pages/MonsterPage.module.scss";
+import styles from "@styles/pages/MonsterPage.module.scss";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 
-import { fetchMonsters } from "../../utils/fetchMonsters";
-import { games } from "../../utils/games";
-import { getTabSlug } from "../../utils/tabs";
-import { capitalise } from "../../utils/helper";
+import { fetchMonsters } from "@utils/fetchMonsters";
+import { games } from "@utils/games";
+import { getTabSlug } from "@utils/tabs";
+import { capitalise } from "@utils/helper";
 
-import { Loader } from "../Loader";
+import { Loader } from "@components/Loader";
 import { BsArrowReturnLeft } from "react-icons/bs";
 
 export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {

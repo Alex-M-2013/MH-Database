@@ -1,12 +1,12 @@
 import { type FC, useState, useEffect } from "react";
 
-import { type Game } from "../../utils/games"
-import { type Monster } from "../../utils/monsters"
-import { fetchMonsters } from "../../utils/fetchMonsters";
-import { removeDashes } from "../../utils/helper";
+import { type Game } from "@utils/games"
+import { type Monster } from "@utils/monsters"
+import { fetchMonsters } from "@utils/fetchMonsters";
+import { removeDashes } from "@utils/helper";
 
 import { MonsterCard } from "./MonsterCard";
-import { Loader } from "../Loader";
+import { Loader } from "@components/Loader";
 
 interface MonsterCardsProps {
     gameTab: Game;

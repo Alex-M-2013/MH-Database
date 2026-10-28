@@ -1,13 +1,13 @@
-import styles from "../../styles/Main/MonsterCard.module.scss";
+import styles from "@styles/Main/MonsterCard.module.scss";
 import { type FC } from "react";
 
-import { type Game, games, type GameHelpers } from "../../utils/games";
-import { type Monster } from "../../utils/monsters";
-import { getTabSlug } from "../../utils/tabs";
-import { capitalise, removeDashes } from "../../utils/helper";
+import { type Game, games, type GameHelpers } from "@utils/games";
+import { type Monster } from "@utils/monsters";
+import { getTabSlug } from "@utils/tabs";
+import { capitalise, removeDashes } from "@utils/helper";
 
 import { Link } from "react-router";
-import { FavouriteButton } from "../FavouriteButton";
+import { FavouriteButton } from "@components/FavouriteButton";
 
 interface MonsterCardProps {
     monster: Monster;

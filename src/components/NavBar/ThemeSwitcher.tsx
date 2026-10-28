@@ -1,5 +1,5 @@
 import { type FC, useState, useEffect } from "react";
-import styles from "../../styles/NavBar/ThemeSwitcher.module.scss";
+import styles from "@styles/NavBar/ThemeSwitcher.module.scss";
 
 import { BsSun } from "react-icons/bs";
 import { BsMoon } from "react-icons/bs";
