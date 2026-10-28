@@ -2,8 +2,10 @@ import { type Game } from "./games";
 import { capitalise } from "./helper";
 import { useLocation } from "react-router";
 
+export type OtherTab = "About" | "Settings"
+
 export const gameTabs: Game[] = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU", "MH4U"];
-export const otherTabs: string[] = ["About", "Settings"];
+export const otherTabs: OtherTab[] = ["About", "Settings"];
 export const allTabs: string[] = ["Favourites", ...gameTabs, ...otherTabs];
 
 export const getTabSlug = (tab: string): string => tab.split("/")[0].toLowerCase();
