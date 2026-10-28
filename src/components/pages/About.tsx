@@ -4,7 +4,7 @@ import { useIsMobile } from "@utils/useIsMobile";
 import { GitHubLink } from "@components/GitHubLink";
 
 export const About: FC = () => {
-    const isMobile: boolean = useIsMobile();
+    const isMobile = useIsMobile();
     return (
         <div className={styles.about}>
             <div className={styles.card}>

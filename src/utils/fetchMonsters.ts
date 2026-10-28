@@ -33,7 +33,7 @@ const monsterSources = {
         parse: async (response: Response): Promise<WorldMonster[]> => {
             const monsters: WorldMonster[] = await response.json();
             const seen: Set<string> = new Set();
-            const filteredMonsters: WorldMonster[] = monsters.filter((monster: WorldMonster) => {
+            const filteredMonsters = monsters.filter((monster: WorldMonster) => {
                 if (monster.type !== "large" || seen.has(monster.name)) return false;
                 seen.add(monster.name);
                 return true;
@@ -46,7 +46,7 @@ const monsterSources = {
         url: "/data/mhgu_monsters.json",
         parse: async (r: Response): Promise<MHGUMonster[]> => {
             const monsters: MHGUMonster[] = await r.json();
-            const filteredMonsters: MHGUMonster[] = monsters.filter((monster: MHGUMonster) => monster.type === "large" || monster.type === "deviant");
+            const filteredMonsters = monsters.filter((monster: MHGUMonster) => monster.type === "large" || monster.type === "deviant");
             return filteredMonsters;
         },
     },
@@ -54,7 +54,7 @@ const monsterSources = {
         url: "/data/mh4u_monsters.json",
         parse: async (r: Response): Promise<MH4UMonster[]> => {
             const monsters: MH4UMonster[] = await r.json();
-            const filteredMonsters: MH4UMonster[] = monsters.filter((monster: MH4UMonster) => monster.class === "Boss");
+            const filteredMonsters = monsters.filter((monster: MH4UMonster) => monster.class === "Boss");
             return filteredMonsters;
         },
     },

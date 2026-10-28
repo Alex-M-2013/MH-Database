@@ -7,21 +7,25 @@ import { MonsterCard } from "@components/Main/MonsterCard";
 import { GitHubLink } from "@components/GitHubLink";
 
 export type Favourite = [number, Game];
-type FavouriteMonster = { monster: Monster; game: Game };
+
+interface FavouriteMonster {
+    monster: Monster;
+    game: Game;
+}
 
 export const Favourites: FC = () => {
     const [monsters, setMonsters] = useState<FavouriteMonster[]>([]);
 
     useEffect(() => {
-        let ignore: boolean = false;
+        let ignore = false;
 
         const loadFavourites = async () => {
             const favourites: Favourite[] = JSON.parse(localStorage.getItem("favourites") ?? "[]");
             const loadedMonsters: FavouriteMonster[] = [];
 
             for (const [id, game] of favourites) {
-                const monsters: Monster[] = await fetchMonsters(game);
-                const monster: Monster | undefined = monsters.find((monster) => monster.id === id);
+                const monsters = await fetchMonsters(game);
+                const monster = monsters.find((monster) => monster.id === id);
                 if (monster) loadedMonsters.push({ monster, game });
             }
 
@@ -34,8 +38,8 @@ export const Favourites: FC = () => {
         };
     }, []);
 
-    const sortOrder: string = localStorage.getItem("savedSortOrder") ?? "default";
-    const sortedMonsters: FavouriteMonster[] = [...monsters];
+    const sortOrder = localStorage.getItem("savedSortOrder") ?? "default";
+    const sortedMonsters = [...monsters];
 
     switch (sortOrder) {
         case "name-asc":

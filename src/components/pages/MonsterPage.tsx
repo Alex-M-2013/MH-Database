@@ -19,11 +19,11 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
     const [monster, setMonster] = useState<Monster | null | undefined>(null);
 
     useEffect(() => {
-        let ignore: boolean = false;
+        let ignore = false;
 
         const fetchMonster = async () => {
-            const allMonsters: Monster[] = await fetchMonsters(gameTab);
-            const monster: Monster | undefined = allMonsters.find((monster) => String(monster.id) === id);
+            const allMonsters = await fetchMonsters(gameTab);
+            const monster = allMonsters.find((monster) => String(monster.id) === id);
             if (!ignore) setMonster(monster);
         };
         fetchMonster();

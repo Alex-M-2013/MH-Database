@@ -3,8 +3,8 @@ import { allTabs, getTabSlug } from "@utils/tabs";
 import { Navigate } from "react-router";
 
 export const Home: FC = () => {
-    const savedSlug: string = localStorage.getItem("savedSlug") ?? "wilds";
-    const validSlugs: string[] = allTabs.map((tab: string) => getTabSlug(tab));
+    const savedSlug = localStorage.getItem("savedSlug") ?? "wilds";
+    const validSlugs = allTabs.map((tab) => getTabSlug(tab));
 
     return <Navigate to={`/${validSlugs.includes(savedSlug) ? savedSlug : "wilds"}`} replace />;
 };

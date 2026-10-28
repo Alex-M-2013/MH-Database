@@ -10,7 +10,7 @@ interface TabProps {
 }
 
 export const Tab: FC<TabProps> = ({ tabName, openCloseNav }: TabProps) => {
-    const currentTab: string = useCurrentTab();
+    const currentTab = useCurrentTab();
 
     return (
         <Link to={`/${getTabSlug(tabName)}`}>

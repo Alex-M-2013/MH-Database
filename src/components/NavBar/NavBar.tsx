@@ -8,8 +8,8 @@ import { Sidenav } from "./Sidenav/Sidenav";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export const NavBar: FC = () => {
-    const currentTab: string = useCurrentTab();
-    const isMobile: boolean = useIsMobile();
+    const currentTab = useCurrentTab();
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         if (currentTab) localStorage.setItem("savedSlug", getTabSlug(currentTab));

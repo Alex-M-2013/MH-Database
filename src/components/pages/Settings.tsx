@@ -4,17 +4,19 @@ import styles from "@styles/pages/Settings.module.scss";
 import { type Theme } from "@components/NavBar/ThemeSwitcher";
 import { capitalise } from "@utils/helper";
 
+export type SortOrder = "default" | "name-asc" | "name-desc"
+
 export const Settings: FC = () => {
-    const theme: Theme | null = useSyncExternalStore(
+    const theme = useSyncExternalStore(
         (callback) => {
             const observer = new MutationObserver(callback);
             observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
             return () => observer.disconnect();
         },
-        (): Theme | null => document.documentElement.getAttribute("data-theme") as Theme | null,
+        () => document.documentElement.getAttribute("data-theme") as Theme | null,
     );
 
-    const [sortOrder, setSortOrder] = useState<string>(() => localStorage.getItem("savedSortOrder") ?? "default");
+    const [sortOrder, setSortOrder] = useState<SortOrder>(() => localStorage.getItem("savedSortOrder") as SortOrder ?? "default");
     const [imagesOn, setImagesOn] = useState<boolean>(() => JSON.parse(localStorage.getItem("imagesOn") ?? "true"));
 
     return (
@@ -32,8 +34,8 @@ export const Settings: FC = () => {
                     <select
                         value={sortOrder}
                         onChange={(event) => {
-                            setSortOrder(event.currentTarget.value);
-                            localStorage.setItem("savedSortOrder", event.currentTarget.value);
+                            setSortOrder(event.currentTarget.value as SortOrder);
+                            localStorage.setItem("savedSortOrder", event.currentTarget.value as SortOrder);
                         }}
                     >
                         <option value="default">Default</option>

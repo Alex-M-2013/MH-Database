@@ -30,7 +30,7 @@ export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = 
         if (!matchesSearch) return null;
     }
 
-    const imagesOn = JSON.parse(localStorage.getItem("imagesOn") ?? "true");
+    const imagesOn: boolean = JSON.parse(localStorage.getItem("imagesOn") ?? "true");
 
     return (
         <Link className={styles.card} key={monster.name} to={`/${getTabSlug(game)}/${monster.id}`}>

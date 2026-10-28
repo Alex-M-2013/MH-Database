@@ -4,6 +4,7 @@ import { type Game } from "@utils/games";
 import { type Monster } from "@utils/monsters";
 import { fetchMonsters } from "@utils/fetchMonsters";
 import { removeDashes } from "@utils/helper";
+import { type SortOrder } from "@components/pages/Settings"
 
 import { MonsterCard } from "./MonsterCard";
 import { Loader } from "@components/Loader";
@@ -31,7 +32,7 @@ export const MonsterCards: FC<MonsterCardsProps> = ({ gameTab, search }: Monster
         };
     }, [gameTab]);
 
-    const sortOrder = localStorage.getItem("savedSortOrder") ?? "default";
+    const sortOrder = localStorage.getItem("savedSortOrder") as SortOrder ?? "default";
     const sortedMonsters = [...monsters];
 
     switch (sortOrder) {

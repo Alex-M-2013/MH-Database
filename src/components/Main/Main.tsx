@@ -8,7 +8,7 @@ import { MonsterCards } from "./MonsterCards";
 import { GitHubLink } from "@components/GitHubLink";
 
 export const Main: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {
-    const isMobile: boolean = useIsMobile();
+    const isMobile = useIsMobile();
     const [search, setSearch] = useState<string>("");
 
     return (

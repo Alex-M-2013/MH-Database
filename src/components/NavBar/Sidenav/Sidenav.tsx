@@ -11,11 +11,11 @@ import { TabDivider } from "./TabDivider";
 import { Tab } from "./Tab";
 
 export const Sidenav: FC = () => {
-    const isMobile: boolean = useIsMobile();
+    const isMobile = useIsMobile();
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const openCloseNav = () => setIsOpen((isOpen: boolean) => !isOpen);
-    const openWidth: string = isMobile ? "80dvw" : "22dvw";
+    const openWidth = isMobile ? "80dvw" : "22dvw";
 
     return (
         <>

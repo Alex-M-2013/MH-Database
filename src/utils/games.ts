@@ -1,7 +1,11 @@
 import { type Monster, type WildsMonster, type RiseMonster, type WorldMonster, type MHGUMonster, type MH4UMonster } from "./monsters";
 
 export type Game = "Wilds" | "Rise/Sunbreak" | "World/Iceborne" | "MHGU" | "MH4U";
-export type WeaknessTableRow = { name: string | undefined; value: number; condition?: string | null };
+export interface WeaknessTableRow {
+    name: string | undefined;
+    value: number;
+    condition?: string | null;
+}
 
 const getStrongest = (rows: WeaknessTableRow[]) => rows.filter((row) => row.name !== undefined && ["fire", "water", "ice", "thunder", "dragon"].includes(row.name)).sort((first, second) => second.value - first.value)[0]?.name;
 

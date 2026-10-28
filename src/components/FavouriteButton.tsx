@@ -17,10 +17,10 @@ export const FavouriteButton: FC<FavouriteButtonProps> = ({ monster, game }: Fav
     const toggleFavourite = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
 
-        const current = JSON.parse(localStorage.getItem("favourites") ?? "[]");
-        const exists = current.some(([id, savedGame]: Favourite) => id === monster.id && savedGame === game);
+        const current: Favourite[] = JSON.parse(localStorage.getItem("favourites") ?? "[]");
+        const exists: boolean = current.some(([id, savedGame]: Favourite) => id === monster.id && savedGame === game);
 
-        const updated = exists ? current.filter(([id, savedGame]: Favourite) => id !== monster.id && savedGame !== game) : [...current, [monster.id, game]];
+        const updated: Favourite[] = exists ? current.filter(([id, savedGame]: Favourite) => id !== monster.id && savedGame !== game) : [...current, [monster.id, game]];
 
         localStorage.setItem("favourites", JSON.stringify(updated));
         setFavourites(updated);
