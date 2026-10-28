@@ -18,7 +18,7 @@ import { MonsterPage } from "./components/pages/MonsterPage";
 import { About } from "./components/pages/About";
 import { Settings } from "./components/pages/Settings";
 
-const componentMap: Record<OtherTab, FC> = { About: About, Settings: Settings };
+const componentMap: Record<OtherTab, FC> = { About, Settings };
 
 export const App: FC = () => (
     <BrowserRouter>
