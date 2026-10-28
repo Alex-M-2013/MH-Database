@@ -1,0 +1,1 @@
+Script for Monsters: MH-Database/src/utils/scripts/compress.js
