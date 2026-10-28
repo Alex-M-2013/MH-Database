@@ -3,7 +3,7 @@ import breakpoints from "./breakpoints.module.scss";
 
 const mobileWidth: number = Number.parseInt(breakpoints.mobileWidth);
 
-export const useIsMobile = () => {
+export const useIsMobile = (): boolean => {
     const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
 
     useEffect(() => {

@@ -1,3 +1,7 @@
+import { type FC } from "react";
+import { type Game, type GameHelpers } from "../../utils/games";
+import { type Monster } from "../../utils/monsters";
+
 import styles from "../../styles/pages/MonsterPage.module.scss";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
@@ -10,33 +14,45 @@ import { capitalise } from "../../utils/helper";
 import { Loader } from "../Loader";
 import { BsArrowReturnLeft } from "react-icons/bs";
 
-export const MonsterPage = ({ gameTab }) => {
+export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {
     const { id } = useParams();
-    const [monster, setMonster] = useState(null);
+    const [monster, setMonster] = useState<Monster | null | undefined>(null);
 
     useEffect(() => {
-        let ignore = false;
+        let ignore: boolean = false;
 
         const fetchMonster = async () => {
-            const allMonsters = await fetchMonsters(gameTab);
-            const monster = allMonsters.find((monster) => String(monster.id) === id);
+            const allMonsters: Monster[] = await fetchMonsters(gameTab);
+            const monster: Monster | undefined = allMonsters.find((monster) => String(monster.id) === id);
             if (!ignore) setMonster(monster);
         };
         fetchMonster();
 
-        return () => (ignore = true);
+        return () => {
+            ignore = true;
+        };
     }, [gameTab, id]);
 
     if (!monster) return <Loader />;
 
-    const { getIcon, getType, getBaseHealth, getWeaknesses } = games[gameTab];
+    const { getIcon, getType, getBaseHealth, getWeaknesses } = games[gameTab] as GameHelpers;
 
     const icon = getIcon(monster);
     const type = getType(monster);
     const baseHealth = getBaseHealth(monster);
     const weaknesses = getWeaknesses(monster);
 
-    const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true;
+    const imagesOn: boolean = JSON.parse(localStorage.getItem("imagesOn") ?? "true");
+
+    interface OptionalFields {
+        description?: string;
+        features?: string;
+        tips?: string;
+        species?: string;
+        signature_move?: string;
+    }
+
+    const { description, features, tips, species, signature_move } = monster as OptionalFields;
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -46,12 +62,16 @@ export const MonsterPage = ({ gameTab }) => {
                 </div>
                 <h1>{monster.name}</h1>
 
-                {monster.description && (
+                {description && (
                     <p>
                         <strong>Description: </strong>
-                        {monster.description}
+                        {description}
                     </p>
                 )}
+
+                {features && <p>{features}</p>}
+
+                {tips && <p>{tips}</p>}
 
                 {type && (
                     <p>
@@ -60,17 +80,17 @@ export const MonsterPage = ({ gameTab }) => {
                     </p>
                 )}
 
-                {monster.species && (
+                {species && (
                     <p>
                         <strong>Species: </strong>
-                        {capitalise(monster.species)}
+                        {capitalise(species)}
                     </p>
                 )}
 
-                {monster.signature_move && (
+                {signature_move && (
                     <p>
-                        {monster.signature_move.split(",").length === 1 ? <strong>Signature Move: </strong> : <strong>Signature Moves: </strong>}
-                        {capitalise(monster.signature_move)}
+                        {signature_move.split(",").length === 1 ? <strong>Signature Move: </strong> : <strong>Signature Moves: </strong>}
+                        {capitalise(signature_move)}
                     </p>
                 )}
 
@@ -96,10 +116,10 @@ export const MonsterPage = ({ gameTab }) => {
                                         </td>
                                         <td>
                                             {Array(row.value)
-                                                .fill()
+                                                .fill(null)
                                                 .map(() => "★")}
                                         </td>
-                                        {row.note && <td>{row.note}</td>}
+                                        {row.condition && <td>{row.condition}</td>}
                                     </tr>
                                 ))}
                         </tbody>
@@ -112,7 +132,7 @@ export const MonsterPage = ({ gameTab }) => {
     );
 };
 
-const BackButton = ({ gameTab }) => {
+const BackButton: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {
     const navigate = useNavigate();
 
     return (

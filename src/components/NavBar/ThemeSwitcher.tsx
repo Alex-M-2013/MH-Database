@@ -4,7 +4,7 @@ import styles from "../../styles/NavBar/ThemeSwitcher.module.scss";
 import { BsSun } from "react-icons/bs";
 import { BsMoon } from "react-icons/bs";
 
-type Theme = "light" | "dark"
+export type Theme = "light" | "dark";
 
 export const ThemeSwitcher: FC = () => {
     const initialTheme: Theme = (localStorage.getItem("savedTheme") as Theme | null) ?? (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");

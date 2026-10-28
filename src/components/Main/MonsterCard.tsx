@@ -1,26 +1,36 @@
 import styles from "../../styles/Main/MonsterCard.module.scss";
+import { type FC } from "react";
 
-import { games } from "../../utils/games";
+import { type Game, games, type GameHelpers } from "../../utils/games";
+import { type Monster } from "../../utils/monsters";
 import { getTabSlug } from "../../utils/tabs";
 import { capitalise, removeDashes } from "../../utils/helper";
 
 import { Link } from "react-router";
 import { FavouriteButton } from "../FavouriteButton";
 
-export const MonsterCard = ({ monster, game, userSearch = "" }) => {
-    const { getIcon, getType, getBaseHealth, getWeakness } = games[game];
+interface MonsterCardProps {
+    monster: Monster;
+    game: Game;
+    userSearch?: string;
+}
+
+export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = "" }: MonsterCardProps) => {
+    const { getIcon, getType, getBaseHealth, getWeakness } = games[game] as GameHelpers;
 
     const icon = getIcon(monster);
     const type = getType(monster);
     const baseHealth = getBaseHealth(monster);
     const elementWeakness = getWeakness(monster) ?? "No Data";
 
+    const { species } = monster as {species?: string}
+
     if (userSearch !== "") {
-        const matchesSearch = [monster.name, type, monster.species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
+        const matchesSearch = [monster.name, type, species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
         if (!matchesSearch) return null;
     }
 
-    const imagesOn = JSON.parse(localStorage.getItem("imagesOn")) ?? true;
+    const imagesOn = JSON.parse(localStorage.getItem("imagesOn") ?? "true");
 
     return (
         <Link className={styles.card} key={monster.name} to={`/${getTabSlug(game)}/${monster.id}`}>
@@ -39,7 +49,7 @@ export const MonsterCard = ({ monster, game, userSearch = "" }) => {
 
             <p style={{ display: game !== "MHGU" && game !== "MH4U" ? "" : "none" }}>
                 <strong>Species: </strong>
-                {capitalise(monster.species ?? "No Data")}
+                {capitalise(species ?? "No Data")}
             </p>
 
             <p>

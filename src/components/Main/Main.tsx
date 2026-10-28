@@ -1,12 +1,14 @@
 import { type FC, useState } from "react";
 
+import { type Game } from "../../utils/games"
+import { useIsMobile } from "../../utils/useIsMobile";
+
 import { SearchBar } from "./SearchBar";
 import { MonsterCards } from "./MonsterCards";
 import { GitHubLink } from "../GitHubLink";
-import { useIsMobile } from "../../utils/useIsMobile";
 
-export const Main: FC<{ gameTab: string }> = ({ gameTab }: { gameTab: string }) => {
-    const isMobile = useIsMobile();
+export const Main: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {
+    const isMobile: boolean = useIsMobile();
     const [search, setSearch] = useState<string>("");
 
     return (

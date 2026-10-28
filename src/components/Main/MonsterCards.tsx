@@ -1,25 +1,32 @@
-import { useState, useEffect } from "react";
+import { type FC, useState, useEffect } from "react";
 
+import { type Game } from "../../utils/games"
+import { type Monster } from "../../utils/monsters"
 import { fetchMonsters } from "../../utils/fetchMonsters";
 import { removeDashes } from "../../utils/helper";
 
 import { MonsterCard } from "./MonsterCard";
 import { Loader } from "../Loader";
 
-export const MonsterCards = ({ gameTab, search }) => {
-    const [monsters, setMonsters] = useState([]);
+interface MonsterCardsProps {
+    gameTab: Game;
+    search: string;
+}
+
+export const MonsterCards: FC<MonsterCardsProps> = ({ gameTab, search }: MonsterCardsProps) => {
+    const [monsters, setMonsters] = useState<Monster[]>([]);
     const userSearch = removeDashes(search).toLowerCase().trim();
 
     useEffect(() => {
         let ignore = false;
 
         const getMonsters = async () => {
-            const data = await fetchMonsters(gameTab);
+            const data: Monster[] = await fetchMonsters(gameTab);
             if (!ignore) setMonsters(data);
         };
         getMonsters();
 
-        return () => (ignore = true);
+        return () => {(ignore = true)};
     }, [gameTab]);
 
     const sortOrder = localStorage.getItem("savedSortOrder") ?? "default";
