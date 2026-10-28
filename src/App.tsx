@@ -1,6 +1,8 @@
-import "./App.css";
+import "./App.scss";
 
 import { type FC, Fragment } from "react";
+import { type Game } from "./utils/games"
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { gameTabs, getTabSlug, otherTabs } from "./utils/tabs";
 
@@ -26,7 +28,7 @@ export const App: FC = () => (
             <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/" element={<Home />} />
             <Route path="/favourites" element={<Favourites />} />
-            {gameTabs.map((tab: string) => (
+            {gameTabs.map((tab: Game) => (
                 <Fragment key={tab}>
                     <Route path={`/${getTabSlug(tab)}`} element={<Main key={tab} gameTab={tab} />} />
                     <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage gameTab={tab} />} />

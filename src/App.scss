@@ -1,3 +1,4 @@
+@use "./variables" as *;
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
@@ -73,5 +74,21 @@ button {
         height: 1em;
         width: 1em;
         vertical-align: -0.15em;
+    }
+}
+
+.toast {
+    @media (max-width: $mobile-width) {
+        margin-top: 1rem;
+        width: 92dvw !important;
+        border-radius: 4px !important;
+    }
+
+    .Toastify__progress-bar {
+        background: #ffffff !important;
+    }
+
+    .Toastify__close-button {
+        color: #fff !important
     }
 }
