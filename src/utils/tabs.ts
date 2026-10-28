@@ -2,7 +2,7 @@ import { type Game } from "./games";
 import { capitalise } from "./helper";
 import { useLocation } from "react-router";
 
-export type OtherTab = "About" | "Settings"
+export type OtherTab = "About" | "Settings";
 
 export const gameTabs: Game[] = ["Wilds", "Rise/Sunbreak", "World/Iceborne", "MHGU", "MH4U"];
 export const otherTabs: OtherTab[] = ["About", "Settings"];
