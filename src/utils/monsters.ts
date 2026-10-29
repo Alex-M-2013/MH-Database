@@ -3,7 +3,7 @@ interface BaseMonster {
     name: string;
 }
 
-type Element = "fire" | "water" | "thunder" | "ice" | "dragon"
+type Element = "fire" | "water" | "thunder" | "ice" | "dragon";
 
 export interface WildsMonster extends BaseMonster {
     kind: "large";
