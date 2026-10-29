@@ -25,7 +25,7 @@ export const App: FC = () => (
         <NavBar />
         <ToastContainer />
         <Routes>
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<h1>404 (Not Found)</h1>} />
             <Route path="/" element={<Home />} />
             <Route path="/favourites" element={<Favourites />} />
             {gameTabs.map((tab: Game) => (
