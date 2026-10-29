@@ -3,6 +3,8 @@ interface BaseMonster {
     name: string;
 }
 
+type Element = "fire" | "water" | "thunder" | "ice" | "dragon"
+
 export interface WildsMonster extends BaseMonster {
     kind: "large";
     species: string;
@@ -11,9 +13,10 @@ export interface WildsMonster extends BaseMonster {
     tips: string;
     baseHealth: number;
     weaknesses: {
-        element?: string;
+        element?: Element;
         status?: string;
         effect?: string;
+        kind: "element" | "status" | "effect";
         level: number;
         condition?: string;
     }[];
