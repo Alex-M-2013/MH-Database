@@ -5,7 +5,7 @@ import fs from "node:fs";
 
 const db = new Database("originals/mhgu.db", { readonly: true });
 
-const query = (sql, param) => param !== undefined ? db.prepare(sql).all(param) : db.prepare(sql).all();
+const query = (sql, param) => (param !== undefined ? db.prepare(sql).all(param) : db.prepare(sql).all());
 
 const types = { 0: "large", 1: "small", 2: "deviant" };
 
@@ -28,4 +28,4 @@ const monsters = query("SELECT * FROM monsters ORDER BY _id").map((m) => ({
 
 fs.writeFileSync("public/data/mhgu_monsters.json", JSON.stringify(monsters));
 
-console.log("Converted to JSON")
+console.log("Converted to JSON");
