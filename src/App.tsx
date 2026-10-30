@@ -3,7 +3,7 @@ import "./App.scss";
 import { type FC, Fragment } from "react";
 import { type Game } from "./utils/games";
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
 import { gameTabs, getTabSlug, otherTabs, type OtherTab } from "./utils/tabs";
 
 import { NavBar } from "./components/NavBar/NavBar";

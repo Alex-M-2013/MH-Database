@@ -1,6 +1,6 @@
 import { type FC } from "react";
 import { type Game, type GameHelpers } from "@utils/games";
-import { type Monster } from "@utils/monsters";
+import { type Monster, type OptionalFields } from "@utils/monsters";
 
 import styles from "@styles/pages/MonsterPage.module.scss";
 import { useState, useEffect } from "react";
@@ -44,17 +44,9 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
 
     const imagesOn: boolean = JSON.parse(localStorage.getItem("imagesOn") ?? "true");
 
-    interface OptionalFields {
-        description?: string;
-        features?: string;
-        tips?: string;
-        species?: string;
-        signature_move?: string;
-    }
-
     const { description, features, tips, species, signature_move } = monster as OptionalFields;
 
-    const getWeaknessIcon = (name: string | undefined) => (name?.endsWith("blight") ? name.slice(0, -6) : name);
+    const getWeaknessIcon = (name: string) => (name.endsWith("blight") ? name.slice(0, -6) : name);
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>

@@ -3,7 +3,15 @@ interface BaseMonster {
     name: string;
 }
 
-type Element = "fire" | "water" | "thunder" | "ice" | "dragon"
+export interface OptionalFields {
+    description?: string;
+    features?: string;
+    tips?: string;
+    species?: string;
+    signature_move?: string;
+}
+
+type Element = "fire" | "water" | "thunder" | "ice" | "dragon";
 
 export interface WildsMonster extends BaseMonster {
     kind: "large";
@@ -36,7 +44,7 @@ export interface WorldMonster extends BaseMonster {
     description: string;
     weaknesses: {
         element: string;
-        stars: 2;
+        stars: number;
         condition?: string;
     }[];
 }
@@ -47,25 +55,31 @@ export interface MHGUMonster extends BaseMonster {
     icon_name: string;
     weaknesses: {
         state: string;
-        fire: number;
-        water: number;
-        thunder: number;
-        ice: number;
-        dragon: number;
-        poison: number;
-        paralysis: number;
-        sleep: number;
-        pitfall_trap: number;
-        shock_trap: number;
-        flash_bomb: number;
-        sonic_bomb: number;
-        dung_bomb: number;
-        meat: number;
+        elements: {
+            fire: number;
+            water: number;
+            thunder: number;
+            ice: number;
+            dragon: number;
+        };
+        status: {
+            poison: number;
+            paralysis: number;
+            sleep: number;
+        };
+        items: {
+            pitfall_trap: number;
+            shock_trap: number;
+            flash_bomb: number;
+            sonic_bomb: number;
+            dung_bomb: number;
+            meat: number;
+        };
     }[];
 }
 
 export interface MH4UMonster extends BaseMonster {
-    class: "Boss" | "Minion";
+    type: "large" | "small";
     signature_move: string;
     icon_name: string;
     weaknesses: {

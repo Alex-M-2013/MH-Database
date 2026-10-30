@@ -52,8 +52,8 @@ npm run dev
 - __Wilds data:__ [Monster Hunter Wilds API](https://docs.wilds.mhdb.io/)
 - __*Rise/Sunbreak Data:__ https://github.com/Neryss/monster_hunter_db/blob/master/rise_monster_db.json
 - __World/Iceborne Data:__ https://github.com/Neryss/monster_hunter_db/blob/master/mhw_db.json
-- __**MHGU Data pulled from:__ https://github.com/gatheringhallstudios/MHGenDatabase/blob/develop/app/src/main/assets/databases/mhgu.db.zip
-- __**MH4U Data pulled from:__ https://github.com/gatheringhallstudios/MonsterHunter4UDatabase/blob/master/app/src/main/assets/databases/mh4u.db.zip
+- __**MHGU Data:__ https://github.com/gatheringhallstudios/MHGenDatabase/blob/develop/app/src/main/assets/databases/mhgu.db.zip
+- __**MH4U Data:__ https://github.com/gatheringhallstudios/MonsterHunter4UDatabase/blob/master/app/src/main/assets/databases/mh4u.db.zip
 
 ### Icons From:
 - __Wilds, Rise and World:__ Pulled from game files
@@ -65,4 +65,4 @@ npm run dev
 > *_Some monsters were missing, so Claude was used to add them. New data was checked against [mhrise.kiranco.com](https://mhrise.kiranico.com/) data. <br> <br>
 > Missing monsters: Chaotic Gore Magala, Velkhana, Risen Kushala Daora, Risen Teostra, Risen Crimson Glow Valstrax, Amatsu, Risen Shagaru Magala, Primordial Malzeno_ <br>
 
->_**Claude was used to convert the database tables into JSON format._
+>_**Helper scripts were used to convert the database tables into JSON format._

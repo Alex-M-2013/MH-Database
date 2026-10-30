@@ -2,12 +2,12 @@ import { type Monster, type WildsMonster, type RiseMonster, type WorldMonster, t
 
 export type Game = "Wilds" | "Rise/Sunbreak" | "World/Iceborne" | "MHGU" | "MH4U";
 export interface WeaknessTableRow {
-    name: string | undefined;
+    name: string;
     value: number;
-    condition?: string | null;
+    condition?: string;
 }
 
-const getStrongest = (rows: WeaknessTableRow[]) => rows.filter((row) => row.name !== undefined && ["fire", "water", "ice", "thunder", "dragon"].includes(row.name)).sort((first, second) => second.value - first.value)[0]?.name;
+const getStrongest = (rows: WeaknessTableRow[]) => rows.filter((row) => ["fire", "water", "ice", "thunder", "dragon"].includes(row.name)).sort((first, second) => second.value - first.value)[0]?.name;
 
 export interface GameHelpers {
     getIcon: (monster: Monster) => string;
@@ -22,14 +22,14 @@ export const games = {
         getIcon: (monster: WildsMonster) => monster.name,
         getType: (monster: WildsMonster) => monster.kind,
         getWeakness: (monster: WildsMonster) => getStrongest(games.Wilds.getWeaknesses(monster)),
-        getWeaknesses: (monster: WildsMonster): WeaknessTableRow[] => monster.weaknesses.map((w): WeaknessTableRow => ({ name: w.element ?? w.status ?? w.effect, value: w.level, condition: w.condition })),
+        getWeaknesses: (monster: WildsMonster): WeaknessTableRow[] => monster.weaknesses.map((w): WeaknessTableRow => ({ name: w.element ?? w.status ?? w.effect ?? "Not found", value: w.level, condition: w.condition })),
         getBaseHealth: (monster: WildsMonster) => monster.baseHealth,
     },
     "Rise/Sunbreak": {
         getIcon: (monster: RiseMonster) => monster.name,
         getType: () => "Large",
         getWeakness: (monster: RiseMonster) => getStrongest(games["Rise/Sunbreak"].getWeaknesses(monster)),
-        getWeaknesses: (monster: RiseMonster): WeaknessTableRow[] => monster.weaknesses.map((w): WeaknessTableRow => ({ name: w.element, value: w.stars })),
+        getWeaknesses: (monster: RiseMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => w.stars > 0).map((w): WeaknessTableRow => ({ name: w.element, value: w.stars })),
         getBaseHealth: () => null,
     },
     "World/Iceborne": {
@@ -43,11 +43,12 @@ export const games = {
         getIcon: (monster: MHGUMonster) => monster.icon_name,
         getType: (monster: MHGUMonster) => monster.type,
         getWeakness: (monster: MHGUMonster) => getStrongest(games.MHGU.getWeaknesses(monster)),
-        getWeaknesses: (monster: MHGUMonster) => {
-            const { state, pitfall_trap, shock_trap, flash_bomb, sonic_bomb, dung_bomb, meat, ...rest } = monster.weaknesses?.[0] ?? {};
-            return Object.entries(rest)
-                .filter(([, value]) => value > 0)
-                .map(([name, value]) => ({ name, value }));
+        getWeaknesses: (monster: MHGUMonster): WeaknessTableRow[] => {
+            const { elements, status } = monster.weaknesses?.[0] ?? {};
+
+            const entries = Object.entries({ ...elements, ...status });
+            const filtered = entries.filter(([, value]) => value > 0);
+            return filtered.map(([name, value]) => ({ name, value }));
         },
         getBaseHealth: (monster: MHGUMonster) => monster.base_hp,
     },
@@ -55,11 +56,12 @@ export const games = {
         getIcon: (monster: MH4UMonster) => monster.icon_name,
         getType: () => "Large",
         getWeakness: (monster: MH4UMonster) => getStrongest(games.MH4U.getWeaknesses(monster)),
-        getWeaknesses: (monster: MH4UMonster) => {
+        getWeaknesses: (monster: MH4UMonster): WeaknessTableRow[] => {
             const { elements, status } = monster.weaknesses?.[0] ?? {};
-            return Object.entries({ ...elements, ...status })
-                .filter(([, value]) => value > 0)
-                .map(([name, value]) => ({ name, value }));
+
+            const entries = Object.entries({ ...elements, ...status });
+            const filtered = entries.filter(([, value]) => value > 0);
+            return filtered.map(([name, value]) => ({ name, value }));
         },
         getBaseHealth: () => null,
     },

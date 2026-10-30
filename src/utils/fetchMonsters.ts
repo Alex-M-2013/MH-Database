@@ -54,7 +54,7 @@ const monsterSources = {
         url: "/data/mh4u_monsters.json",
         parse: async (r: Response): Promise<MH4UMonster[]> => {
             const monsters: MH4UMonster[] = await r.json();
-            const filteredMonsters = monsters.filter((monster: MH4UMonster) => monster.class === "Boss");
+            const filteredMonsters = monsters.filter((monster: MH4UMonster) => monster.type === "large");
             return filteredMonsters;
         },
     },
