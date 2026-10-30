@@ -5,7 +5,7 @@ import fs from "node:fs";
 
 const db = new Database("originals/mh4u.db", { readonly: true });
 
-const query = (sql, param) => param !== undefined ? db.prepare(sql).all(param) : db.prepare(sql).all();
+const query = (sql, param) => (param !== undefined ? db.prepare(sql).all(param) : db.prepare(sql).all());
 
 const types = { Boss: "large", Minion: "small" };
 
