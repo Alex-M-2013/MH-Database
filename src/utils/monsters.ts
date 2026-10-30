@@ -4,10 +4,10 @@ interface BaseMonster {
 }
 
 export interface OptionalFields {
+    species?: string;
     description?: string;
     features?: string;
     tips?: string;
-    species?: string;
     signature_move?: string;
 }
 
@@ -36,6 +36,7 @@ export interface RiseMonster extends BaseMonster {
         element: string;
         stars: number;
     }[];
+    ailments: string[]
 }
 
 export interface WorldMonster extends BaseMonster {
@@ -47,12 +48,17 @@ export interface WorldMonster extends BaseMonster {
         stars: number;
         condition?: string;
     }[];
+    ailments: {
+        name: string
+        description: string
+    }[]
 }
 
 export interface MHGUMonster extends BaseMonster {
     type: "large" | "small" | "deviant";
     base_hp: number;
     icon_name: string;
+    ailments: string[]
     weaknesses: {
         state: string;
         elements: {
@@ -82,6 +88,7 @@ export interface MH4UMonster extends BaseMonster {
     type: "large" | "small";
     signature_move: string;
     icon_name: string;
+    ailments: string[]
     weaknesses: {
         state: string;
         elements: {

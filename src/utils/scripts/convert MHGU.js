@@ -16,6 +16,8 @@ const monsters = query("SELECT * FROM monsters ORDER BY _id").map((m) => ({
     base_hp: m.base_hp,
     icon_name: m.icon_name,
     // eslint-disable-next-line no-unused-vars
+    ailments: query("SELECT * FROM monster_ailment WHERE monster_id = ? ORDER BY _id", m._id).map(({_id, monster_id, ailment }) => ailment),
+    // eslint-disable-next-line no-unused-vars
     weaknesses: query("SELECT * FROM monster_weakness WHERE monster_id = ? ORDER BY _id", m._id).map(({ _id, monster_id, state, fire, water, thunder, ice, dragon, poison, paralysis, sleep, ...items }) => ({
         state,
         elements: { fire, water, thunder, ice, dragon },
