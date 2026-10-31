@@ -75,6 +75,11 @@ button {
         width: 1em;
         vertical-align: -0.15em;
     }
+
+    &.filter {
+        height: 2.5em;
+        width: 2.5em;
+    }
 }
 
 .toast {

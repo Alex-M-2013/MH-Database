@@ -11,7 +11,7 @@ export interface OptionalFields {
     signature_move?: string;
 }
 
-type Element = "fire" | "water" | "thunder" | "ice" | "dragon";
+export type Element = "fire" | "water" | "thunder" | "ice" | "dragon";
 
 export interface WildsMonster extends BaseMonster {
     kind: "large";

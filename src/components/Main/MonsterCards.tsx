@@ -1,6 +1,7 @@
 import { type FC, useState, useEffect } from "react";
 
 import { type Game } from "@utils/games";
+import { type FilterType } from "./Filter"
 import { type Monster } from "@utils/monsters";
 import { fetchMonsters } from "@utils/fetchMonsters";
 import { removeDashes } from "@utils/helper";
@@ -12,9 +13,10 @@ import { Loader } from "@components/Loader";
 interface MonsterCardsProps {
     gameTab: Game;
     search: string;
+    filter: FilterType
 }
 
-export const MonsterCards: FC<MonsterCardsProps> = ({ gameTab, search }: MonsterCardsProps) => {
+export const MonsterCards: FC<MonsterCardsProps> = ({ gameTab, search, filter }: MonsterCardsProps) => {
     const [monsters, setMonsters] = useState<Monster[]>([]);
     const userSearch = removeDashes(search).toLowerCase().trim();
 
@@ -48,5 +50,5 @@ export const MonsterCards: FC<MonsterCardsProps> = ({ gameTab, search }: Monster
             break;
     }
 
-    return <>{sortedMonsters.length > 0 ? sortedMonsters.map((monster) => <MonsterCard key={monster.name} monster={monster} game={gameTab} userSearch={userSearch} />) : <Loader />}</>;
+    return <>{sortedMonsters.length > 0 ? sortedMonsters.map((monster) => <MonsterCard key={monster.name} monster={monster} game={gameTab} userSearch={userSearch} userFilter={filter} />) : <Loader />}</>;
 };

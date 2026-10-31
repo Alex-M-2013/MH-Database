@@ -2,6 +2,7 @@ import styles from "@styles/Main/MonsterCard.module.scss";
 import { type FC } from "react";
 
 import { type Game, games, type GameHelpers } from "@utils/games";
+import { type FilterType } from "./Filter";
 import { type Monster } from "@utils/monsters";
 import { getTabSlug } from "@utils/tabs";
 import { capitalise, removeDashes } from "@utils/helper";
@@ -13,9 +14,10 @@ interface MonsterCardProps {
     monster: Monster;
     game: Game;
     userSearch?: string;
+    userFilter?: FilterType;
 }
 
-export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = "" }: MonsterCardProps) => {
+export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = "", userFilter = "none" }: MonsterCardProps) => {
     const { getIcon, getType, getBaseHealth, getWeakness } = games[game] as GameHelpers;
 
     const icon = getIcon(monster);
@@ -28,6 +30,11 @@ export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = 
     if (userSearch !== "") {
         const matchesSearch = [monster.name, type, species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
         if (!matchesSearch) return null;
+    }
+
+    if (userFilter !== "none") {
+        const matchesFilter = userFilter === elementWeakness;
+        if (!matchesFilter) return null;
     }
 
     const imagesOn: boolean = JSON.parse(localStorage.getItem("imagesOn") ?? "true");

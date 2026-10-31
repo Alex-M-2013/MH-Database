@@ -1,4 +1,4 @@
-import { type Monster, type WildsMonster, type RiseMonster, type WorldMonster, type MHGUMonster, type MH4UMonster } from "./monsters";
+import { type Element, type Monster, type WildsMonster, type RiseMonster, type WorldMonster, type MHGUMonster, type MH4UMonster } from "./monsters";
 
 export type Game = "Wilds" | "Rise/Sunbreak" | "World/Iceborne" | "MHGU" | "MH4U";
 
@@ -13,13 +13,13 @@ export interface WeaknessTableRow {
     condition?: string;
 }
 
-const getStrongestWeakness = (rows: WeaknessTableRow[]) => rows.filter((row) => ["fire", "water", "ice", "thunder", "dragon"].includes(row.name)).sort((first, second) => second.value - first.value)[0]?.name;
+const getStrongestWeakness = (rows: WeaknessTableRow[]): Element => rows.filter((row) => ["fire", "water", "thunder", "ice", "dragon"].includes(row.name)).sort((first, second) => second.value - first.value)[0]?.name as Element;
 
 export interface GameHelpers {
     getIcon: (monster: Monster) => string;
     getType: (monster: Monster) => string | undefined;
     getAilments: (monster: Monster) => AilmentTableRow[] | null
-    getWeakness: (monster: Monster) => string | undefined;
+    getWeakness: (monster: Monster) => Element | undefined;
     getWeaknesses: (monster: Monster) => WeaknessTableRow[];
     getBaseHealth: (monster: Monster) => number | null;
 }
