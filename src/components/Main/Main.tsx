@@ -17,10 +17,8 @@ export const Main: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {
     return (
         <>
             <h1 style={{ display: !isMobile ? "" : "none" }}>Monsters:</h1>
-            {/* <div style={{ display: "inline-flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}> */}
             <SearchBar search={search} setSearch={setSearch} />
-            <Filter filter={filter} setFilter={setFilter} />
-            {/* </div> */}
+            <Filter filter={filter} setFilter={setFilter} gameTab={gameTab} />
             <div className="card-container">
                 <MonsterCards gameTab={gameTab} search={search} filter={filter} />
             </div>

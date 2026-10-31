@@ -1,16 +1,20 @@
 import styles from "@styles/Main/Filter.module.scss";
 
-import { type FC } from "react";
+import { type FC, useEffect } from "react";
 import { type Element } from "@utils/monsters";
+import { type Game } from "@utils/games"
 
 export type FilterType = Element | "none";
 
 interface FilterProps {
     filter: FilterType;
     setFilter: (filter: FilterType) => void;
+    gameTab: Game
 }
 
-export const Filter: FC<FilterProps> = ({ filter, setFilter }: FilterProps) => {
+export const Filter: FC<FilterProps> = ({ filter, setFilter, gameTab }: FilterProps) => {
+    useEffect(() => setFilter("none"), [gameTab])
+    
     return (
         <div className={styles.filter}>
             <h2>Filter (Weakness): </h2>
