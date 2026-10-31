@@ -96,8 +96,8 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                     </p>
                 )}
 
-                {ailments.length > 0 &&
-                    ailments !== null &&
+                {ailments !== null &&
+                    ailments.length > 0 &&
                     (gameTab !== "World/Iceborne" ? (
                         <>
                             <p style={{ marginBottom: "0" }}>
@@ -106,7 +106,7 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                             <ul style={{ textAlign: "left" }}>
                                 {ailments.map((ailment) => (
                                     <li>
-                                        <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => event.currentTarget.style.display = "none"} /> {capitalise(ailment.name)}
+                                        <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(ailment.name)}
                                     </li>
                                 ))}
                             </ul>
@@ -120,7 +120,7 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                                 {ailments.map((ailment) => (
                                     <tr key={ailment.name}>
                                         <td>
-                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => event.currentTarget.style.display = "none"} />
+                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => (event.currentTarget.style.display = "none")} />
                                         </td>
                                         <td>{ailment.description}</td>
                                     </tr>
@@ -140,7 +140,7 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                                 .map((row) => (
                                     <tr key={row.name}>
                                         <td>
-                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(row.name))}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} onError={(event) => event.currentTarget.style.display = "none"} /> {capitalise(row.name)}
+                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(row.name))}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(row.name)}
                                         </td>
                                         <td>
                                             {Array(row.value)
