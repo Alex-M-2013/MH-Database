@@ -12,7 +12,7 @@ import { GitHubLink } from "@components/GitHubLink";
 export const Main: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {
     const isMobile = useIsMobile();
     const [search, setSearch] = useState<string>("");
-    const [filter, setFilter] = useState<FilterType>((localStorage.getItem("savedFilter") as FilterType | null) ?? "none");
+    const [filter, setFilter] = useState<FilterType>("none");
 
     return (
         <>

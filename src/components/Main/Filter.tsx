@@ -13,18 +13,18 @@ interface FilterProps {
 }
 
 export const Filter: FC<FilterProps> = ({ filter, setFilter, gameTab }: FilterProps) => {
-    useEffect(() => setFilter("none"), [gameTab]);
-
+    useEffect(() => setFilter("none"), [gameTab])
+    
     return (
         <div className={styles.filter}>
             <h2>Filter (Weakness): </h2>
 
             <select
                 value={filter}
-                onChange={(event) => {
-                    setFilter(event.currentTarget.value as FilterType);
-                    localStorage.setItem("savedFilter", event.currentTarget.value as FilterType);
-                }}
+                onChange={(event) => 
+                    setFilter(event.currentTarget.value as FilterType)
+        
+                }
             >
                 <option value="none">None</option>
                 <option value="fire">Fire</option>
