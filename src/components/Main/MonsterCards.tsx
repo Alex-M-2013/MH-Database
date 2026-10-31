@@ -1,7 +1,7 @@
 import { type FC, useState, useEffect } from "react";
 
 import { type Game } from "@utils/games";
-import { type FilterType } from "./Filter"
+import { type FilterType } from "./Filter";
 import { type Monster } from "@utils/monsters";
 import { fetchMonsters } from "@utils/fetchMonsters";
 import { removeDashes } from "@utils/helper";
@@ -13,7 +13,7 @@ import { Loader } from "@components/Loader";
 interface MonsterCardsProps {
     gameTab: Game;
     search: string;
-    filter: FilterType
+    filter: FilterType;
 }
 
 export const MonsterCards: FC<MonsterCardsProps> = ({ gameTab, search, filter }: MonsterCardsProps) => {

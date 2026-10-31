@@ -18,7 +18,7 @@ const getStrongestWeakness = (rows: WeaknessTableRow[]): Element => rows.filter(
 export interface GameHelpers {
     getIcon: (monster: Monster) => string;
     getType: (monster: Monster) => string | undefined;
-    getAilments: (monster: Monster) => AilmentTableRow[] | null
+    getAilments: (monster: Monster) => AilmentTableRow[] | null;
     getWeakness: (monster: Monster) => Element | undefined;
     getWeaknesses: (monster: Monster) => WeaknessTableRow[];
     getBaseHealth: (monster: Monster) => number | null;

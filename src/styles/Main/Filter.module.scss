@@ -5,7 +5,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
+
     margin: auto;
 
     select {
@@ -20,7 +20,7 @@
 
         font-size: inherit;
 
-         @media (max-width: $mobile-width) {
+        @media (max-width: $mobile-width) {
             margin-top: 15px;
             width: 90%;
         }
