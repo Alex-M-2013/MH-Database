@@ -32,7 +32,7 @@ export interface WildsMonster extends BaseMonster {
 
 export interface RiseMonster extends BaseMonster {
     species: string;
-     ailments: string[];
+    ailments: string[];
     weaknesses: {
         element: string;
         stars: number;
@@ -51,7 +51,7 @@ export interface WorldMonster extends BaseMonster {
         element: string;
         stars: number;
         condition?: string;
-    }[]
+    }[];
 }
 
 export interface MHGUMonster extends BaseMonster {
