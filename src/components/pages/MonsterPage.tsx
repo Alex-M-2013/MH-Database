@@ -104,11 +104,15 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                                 <strong>Ailments</strong>
                             </p>
                             <ul style={{ textAlign: "left" }}>
-                                {ailments.map((ailment) => (
-                                    <li>
-                                        <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(ailment.name)}
-                                    </li>
-                                ))}
+                                {ailments.map((ailment) => {
+                                    if (ailment.name.toLowerCase() === "else") return null;
+
+                                    return (
+                                        <li key={ailment.name}>
+                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(ailment.name)}
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </>
                     ) : (
@@ -117,14 +121,18 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                                 <strong>Ailments</strong>
                             </caption>
                             <tbody>
-                                {ailments.map((ailment) => (
-                                    <tr key={ailment.name}>
-                                        <td>
-                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => (event.currentTarget.style.display = "none")} />
-                                        </td>
-                                        <td>{ailment.description}</td>
-                                    </tr>
-                                ))}
+                                {ailments.map((ailment) => {
+                                    if (ailment.name.toLowerCase() === "else") return null;
+
+                                    return (
+                                        <tr key={ailment.name}>
+                                            <td>
+                                                <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => (event.currentTarget.style.display = "none")} />
+                                            </td>
+                                            <td>{ailment.description}</td>
+                                        </tr>
+                                    );
+                                })}
                             </tbody>
                         </table>
                     ))}
