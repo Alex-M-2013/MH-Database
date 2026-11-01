@@ -32,26 +32,26 @@ export interface WildsMonster extends BaseMonster {
 
 export interface RiseMonster extends BaseMonster {
     species: string;
+     ailments: string[];
     weaknesses: {
         element: string;
         stars: number;
     }[];
-    ailments: string[];
 }
 
 export interface WorldMonster extends BaseMonster {
     type: "large" | "small";
     species: string;
     description: string;
-    weaknesses: {
-        element: string;
-        stars: number;
-        condition?: string;
-    }[];
     ailments: {
         name: string;
         description: string;
     }[];
+    weaknesses: {
+        element: string;
+        stars: number;
+        condition?: string;
+    }[]
 }
 
 export interface MHGUMonster extends BaseMonster {
