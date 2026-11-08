@@ -1,3 +1,4 @@
+// run with node from project root
 import fs from "node:fs";
 
 const start = performance.now()
