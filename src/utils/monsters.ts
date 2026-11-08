@@ -3,7 +3,7 @@ interface BaseMonster {
     name: string;
     weaknesses: {
         name: string;
-        value: number
+        value: number;
         condition?: string;
     }[];
 }

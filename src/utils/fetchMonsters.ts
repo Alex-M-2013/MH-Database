@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { type Monster } from "./monsters";
 import { type Game } from "./games";
-import { getTabSlug } from "./tabs"
+import { getTabSlug } from "./tabs";
 
 const showErrorToast = () =>
     toast("Could not fetch monster data. See console (F12) for more details.", {
