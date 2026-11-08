@@ -1,6 +1,11 @@
 interface BaseMonster {
     id: number;
     name: string;
+    weaknesses: {
+        name: string;
+        value: number
+        condition?: string;
+    }[];
 }
 
 export interface OptionalFields {
@@ -14,104 +19,42 @@ export interface OptionalFields {
 export type Element = "fire" | "water" | "thunder" | "ice" | "dragon";
 
 export interface WildsMonster extends BaseMonster {
-    kind: "large";
+    type: "large";
     species: string;
     description: string;
     features: string;
     tips: string;
     baseHealth: number;
-    weaknesses: {
-        element?: Element;
-        status?: string;
-        effect?: string;
-        kind: "element" | "status" | "effect";
-        level: number;
-        condition?: string;
-    }[];
 }
 
 export interface RiseMonster extends BaseMonster {
+    type: "large";
     species: string;
     ailments: string[];
-    weaknesses: {
-        element: string;
-        stars: number;
-    }[];
 }
 
 export interface WorldMonster extends BaseMonster {
-    type: "large" | "small";
+    type: "large";
     species: string;
     description: string;
     ailments: {
         name: string;
         description: string;
     }[];
-    weaknesses: {
-        element: string;
-        stars: number;
-        condition?: string;
-    }[];
 }
 
 export interface MHGUMonster extends BaseMonster {
-    type: "large" | "small" | "deviant";
+    type: "large" | "deviant";
     base_hp: number;
     icon_name: string;
     ailments: string[];
-    weaknesses: {
-        state: string;
-        elements: {
-            fire: number;
-            water: number;
-            thunder: number;
-            ice: number;
-            dragon: number;
-        };
-        status: {
-            poison: number;
-            paralysis: number;
-            sleep: number;
-        };
-        items: {
-            pitfall_trap: number;
-            shock_trap: number;
-            flash_bomb: number;
-            sonic_bomb: number;
-            dung_bomb: number;
-            meat: number;
-        };
-    }[];
 }
 
 export interface MH4UMonster extends BaseMonster {
-    type: "large" | "small";
+    type: "large";
     signature_move: string;
     icon_name: string;
     ailments: string[];
-    weaknesses: {
-        state: string;
-        elements: {
-            fire: number;
-            water: number;
-            thunder: number;
-            ice: number;
-            dragon: number;
-        };
-        status: {
-            poison: number;
-            paralysis: number;
-            sleep: number;
-        };
-        items: {
-            pitfall_trap: number;
-            shock_trap: number;
-            flash_bomb: number;
-            sonic_bomb: number;
-            dung_bomb: number;
-            meat: number;
-        };
-    }[];
 }
 
 export type Monster = WildsMonster | RiseMonster | WorldMonster | MHGUMonster | MH4UMonster;
