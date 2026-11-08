@@ -31,7 +31,7 @@ export const games = {
         getType: (monster: WildsMonster) => monster.type,
         getAilments: () => null,
         getWeakness: (monster: WildsMonster) => getStrongestWeakness(games.Wilds.getWeaknesses(monster)),
-        getWeaknesses: (monster: WildsMonster): WeaknessTableRow[] => monster.weaknesses.filter(w => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value, condition: w.condition })),
+        getWeaknesses: (monster: WildsMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value, condition: w.condition })),
         getBaseHealth: (monster: WildsMonster) => monster.baseHealth,
     },
     "Rise/Sunbreak": {
@@ -39,7 +39,7 @@ export const games = {
         getType: (monster: RiseMonster) => monster.type,
         getAilments: (monster: RiseMonster): AilmentTableRow[] => monster.ailments.map((ailment) => ({ name: ailment })),
         getWeakness: (monster: RiseMonster) => getStrongestWeakness(games["Rise/Sunbreak"].getWeaknesses(monster)),
-        getWeaknesses: (monster: RiseMonster): WeaknessTableRow[] => monster.weaknesses.filter(w => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value })),
+        getWeaknesses: (monster: RiseMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value })),
         getBaseHealth: () => null,
     },
     "World/Iceborne": {
@@ -47,7 +47,7 @@ export const games = {
         getType: (monster: WorldMonster) => monster.type,
         getAilments: (monster: WorldMonster): AilmentTableRow[] => monster.ailments.map((ailment) => ({ name: ailment.name, description: ailment.description })),
         getWeakness: (monster: WorldMonster) => getStrongestWeakness(games["World/Iceborne"].getWeaknesses(monster)),
-        getWeaknesses: (monster: WorldMonster): WeaknessTableRow[] => monster.weaknesses.filter(w => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value, condition: w.condition })),
+        getWeaknesses: (monster: WorldMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value, condition: w.condition })),
         getBaseHealth: () => null,
     },
     MHGU: {
@@ -55,7 +55,7 @@ export const games = {
         getType: (monster: MHGUMonster) => monster.type,
         getAilments: (monster: MHGUMonster): AilmentTableRow[] => monster.ailments.map((ailment) => ({ name: ailment })),
         getWeakness: (monster: MHGUMonster) => getStrongestWeakness(games.MHGU.getWeaknesses(monster)),
-        getWeaknesses: (monster: MHGUMonster): WeaknessTableRow[] => monster.weaknesses.filter(w => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value })),
+        getWeaknesses: (monster: MHGUMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value })),
         getBaseHealth: (monster: MHGUMonster) => monster.base_hp,
     },
     MH4U: {
@@ -63,7 +63,7 @@ export const games = {
         getType: (monster: MH4UMonster) => monster.type,
         getAilments: (monster: MH4UMonster): AilmentTableRow[] => monster.ailments.map((ailment) => ({ name: ailment })),
         getWeakness: (monster: MH4UMonster) => getStrongestWeakness(games.MH4U.getWeaknesses(monster)),
-        getWeaknesses: (monster: MH4UMonster): WeaknessTableRow[] => monster.weaknesses.filter(w => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value })),
+        getWeaknesses: (monster: MH4UMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value })),
         getBaseHealth: () => null,
     },
 };

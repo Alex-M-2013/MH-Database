@@ -3,8 +3,8 @@ import fs from "node:fs";
 
 const start = performance.now();
 
-const file = fs.readFileSync("originals/rise_monster_db.json")
-const data = JSON.parse(file)
+const file = fs.readFileSync("originals/rise_monster_db.json");
+const data = JSON.parse(file);
 
 // Claude additions
 const additions = [
@@ -166,7 +166,7 @@ const monsters = [...data, ...additions].map((m) => ({
     name: m.name,
     type: "large",
     species: m.species,
-    ailments: m.ailments.filter(a => a !== "else"),
+    ailments: m.ailments.filter((a) => a !== "else"),
     weaknesses: m.weaknesses
         .filter((w) => w.stars > 0)
         .map((w) => ({
@@ -174,7 +174,6 @@ const monsters = [...data, ...additions].map((m) => ({
             value: w.stars,
         })),
 }));
-
 
 fs.writeFileSync("public/data/rise_monsters.json", JSON.stringify(monsters));
 
