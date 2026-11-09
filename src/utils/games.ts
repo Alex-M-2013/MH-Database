@@ -21,6 +21,8 @@ export const games = {
         getIcon: (monster: WildsMonster) => monster.name,
         getType: (monster: WildsMonster) => monster.type,
         getAilments: () => [],
+        getWeakness: (monster: WildsMonster) => getStrongestWeakness(games.Wilds.getWeaknesses(monster)),
+        getWeaknesses: (monster: WildsMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value, condition: w.condition })).sort((first, second) => second.value - first.value),
         getBaseHealth: (monster: WildsMonster) => monster.baseHealth,
     },
     "Rise/Sunbreak": {
@@ -33,18 +35,24 @@ export const games = {
         getIcon: (monster: WorldMonster) => monster.name,
         getType: (monster: WorldMonster) => monster.type,
         getAilments: (monster: WorldMonster): Ailment[] => monster.ailments.map((ailment) => ({ name: ailment.name, description: ailment.description })),
+        getWeakness: (monster: WorldMonster) => getStrongestWeakness(games["World/Iceborne"].getWeaknesses(monster)),
+        getWeaknesses: (monster: WorldMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value, condition: w.condition })).sort((first, second) => second.value - first.value),
         getBaseHealth: () => null,
     },
     MHGU: {
         getIcon: (monster: MHGUMonster) => monster.icon_name,
         getType: (monster: MHGUMonster) => monster.type,
         getAilments: (monster: MHGUMonster): Ailment[] => monster.ailments.map((ailment) => ({ name: ailment })),
+        getWeakness: (monster: MHGUMonster) => getStrongestWeakness(games.MHGU.getWeaknesses(monster)),
+        getWeaknesses: (monster: MHGUMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value })).sort((first, second) => second.value - first.value),
         getBaseHealth: (monster: MHGUMonster) => monster.base_hp,
     },
     MH4U: {
         getIcon: (monster: MH4UMonster) => monster.icon_name,
         getType: (monster: MH4UMonster) => monster.type,
         getAilments: (monster: MH4UMonster): Ailment[] => monster.ailments.map((ailment) => ({ name: ailment })),
+        getWeakness: (monster: MH4UMonster) => getStrongestWeakness(games.MH4U.getWeaknesses(monster)),
+        getWeaknesses: (monster: MH4UMonster): WeaknessTableRow[] => monster.weaknesses.filter((w) => weaknesses.includes(w.name)).map((w): WeaknessTableRow => ({ name: w.name, value: w.value })).sort((first, second) => second.value - first.value),
         getBaseHealth: () => null,
     },
 };
