@@ -47,13 +47,13 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
 
     const { description, features, tips, species, signature_move } = monster as OptionalFields;
 
-    const getWeaknessIcon = (name: string) => (name.endsWith("blight") ? name.slice(0, -6) : name);
+    const getElementIcon = (name: string) => (name.endsWith("blight") ? name.slice(0, -6) : name);
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
             <div className={styles.card}>
                 <div className={styles.icon}>
-                    <img style={{ display: imagesOn ? "" : "none" }} src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon.split(".")[0]}.webp`} alt={monster.name} />
+                    <img style={{ display: imagesOn ? "" : "none" }} src={`/assets/icons/Monsters/${gameTab.split("/")[0]}/${icon}.webp`} alt={monster.name} />
                 </div>
                 <h1>{monster.name}</h1>
 
@@ -96,46 +96,20 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                     </p>
                 )}
 
-                {ailments !== null &&
-                    ailments.length > 0 &&
-                    (gameTab !== "World/Iceborne" ? (
-                        <>
-                            <p style={{ marginBottom: "0" }}>
-                                <strong>Ailments</strong>
-                            </p>
-                            <ul style={{ textAlign: "left" }}>
-                                {ailments.map((ailment) => {
-                                    if (ailment.name.toLowerCase() === "else") return null;
-
-                                    return (
-                                        <li key={ailment.name}>
-                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(ailment.name)}
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </>
-                    ) : (
-                        <table className={styles.ailments}>
-                            <caption>
-                                <strong>Ailments</strong>
-                            </caption>
-                            <tbody>
-                                {ailments.map((ailment) => {
-                                    if (ailment.name.toLowerCase() === "else") return null;
-
-                                    return (
-                                        <tr key={ailment.name}>
-                                            <td>
-                                                <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => (event.currentTarget.style.display = "none")} />
-                                            </td>
-                                            <td>{ailment.description}</td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    ))}
+                {ailments.length > 0 && (
+                    <>
+                        <p style={{ marginBottom: "0" }}>
+                            <strong>Ailments</strong>
+                        </p>
+                        <ul style={{ textAlign: "left" }}>
+                            {ailments.map((ailment) => (
+                                <li key={ailment.name}>
+                                    <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getElementIcon(ailment.name))}.png`} alt={capitalise(ailment.name)} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(ailment.name)} {ailment.description && `- ${ailment.description}`}
+                                </li>
+                            ))}
+                        </ul>
+                    </>
+                )}
 
                 {weaknesses.length > 0 && (
                     <table className={styles.weaknesses}>
@@ -143,21 +117,19 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                             <strong>Weaknesses</strong>
                         </caption>
                         <tbody>
-                            {weaknesses
-                                .sort((first, second) => second.value - first.value)
-                                .map((row) => (
-                                    <tr key={row.name}>
-                                        <td>
-                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getWeaknessIcon(row.name))}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(row.name)}
-                                        </td>
-                                        <td>
-                                            {Array(row.value)
-                                                .fill(null)
-                                                .map(() => "★")}
-                                        </td>
-                                        {row.condition && <td>{row.condition}</td>}
-                                    </tr>
-                                ))}
+                            {weaknesses.map((row) => (
+                                <tr key={row.name}>
+                                    <td>
+                                        <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getElementIcon(row.name))}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(row.name)}
+                                    </td>
+                                    <td>
+                                        {Array(row.value)
+                                            .fill(null)
+                                            .map(() => "★")}
+                                    </td>
+                                    {row.condition && <td>{row.condition}</td>}
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 )}

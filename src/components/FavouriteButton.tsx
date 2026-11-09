@@ -18,7 +18,7 @@ export const FavouriteButton: FC<FavouriteButtonProps> = ({ monster, game }: Fav
         event.preventDefault();
 
         const current: Favourite[] = JSON.parse(localStorage.getItem("favourites") ?? "[]");
-        const exists: boolean = current.some(([id, savedGame]: Favourite) => id === monster.id && savedGame === game);
+        const exists = current.some(([id, savedGame]: Favourite) => id === monster.id && savedGame === game);
 
         const updated: Favourite[] = exists ? current.filter(([id, savedGame]: Favourite) => id !== monster.id && savedGame !== game) : [...current, [monster.id, game]];
 

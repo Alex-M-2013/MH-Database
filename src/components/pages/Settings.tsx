@@ -13,7 +13,7 @@ export const Settings: FC = () => {
             observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
             return () => observer.disconnect();
         },
-        () => document.documentElement.getAttribute("data-theme") as Theme | null,
+        () => document.documentElement.getAttribute("data-theme") as Theme,
     );
 
     const [sortOrder, setSortOrder] = useState<SortOrder>(() => (localStorage.getItem("savedSortOrder") as SortOrder) ?? "default");
@@ -27,7 +27,7 @@ export const Settings: FC = () => {
                 <h2>General</h2>
                 <p>
                     <strong>Theme: </strong>
-                    <button onClick={() => document.getElementById("theme-switcher")!.click()}>{capitalise(theme ?? "")}</button>
+                    <button onClick={() => document.getElementById("theme-switcher")!.click()}>{capitalise(theme)}</button>
                 </p>
                 <p>
                     <strong>Monster Sort Order: </strong>
@@ -47,7 +47,7 @@ export const Settings: FC = () => {
                     <strong>Monster Images: </strong>
                     <button
                         onClick={() => {
-                            const nextValue: boolean = !imagesOn;
+                            const nextValue = !imagesOn;
                             setImagesOn(nextValue);
                             localStorage.setItem("imagesOn", JSON.stringify(nextValue));
                         }}

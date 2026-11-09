@@ -166,7 +166,7 @@ const monsters = [...data, ...additions].map((m) => ({
     name: m.name,
     type: "large",
     species: m.species,
-    ailments: m.ailments.filter((a) => a !== "else"),
+    ailments: m.ailments.filter((a) => a.toLowerCase() !== "else"),
     weaknesses: m.weaknesses
         .filter((w) => w.stars > 0)
         .map((w) => ({

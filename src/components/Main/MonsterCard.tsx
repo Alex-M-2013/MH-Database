@@ -42,7 +42,7 @@ export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = 
     return (
         <Link className={styles.card} key={monster.name} to={`/${getTabSlug(game)}/${monster.id}`}>
             <FavouriteButton monster={monster} game={game} />
-            <img className={styles.icon} style={{ display: imagesOn ? "" : "none" }} src={`/assets/icons/Monsters/${game.split("/")[0]}/${icon.split(".")[0]}.webp`} alt={monster.name} loading="lazy" />
+            <img className={styles.icon} style={{ display: imagesOn ? "" : "none" }} src={`/assets/icons/Monsters/${game.split("/")[0]}/${icon}.webp`} alt={monster.name} loading="lazy" />
 
             <p>
                 <strong>Name: </strong>
