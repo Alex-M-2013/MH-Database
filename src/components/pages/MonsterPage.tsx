@@ -35,13 +35,12 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
 
     if (!monster) return <Loader />;
 
-    const { getIcon, getType, getBaseHealth, getAilments, getWeaknesses } = games[gameTab] as GameHelpers;
+    const { getIcon, getType, getBaseHealth, getAilments } = games[gameTab] as GameHelpers;
 
     const icon = getIcon(monster);
     const type = getType(monster);
     const baseHealth = getBaseHealth(monster);
     const ailments = getAilments(monster);
-    const weaknesses = getWeaknesses(monster);
 
     const imagesOn: boolean = JSON.parse(localStorage.getItem("imagesOn") ?? "true");
 
@@ -111,25 +110,27 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                     </>
                 )}
 
-                {weaknesses.length > 0 && (
+                {monster.weaknesses.length > 0 && (
                     <table className={styles.weaknesses}>
                         <caption>
                             <strong>Weaknesses</strong>
                         </caption>
                         <tbody>
-                            {weaknesses.map((row) => (
-                                <tr key={row.name}>
-                                    <td>
-                                        <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getElementIcon(row.name))}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(row.name)}
-                                    </td>
-                                    <td>
-                                        {Array(row.value)
-                                            .fill(null)
-                                            .map(() => "★")}
-                                    </td>
-                                    {row.condition && <td>{row.condition}</td>}
-                                </tr>
-                            ))}
+                            {monster.weaknesses
+                                .sort((first, second) => second.value - first.value)
+                                .map((row) => (
+                                    <tr key={row.name}>
+                                        <td>
+                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getElementIcon(row.name))}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(row.name)}
+                                        </td>
+                                        <td>
+                                            {Array(row.value)
+                                                .fill(null)
+                                                .map(() => "★")}
+                                        </td>
+                                        {row.condition && <td>{row.condition}</td>}
+                                    </tr>
+                                ))}
                         </tbody>
                     </table>
                 )}

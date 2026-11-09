@@ -1,7 +1,7 @@
 import styles from "@styles/Main/MonsterCard.module.scss";
 import { type FC } from "react";
 
-import { type Game, games, type GameHelpers } from "@utils/games";
+import { type Game, games, type GameHelpers, getWeakness } from "@utils/games";
 import { type FilterType } from "./Filter";
 import { type Monster } from "@utils/monsters";
 import { getTabSlug } from "@utils/tabs";
@@ -18,11 +18,12 @@ interface MonsterCardProps {
 }
 
 export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = "", userFilter = "none" }: MonsterCardProps) => {
-    const { getIcon, getType, getBaseHealth, getWeakness } = games[game] as GameHelpers;
+    const { getIcon, getType, getBaseHealth } = games[game] as GameHelpers;
 
     const icon = getIcon(monster);
     const type = getType(monster);
     const baseHealth = getBaseHealth(monster);
+
     const elementWeakness = getWeakness(monster) ?? "No Data";
 
     const { species } = monster as { species?: string };
