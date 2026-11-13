@@ -16,7 +16,7 @@ import { BsArrowReturnLeft } from "react-icons/bs";
 
 export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {
     const { id } = useParams();
-    const [monster, setMonster] = useState<Monster | null | undefined>(null);
+    const [monster, setMonster] = useState<Monster | undefined>(undefined);
 
     useEffect(() => {
         let ignore = false;
@@ -35,10 +35,9 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
 
     if (!monster) return <Loader />;
 
-    const { getIcon, getType, getBaseHealth, getAilments } = games[gameTab] as GameHelpers;
+    const { getIcon, getBaseHealth, getAilments } = games[gameTab] as GameHelpers;
 
     const icon = getIcon(monster);
-    const type = getType(monster);
     const baseHealth = getBaseHealth(monster);
     const ailments = getAilments(monster);
 
@@ -67,12 +66,10 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
 
                 {tips && <p>{tips}</p>}
 
-                {type && (
-                    <p>
-                        <strong>Type: </strong>
-                        {capitalise(type)}
-                    </p>
-                )}
+                <p>
+                    <strong>Type: </strong>
+                    {capitalise(monster.type)}
+                </p>
 
                 {species && (
                     <p>
@@ -98,7 +95,7 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                 {ailments.length > 0 && (
                     <>
                         <p style={{ marginBottom: "0" }}>
-                            <strong>Ailments</strong>
+                            <strong>Ailments:</strong>
                         </p>
                         <ul style={{ textAlign: "left" }}>
                             {ailments.map((ailment) => (
@@ -113,22 +110,22 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                 {monster.weaknesses.length > 0 && (
                     <table className={styles.weaknesses}>
                         <caption>
-                            <strong>Weaknesses</strong>
+                            <strong>Weaknesses:</strong>
                         </caption>
                         <tbody>
                             {monster.weaknesses
                                 .sort((first, second) => second.value - first.value)
-                                .map((row) => (
-                                    <tr key={row.name}>
+                                .map((weakness) => (
+                                    <tr key={weakness.name}>
                                         <td>
-                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getElementIcon(row.name))}.png`} alt={capitalise(row.name)} style={{ display: row.name !== "noise" ? "" : "none" }} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(row.name)}
+                                            <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getElementIcon(weakness.name))}.png`} alt={capitalise(weakness.name)} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(weakness.name)}
                                         </td>
                                         <td>
-                                            {Array(row.value)
+                                            {Array(weakness.value)
                                                 .fill(null)
-                                                .map(() => "★")}
+                                                .map((): "★" => "★")}
                                         </td>
-                                        {row.condition && <td>{row.condition}</td>}
+                                        {weakness.condition && <td>{weakness.condition}</td>}
                                     </tr>
                                 ))}
                         </tbody>

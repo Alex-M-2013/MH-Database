@@ -18,10 +18,9 @@ interface MonsterCardProps {
 }
 
 export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = "", userFilter = "none" }: MonsterCardProps) => {
-    const { getIcon, getType, getBaseHealth } = games[game] as GameHelpers;
+    const { getIcon,  getBaseHealth } = games[game] as GameHelpers;
 
     const icon = getIcon(monster);
-    const type = getType(monster);
     const baseHealth = getBaseHealth(monster);
 
     const elementWeakness = getWeakness(monster) ?? "No Data";
@@ -29,7 +28,7 @@ export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = 
     const { species } = monster as { species?: string };
 
     if (userSearch !== "") {
-        const matchesSearch = [monster.name, type, species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
+        const matchesSearch = [monster.name, monster.type, species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));
         if (!matchesSearch) return null;
     }
 
@@ -52,7 +51,7 @@ export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = 
 
             <p>
                 <strong>Type: </strong>
-                {capitalise(type ?? "Large")}
+                {capitalise(monster.type)}
             </p>
 
             <p style={{ display: game !== "MHGU" && game !== "MH4U" ? "" : "none" }}>
