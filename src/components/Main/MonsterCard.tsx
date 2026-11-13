@@ -18,7 +18,7 @@ interface MonsterCardProps {
 }
 
 export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = "", userFilter = "none" }: MonsterCardProps) => {
-    const { getIcon,  getBaseHealth } = games[game] as GameHelpers;
+    const { getIcon, getBaseHealth } = games[game] as GameHelpers;
 
     const icon = getIcon(monster);
     const baseHealth = getBaseHealth(monster);
