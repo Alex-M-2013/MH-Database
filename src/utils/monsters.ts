@@ -8,17 +8,20 @@ interface BaseMonster {
     }[];
 }
 
-export interface OptionalFields {
+export interface OptionalMonsterProps {
     species?: string;
     description?: string;
     features?: string;
     tips?: string;
-    signature_move?: string;
+    signatureMove?: string;
+    baseHealth?: number;
+    ailments?: {
+        name: string;
+        description?: string;
+    }[];
 }
 
-export type Element = "fire" | "water" | "thunder" | "ice" | "dragon";
-
-export interface WildsMonster extends BaseMonster {
+interface WildsMonster extends BaseMonster {
     type: "large";
     species: string;
     description: string;
@@ -27,13 +30,15 @@ export interface WildsMonster extends BaseMonster {
     baseHealth: number;
 }
 
-export interface RiseMonster extends BaseMonster {
+interface RiseMonster extends BaseMonster {
     type: "large";
     species: string;
-    ailments: string[];
+    ailments: {
+        name: string;
+    }[];
 }
 
-export interface WorldMonster extends BaseMonster {
+interface WorldMonster extends BaseMonster {
     type: "large";
     species: string;
     description: string;
@@ -43,18 +48,22 @@ export interface WorldMonster extends BaseMonster {
     }[];
 }
 
-export interface MHGUMonster extends BaseMonster {
+interface MHGUMonster extends BaseMonster {
     type: "large" | "deviant";
-    base_hp: number;
-    icon_name: string;
-    ailments: string[];
+    iconName: string;
+    baseHealth: number;
+    ailments: {
+        name: string;
+    }[];
 }
 
-export interface MH4UMonster extends BaseMonster {
+interface MH4UMonster extends BaseMonster {
     type: "large";
-    signature_move: string;
-    icon_name: string;
-    ailments: string[];
+    iconName: string;
+    signatureMove: string;
+    ailments: {
+        name: string;
+    }[];
 }
 
-export type Monster = WildsMonster | RiseMonster | WorldMonster | MHGUMonster | MH4UMonster;
+export type Monster = Readonly<WildsMonster | RiseMonster | WorldMonster | MHGUMonster | MH4UMonster>;

@@ -1,13 +1,12 @@
 import { type FC } from "react";
-import { type Game, type GameHelpers } from "@utils/games";
-import { type Monster, type OptionalFields } from "@utils/monsters";
+import { type Game, getIcon } from "@utils/games";
+import { type Monster, type OptionalMonsterProps } from "@utils/monsters";
 
 import styles from "@styles/pages/MonsterPage.module.scss";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 
 import { fetchMonsters } from "@utils/fetchMonsters";
-import { games } from "@utils/games";
 import { getTabSlug } from "@utils/tabs";
 import { capitalise } from "@utils/helper";
 
@@ -23,10 +22,10 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
 
         const fetchMonster = async () => {
             const allMonsters = await fetchMonsters(gameTab);
-            const monster = allMonsters.find((monster) => String(monster.id) === id);
-            if (!ignore) setMonster(monster);
+            const monster = allMonsters.find((monster) => monster.id.toString() === id);
+            setMonster(monster);
         };
-        fetchMonster();
+        if (!ignore) fetchMonster();
 
         return () => {
             ignore = true;
@@ -35,15 +34,10 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
 
     if (!monster) return <Loader />;
 
-    const { getIcon, getBaseHealth, getAilments } = games[gameTab] as GameHelpers;
-
-    const icon = getIcon(monster);
-    const baseHealth = getBaseHealth(monster);
-    const ailments = getAilments(monster);
-
+    const icon = getIcon(monster, gameTab);
     const imagesOn: boolean = JSON.parse(localStorage.getItem("imagesOn") ?? "true");
 
-    const { description, features, tips, species, signature_move } = monster as OptionalFields;
+    const { description, features, tips, species, signatureMove, baseHealth, ailments } = monster as OptionalMonsterProps;
 
     const getElementIcon = (name: string) => (name.endsWith("blight") ? name.slice(0, -6) : name);
 
@@ -78,10 +72,10 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                     </p>
                 )}
 
-                {signature_move && (
+                {signatureMove && (
                     <p>
-                        {signature_move.split(",").length === 1 ? <strong>Signature Move: </strong> : <strong>Signature Moves: </strong>}
-                        {capitalise(signature_move)}
+                        {signatureMove.split(",").length === 1 ? <strong>Signature Move: </strong> : <strong>Signature Moves: </strong>}
+                        {capitalise(signatureMove)}
                     </p>
                 )}
 
@@ -92,7 +86,7 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                     </p>
                 )}
 
-                {ailments.length > 0 && (
+                {ailments && (
                     <>
                         <p style={{ marginBottom: "0" }}>
                             <strong>Ailments:</strong>

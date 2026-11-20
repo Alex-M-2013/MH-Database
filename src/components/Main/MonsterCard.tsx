@@ -1,9 +1,9 @@
 import styles from "@styles/Main/MonsterCard.module.scss";
 import { type FC } from "react";
 
-import { type Game, games, type GameHelpers, getWeakness } from "@utils/games";
+import { type Game, getIcon ,getWeakness } from "@utils/games";
 import { type FilterType } from "./Filter";
-import { type Monster } from "@utils/monsters";
+import { type Monster, type OptionalMonsterProps } from "@utils/monsters";
 import { getTabSlug } from "@utils/tabs";
 import { capitalise, removeDashes } from "@utils/helper";
 
@@ -18,14 +18,10 @@ interface MonsterCardProps {
 }
 
 export const MonsterCard: FC<MonsterCardProps> = ({ monster, game, userSearch = "", userFilter = "none" }: MonsterCardProps) => {
-    const { getIcon,  getBaseHealth } = games[game] as GameHelpers;
-
-    const icon = getIcon(monster);
-    const baseHealth = getBaseHealth(monster);
-
+    const icon = getIcon(monster, game)
     const elementWeakness = getWeakness(monster) ?? "No Data";
 
-    const { species } = monster as { species?: string };
+    const { species, baseHealth } = monster as OptionalMonsterProps;
 
     if (userSearch !== "") {
         const matchesSearch = [monster.name, monster.type, species].filter(Boolean).some((field) => removeDashes(field).toLowerCase().includes(userSearch));

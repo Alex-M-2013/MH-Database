@@ -18,10 +18,10 @@ const monsters = query("SELECT * FROM monsters ORDER BY _id")
         id: m._id,
         name: m.name,
         type: types[m.class],
-        signature_move: m.signature_move,
-        icon_name: m.icon_name.slice(0, -4),
+        signatureMove: m.signature_move,
+        iconName: m.icon_name.slice(0, -4),
         // eslint-disable-next-line no-unused-vars
-        ailments: query("SELECT * FROM monster_ailment WHERE monster_id = ? ORDER BY _id", m._id).map(({ _id, monster_id, ailment }) => ailment),
+        ailments: query("SELECT * FROM monster_ailment WHERE monster_id = ? ORDER BY _id", m._id).map(({ _id, monster_id, ailment }) => ({name: ailment})),
         weaknesses: Object.entries(query("SELECT * FROM monster_weakness WHERE monster_id = ? ORDER BY _id", m._id)[0])
             .filter(([name, value]) => weaknesses.includes(name) && value > 0)
             .map(([name, value]) => ({ name: name, value: value })),

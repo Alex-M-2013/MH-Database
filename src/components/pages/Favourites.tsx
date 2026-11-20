@@ -2,6 +2,7 @@ import { type Game } from "@utils/games";
 import { type FC, useState, useEffect } from "react";
 import { fetchMonsters } from "@utils/fetchMonsters";
 import { type Monster } from "@utils/monsters";
+import { type SortOrder } from "./Settings";
 
 import { MonsterCard } from "@components/Main/MonsterCard";
 import { GitHubLink } from "@components/GitHubLink";
@@ -29,16 +30,16 @@ export const Favourites: FC = () => {
                 if (monster) loadedMonsters.push({ monster, game });
             }
 
-            if (!ignore) setMonsters(loadedMonsters);
+            setMonsters(loadedMonsters);
         };
-        loadFavourites();
+        if (!ignore) loadFavourites();
 
         return () => {
             ignore = true;
         };
     }, []);
 
-    const sortOrder = localStorage.getItem("savedSortOrder") ?? "default";
+    const sortOrder = (localStorage.getItem("savedSortOrder") as SortOrder) ?? "default";
     const sortedMonsters = [...monsters];
 
     switch (sortOrder) {
