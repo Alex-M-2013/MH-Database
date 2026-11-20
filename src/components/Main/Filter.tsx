@@ -1,8 +1,7 @@
 import styles from "@styles/Main/Filter.module.scss";
 
 import { type FC, useEffect } from "react";
-import { type Element } from "@utils/monsters";
-import { type Game } from "@utils/games";
+import { type Element, type Game } from "@utils/games";
 
 export type FilterType = Element | "none";
 
