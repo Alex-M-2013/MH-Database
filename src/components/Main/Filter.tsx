@@ -2,6 +2,7 @@ import styles from "@styles/Main/Filter.module.scss";
 
 import { type FC, useEffect } from "react";
 import { type Element, type Game } from "@utils/games";
+import { capitalise } from "@utils/helper";
 
 export type FilterType = Element | "none";
 
@@ -11,6 +12,8 @@ interface FilterProps {
     gameTab: Game;
 }
 
+const filters: FilterType[] = ["none", "fire", "water", "thunder", "ice", "dragon"];
+
 export const Filter: FC<FilterProps> = ({ filter, setFilter, gameTab }: FilterProps) => {
     useEffect(() => setFilter("none"), [gameTab]);
 
@@ -19,12 +22,7 @@ export const Filter: FC<FilterProps> = ({ filter, setFilter, gameTab }: FilterPr
             <h2>Filter (Weakness): </h2>
 
             <select value={filter} onChange={(event) => setFilter(event.currentTarget.value as FilterType)}>
-                <option value="none">None</option>
-                <option value="fire">Fire</option>
-                <option value="water">Water</option>
-                <option value="thunder">Thunder</option>
-                <option value="ice">Ice</option>
-                <option value="dragon">Dragon</option>
+                {filters.map((filter) => <option value={filter}>{capitalise(filter)}</option>)}
             </select>
         </div>
     );
