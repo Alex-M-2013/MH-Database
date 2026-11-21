@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import breakpoints from "./breakpoints.module.scss";
+import mobile from "./mobile.module.scss";
 
-const mobileWidth = Number.parseInt(breakpoints.mobileWidth);
+const mobileWidth = Number.parseInt(mobile.mobileWidth);
 
 export const useIsMobile = (): boolean => {
     const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
