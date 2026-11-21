@@ -22,7 +22,11 @@ export const Filter: FC<FilterProps> = ({ filter, setFilter, gameTab }: FilterPr
             <h2>Filter (Weakness): </h2>
 
             <select value={filter} onChange={(event) => setFilter(event.currentTarget.value as FilterType)}>
-                {filters.map((filter) => <option key={filter} value={filter}>{capitalise(filter)}</option>)}
+                {filters.map((filter) => (
+                    <option key={filter} value={filter}>
+                        {capitalise(filter)}
+                    </option>
+                ))}
             </select>
         </div>
     );
