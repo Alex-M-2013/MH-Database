@@ -24,44 +24,6 @@
 
     box-shadow: 8px 16px rgba(0, 0, 0, 0.1);
 
-    button {
-        @media (min-width: $mobile-width) {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-        }
-
-        background-color: transparent;
-
-        margin: 1rem;
-        border: none;
-        border-radius: 1rem;
-
-        width: 4.5rem;
-        height: 4.5rem;
-
-        @media (max-width: $mobile-width) {
-            width: 3.5rem;
-            height: 3.5rem;
-
-            display: flex;
-        }
-
-        transition:
-            box-shadow 0.3s ease,
-            transform 0.3s ease;
-
-        &:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-
-            @media (prefers-reduced-motion: reduce) or (hover: none) {
-                transform: none;
-                box-shadow: none;
-            }
-        }
-    }
-
     h1,
     p {
         margin: 1rem;
@@ -124,5 +86,45 @@
     td,
     tr {
         border: 2px solid grey;
+    }
+}
+
+.back {
+    $hover: color-mix(in srgb, var(--body-bg) 90%, black 10%);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+
+    position: absolute;
+    bottom: 0;
+
+    background-color: transparent;
+    color: var(--font-colour);
+
+    gap: 0.5rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 1rem;
+
+    width: 96%;
+    height: 4.5rem;
+    font-size: 1.7rem;
+
+    transition: background-color 0.2s ease;    
+
+    &:hover {
+        background-color: $hover;
+
+        @media (hover: none) {
+            background-color: var(--body-bg);
+        }
+    }
+
+    &:active {
+        background-color: $hover;
+        transform: none;
     }
 }

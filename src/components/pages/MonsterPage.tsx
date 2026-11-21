@@ -11,7 +11,7 @@ import { getTabSlug } from "@utils/tabs";
 import { capitalise } from "@utils/helper";
 
 import { Loader } from "@components/Loader";
-import { BsArrowReturnLeft } from "react-icons/bs";
+import { BsArrowLeft } from "react-icons/bs";
 
 export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {
     const { id } = useParams();
@@ -108,7 +108,7 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                         </caption>
                         <tbody>
                             {monster.weaknesses
-                                .sort((first, second) => second.value - first.value)
+                                .toSorted((first, second) => second.value - first.value)
                                 .map((weakness) => (
                                     <tr key={weakness.name}>
                                         <td>
@@ -136,8 +136,8 @@ const BackButton: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game }) => {
     const navigate = useNavigate();
 
     return (
-        <button onClick={() => navigate(`/${getTabSlug(gameTab)}`)}>
-            <BsArrowReturnLeft className="icon" />
+        <button onClick={() => navigate(`/${getTabSlug(gameTab)}`)} className={styles.back}>
+            <BsArrowLeft className="icon" style={{ height: "1.8em", width: "auto" }} /> Back
         </button>
     );
 };
