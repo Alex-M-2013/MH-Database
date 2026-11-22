@@ -86,7 +86,7 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                     </p>
                 )}
 
-                {ailments && (
+                {ailments && ailments.length > 0 && (
                     <>
                         <p style={{ marginBottom: "0" }}>
                             <strong>Ailments:</strong>
@@ -102,11 +102,11 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                 )}
 
                 {monster.weaknesses.length > 0 && (
-                    <table className={styles.weaknesses}>
-                        <caption>
+                    <>
+                        <p>
                             <strong>Weaknesses:</strong>
-                        </caption>
-                        <tbody>
+                        </p>
+                        <table className={styles.weaknesses}>
                             {monster.weaknesses
                                 .toSorted((first, second) => second.value - first.value)
                                 .map((weakness) => (
@@ -122,8 +122,8 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                                         {weakness.condition && <td>{weakness.condition}</td>}
                                     </tr>
                                 ))}
-                        </tbody>
-                    </table>
+                        </table>
+                    </>
                 )}
 
                 <BackButton gameTab={gameTab} />
