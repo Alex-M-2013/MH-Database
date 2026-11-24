@@ -30,9 +30,9 @@ export const Favourites: FC = () => {
                 if (monster) loadedMonsters.push({ monster, game });
             }
 
-            setMonsters(loadedMonsters);
+            if (!ignore) setMonsters(loadedMonsters);
         };
-        if (!ignore) loadFavourites();
+        loadFavourites();
 
         return () => {
             ignore = true;
@@ -58,7 +58,7 @@ export const Favourites: FC = () => {
     return (
         <>
             <h1>Favourites</h1>
-            <div className="card-container">{sortedMonsters.length > 0 ? sortedMonsters.map(({ monster, game }: FavouriteMonster) => <MonsterCard key={monster.name} monster={monster} game={game} />) : <p style={{ fontSize: "1.3rem" }}>Favourites are empty! Try adding a favourite by clicking the star in the top right of a monster card.</p>}</div>
+            <div className="card-container">{sortedMonsters.length > 0 ? sortedMonsters.map(({ monster, game }: FavouriteMonster) => <MonsterCard key={`${game}-${monster.id}`} monster={monster} game={game} />) : <p style={{ fontSize: "1.3rem" }}>Favourites are empty! Try adding a favourite by clicking the star in the top right of a monster card.</p>}</div>
             <GitHubLink />
         </>
     );

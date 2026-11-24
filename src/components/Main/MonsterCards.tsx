@@ -25,9 +25,9 @@ export const MonsterCards: FC<MonsterCardsProps> = ({ gameTab, search, filter }:
 
         const getMonsters = async () => {
             const data: Monster[] = await fetchMonsters(gameTab);
-            setMonsters(data);
+            if (!ignore) setMonsters(data);
         };
-        if (!ignore) getMonsters();
+        getMonsters();
 
         return () => {
             ignore = true;

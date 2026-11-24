@@ -31,7 +31,7 @@ export const App: FC = () => (
             {gameTabs.map((tab: Game) => (
                 <Fragment key={tab}>
                     <Route path={`/${getTabSlug(tab)}`} element={<Main key={tab} gameTab={tab} />} />
-                    <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage gameTab={tab} />} />
+                    <Route path={`/${getTabSlug(tab)}/:id`} element={<MonsterPage key={tab} gameTab={tab} />} />
                 </Fragment>
             ))}
             {otherTabs.map((tab: OtherTab) => {

@@ -59,15 +59,29 @@ export const Settings: FC = () => {
                 <h2>localStorage</h2>
                 <p>
                     <strong>Reset localStorage:</strong>
-                    <button onClick={() => localStorage.clear()}>Reset</button>
+                    <button
+                        onClick={() => {
+                            if (confirm("Reset localStorage?")) {
+                                localStorage.clear();
+                                window.location.reload();
+                            }
+                        }}
+                    >
+                        Reset
+                    </button>
                 </p>
                 <p>
                     <strong>Import localStorage: </strong>
                     <button
                         onClick={() => {
-                            const input: string | null = prompt("Paste data here: ");
+                            const input = prompt("Paste data here: ");
+                            if (!input) return
+
                             try {
-                                Object.assign(localStorage, JSON.parse(input ?? ""));
+                                if (typeof JSON.parse(input) !== "object" || JSON.parse(input) === null) {
+                                    throw new Error("Not an object");
+                                }
+                                Object.assign(localStorage, JSON.parse(input));
                                 alert("Successfully imported data. The page will now reload.");
                                 window.location.reload();
                             } catch {

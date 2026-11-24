@@ -22,6 +22,7 @@ const showErrorToast = () =>
 export const fetchMonsters = async (game: Game): Promise<Monster[]> => {
     try {
         const response = await fetch(`/data/${getTabSlug(game).toLowerCase()}_monsters.json`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data: Monster[] = await response.json();
         return data;
     } catch (error) {

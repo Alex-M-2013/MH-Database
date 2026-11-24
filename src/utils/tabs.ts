@@ -16,7 +16,7 @@ export const getTabDisplayMobile = (tab: string) => {
             return tab.toUpperCase();
 
         default:
-            capitalise(getTabSlug(tab));
+            return capitalise(getTabSlug(tab));
     }
 };
 

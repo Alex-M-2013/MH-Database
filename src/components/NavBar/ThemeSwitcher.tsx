@@ -10,12 +10,11 @@ export const ThemeSwitcher: FC = () => {
     const initialTheme: Theme = (localStorage.getItem("savedTheme") as Theme | null) ?? (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
     const [currentTheme, setCurrentTheme] = useState<Theme>(initialTheme);
 
-    useEffect(() => document.documentElement.setAttribute("data-theme", currentTheme), []);
+    useEffect(() => document.documentElement.setAttribute("data-theme", currentTheme), [currentTheme]);
 
     function switchTheme() {
         const nextTheme: Theme = currentTheme === "light" ? "dark" : "light";
         setCurrentTheme(nextTheme);
-        document.documentElement.setAttribute("data-theme", nextTheme);
         localStorage.setItem("savedTheme", nextTheme);
     }
 

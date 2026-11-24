@@ -6,7 +6,7 @@ import sharp from "sharp";
 
 const MAX_SIZE = 480;
 
-const src = "orginals/Monsters";
+const src = "originals/Monsters";
 const dest = "public/assets/icons/Monsters";
 
 const files = (await readdir(src, { recursive: true })).filter((file) => file.endsWith(".png"));

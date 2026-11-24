@@ -23,9 +23,9 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
         const fetchMonster = async () => {
             const allMonsters = await fetchMonsters(gameTab);
             const monster = allMonsters.find((monster) => monster.id.toString() === id);
-            setMonster(monster);
+            if (!ignore) setMonster(monster);
         };
-        if (!ignore) fetchMonster();
+        fetchMonster();
 
         return () => {
             ignore = true;
@@ -39,7 +39,7 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
 
     const { description, features, tips, species, signatureMove, baseHealth, ailments } = monster as OptionalMonsterProps;
 
-    const getElementIcon = (name: string) => (name.endsWith("blight") ? name.slice(0, -6) : name);
+    const getElementIcon = (name: string) => name.replace("Severe ", "").replace("blight", "");
 
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -109,8 +109,8 @@ export const MonsterPage: FC<{ gameTab: Game }> = ({ gameTab }: { gameTab: Game 
                         <table className={styles.weaknesses}>
                             {monster.weaknesses
                                 .toSorted((first, second) => second.value - first.value)
-                                .map((weakness) => (
-                                    <tr key={weakness.name}>
+                                .map((weakness, i) => (
+                                    <tr key={`${weakness.name}-${i + 1}`}>
                                         <td>
                                             <img className={styles.element} src={`/assets/icons/Elements/${capitalise(getElementIcon(weakness.name))}.png`} alt={capitalise(weakness.name)} onError={(event) => (event.currentTarget.style.display = "none")} /> {capitalise(weakness.name)}
                                         </td>

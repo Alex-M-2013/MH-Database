@@ -163,7 +163,7 @@ const additions = [
 
 const monsters = [...data, ...additions].map((m) => ({
     id: m.id,
-    name: m.name,
+    name: m.name !== "Pyre Rakna-kadaki" ? m.name : "Pyre Rakna-Kadaki",
     type: "large",
     species: m.species,
     ailments: m.ailments.filter((a) => a.toLowerCase() !== "else").map((a) => ({ name: a })),
