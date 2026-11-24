@@ -13,27 +13,24 @@ const monsters = data
         seen.add(m.name);
         return true;
     })
-    .map((m) => 
-
-       ({
-            id: m.id,
-            name: m.name !== "Silver Rathian" ? m.name : "Silver Rathalos",
-            type: m.type,
-            species: m.species,
-            description: m.description,
-            ailments: m.ailments.map((a) => ({
-                name: a.name,
-                description: a.description,
+    .map((m) => ({
+        id: m.id,
+        name: m.name !== "Silver Rathian" ? m.name : "Silver Rathalos",
+        type: m.type,
+        species: m.species,
+        description: m.description,
+        ailments: m.ailments.map((a) => ({
+            name: a.name,
+            description: a.description,
+        })),
+        weaknesses: m.weaknesses
+            .filter((w) => w.stars > 0)
+            .map((w) => ({
+                name: w.element,
+                value: w.stars,
+                condition: w.condition,
             })),
-            weaknesses: m.weaknesses
-                .filter(w => w.stars > 0)
-                .map((w) => ({
-                    name: w.element,
-                    value: w.stars,
-                    condition: w.condition,
-                })),
-        })
-    )
+    }));
 
 fs.writeFileSync("public/data/world_monsters.json", JSON.stringify(monsters));
 

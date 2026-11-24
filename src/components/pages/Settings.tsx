@@ -75,7 +75,7 @@ export const Settings: FC = () => {
                     <button
                         onClick={() => {
                             const input = prompt("Paste data here: ");
-                            if (!input) return
+                            if (!input) return;
 
                             try {
                                 if (typeof JSON.parse(input) !== "object" || JSON.parse(input) === null) {
